@@ -1,0 +1,7 @@
+HtmlContent:
+  getHtmlContent:
+    end_point: /getHtmlContent
+    method: get
+    params:
+      key: userRegistration_BPP_Success
+    json:

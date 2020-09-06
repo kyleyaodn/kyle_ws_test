@@ -1,0 +1,9 @@
+authorize:
+  end_point: /authorize
+  method: post
+  params:
+  json:
+    username: kyleyao@aaxischina.com
+    password: 123456aA
+    client_id: xzr8ea5rxaraoa4pfbfd2j3fpure2mpf1f1dznxnvlmls7x150hnyh6sej8ovejt
+    redirect_uri: http://dev.jobnimbus.com/beacon_callback.aspx

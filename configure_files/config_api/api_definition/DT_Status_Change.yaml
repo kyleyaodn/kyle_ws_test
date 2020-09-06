@@ -1,0 +1,13 @@
+statusChange:
+  end_point: /statusChange
+  method: post
+  params:
+  json:
+    requestId: 56265dasdfa
+    status: Delivered
+    statusStartDate: '2019-07-03 10:30:00'
+    statusEndDate: '2019-12-13 10:30:00'
+    statusText: Change status
+    orderNo: TD36111
+    accountNo: 280381-184
+    requestTime: '2019-08-25 10:30:00'

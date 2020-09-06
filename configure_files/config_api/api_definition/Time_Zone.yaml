@@ -1,0 +1,11 @@
+get-time-zone:
+  end_point: /get-time-zone
+  method: get
+  params:
+    key: D13P3FFT8ALG
+    format: json
+    by: city
+    city: Chengdu
+    country: CN
+    region: ''
+  json:
