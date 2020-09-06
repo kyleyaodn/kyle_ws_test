@@ -1,0 +1,126 @@
+Catalog_Item_Services:
+  itemlist:
+    end_point: /itemlist
+    method: get
+    params:
+      accountId: ${accountId}
+      pageSize: '21'
+      pageNo: '1'
+      filter: ''
+      cateFilter: ''
+      facetsFilter: ''
+      showSkuList: 'true'
+      showFacets: 'true'
+      enableAutoCorrection: 'true'
+      enableDidYouMean: 'true'
+      showHoverAttrs: 'true'
+      hoverSearch: 'false'
+    json:
+  itemDetails:
+    end_point: /itemDetails
+    method: get
+    params:
+      productId: ''
+      itemNumber: ''
+      accountId: ''
+      jobNumber:
+      uom:
+      showHoverAttrs: 'true'
+    json:
+Template_Services:
+  template:
+    end_point: /template
+    method: get
+    params:
+      accountId: 280381-181
+      showItems: 'true'
+      showItemCurrentVariation: 'true'
+      showItemVariations: 'true'
+      showPricing: 'true'
+      showItemAvailable: 'true'
+      pageSize: '1'
+      pageNo: '1'
+    json:
+  getTemplateDetail:
+    end_point: /getTemplateDetail
+    method: get
+    params:
+      accountId: 280381-181
+      templateId: gl61160025
+      showItems: 'true'
+      showItemVariations: 'false'
+      showPricing: 'true'
+      showItemAvailable: 'true'
+    json:
+  createTemplate:
+    end_point: /createTemplate
+    method: post
+    params:
+    json:
+      templateName: V3 API template create 0706
+      accountId: 280381-181
+      items:
+      - itemNumber: '126131'
+        unitOfMeasure: BAG
+        quantity: 99
+        vendorColorId: aab000400
+      - itemNumber: '449465'
+        unitOfMeasure: RL
+        nickName: create template
+        quantity: 99
+        color: Briarwood(013)
+        MFG: Klauer
+      - itemNumber: '10466'
+        unitOfMeasure: RL
+        quantity: 99
+        color: Briarwood(013)
+        MFG: Klauer
+  updateTemplate:
+    end_point: /updateTemplate
+    method: post
+    params:
+    json:
+      templateId: gl62900319
+      accountId: 280381-181
+      templateName: ''
+      action: updateItem
+      items:
+      - templateItemId: gi6590001
+        itemNumber: '10466'
+        unitOfMeasure: BDL
+        quantity: 3
+        color: ''
+        MFG: ''
+        nickName: Nick v3 api
+  deleteTemplate:
+    end_point: /deleteTemplate
+    method: post
+    params:
+      templateId: gl62900320,gl62900319
+      accountId: 280381-181
+    json:
+  copyTemplate:
+    end_point: /copyTemplate
+    method: post
+    params:
+      templateId: gl62900319
+      accountId: 280381-181
+    json:
+ItemList_V31:
+  itemlist:
+    end_point: /itemlist
+    method: get
+    params:
+      accountId: ${accountId}
+      filter: ''
+      cateFilter: ''
+      facetsFilter: ''
+      showSkuList: 'true'
+      showFacets: 'false'
+      enableAutoCorrection: 'true'
+      enableDidYouMean: 'true'
+      showHoverAttrs: 'true'
+      hoverSearch: 'false'
+      pageSize: '21'
+      pageNo: '1'
+    json:

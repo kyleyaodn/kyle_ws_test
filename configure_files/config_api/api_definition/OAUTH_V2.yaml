@@ -1,0 +1,1582 @@
+My_Account_Services:
+  hoverExplicitLogin:
+    end_point: /hoverExplicitLogin
+    method: post
+    params:
+    json:
+      username: ${username}
+      password: ${password}
+      uuid: string
+      ua: desktop
+      siteId: homeSite
+      persistentLoginType: RememberMe
+      userAgent: desktop
+  getCurrentUserInfo:
+    end_point: /getCurrentUserInfo
+    method: get
+    params:
+    json:
+  saveCurrentUserInfo:
+    end_point: /saveCurrentUserInfo
+    method: post
+    params:
+    json:
+      title: ''
+      firstName: ${firstName}
+      lastName: API test
+      address1: 123
+      address2: ''
+      city: ''
+      state: Arkansas
+      postalCode: '91740'
+      country: USA
+      contactPhoneNumber: '6263396261'
+      officePhoneNumber: '6263396321'
+      mobilePhoneNumber: '6263396421'
+      subscribeOrder: true
+      subscribeQuote: true
+      subscribeAccount: true
+  getCurrentUserPermission:
+    end_point: /getCurrentUserPermission
+    method: get
+    params:
+    json:
+  changePassword:
+    end_point: /changePassword
+    method: post
+    params:
+    json:
+      oldPassword: ${oldPassword}
+      password: ${password}
+      confirmpassword: ${password}
+  forgotPassword:
+    end_point: /forgotPassword
+    method: post
+    params:
+    json:
+      login: ${login}
+My_Account_Address_Book:
+  getAddressBook:
+    end_point: /getAddressBook
+    method: get
+    params:
+      addressBookIds: ${addressBookIds}
+    json:
+  createAddressBook:
+    end_point: /createAddressBook
+    method: post
+    params:
+    json:
+      nickName: ''
+      firstName: ${firstName}
+      lastName: kyle c
+      address1: test
+      address2: ''
+      city: sc
+      stateValue: FL
+      postalCode: 90230
+      countryValue: ''
+      phoneNumber: '6263396261'
+  updateAddressBook:
+    end_point: /updateAddressBook
+    method: post
+    params:
+    json:
+      addressBookId: '36110129'
+      addressBookInfo:
+        nickName: API update 0528
+        firstName: ''
+        lastName: ${lastName}
+        address1: 'address 1 '
+        address2: ''
+        city: string
+        stateValue: CA
+        postalCode: '90230'
+        countryValue: ''
+        phoneNumber: '6263396261'
+  deleteAddressBook:
+    end_point: /deleteAddressBook
+    method: post
+    params:
+    json:
+      addressBookId: ${addressBookId}
+User_Management:
+  user:
+    end_point: /user
+    method: post
+    params:
+    json:
+      query:
+        sortBy: <script>alert('XSS')</script>
+        sortType: desc
+        pageIndex: 1
+        pageSize: 30
+  getUserDetail:
+    end_point: /getUserDetail
+    method: get
+    params:
+      id: ${id}
+    json:
+  createUser:
+    end_point: /createUser
+    method: post
+    params:
+    json:
+      firstName: API Teset
+      lastName: lastName
+      title: '9'
+      email: ${email}
+      phone: '6263369291'
+      role:
+        id: '100003'
+      accounts:
+      - id: '280381'
+        checked: true
+      - id: '10498'
+        checked: true
+      - id: 280381-180
+        checked: true
+      - id: 280381-441
+        checked: true
+      - id: 280381-186
+        checked: true
+      status: Active
+      currentTemplate: Default Role Template
+  updateUser:
+    end_point: /updateUser
+    method: post
+    params:
+    json:
+      id: user23820022
+      firstName: API P Teset
+      lastName: ${lastName}
+      title: '9'
+      email: ${email}
+      phone: '6263369291'
+      role:
+        id: '100004'
+      accounts:
+      - id: '280381'
+        checked: true
+      - id: '110330'
+        checked: false
+      - id: '280381'
+        checked: true
+      - id: '280381'
+        checked: true
+      - id: '10535'
+        checked: true
+      - id: '10535'
+        checked: true
+      status: Active
+      currentTemplate: Default Role Template
+  role:
+    end_point: /role
+    method: get
+    params:
+    json:
+  organization:
+    end_point: /organization
+    method: get
+    params:
+    json:
+Premission_Template:
+  permissionTemplateList:
+    end_point: /permissionTemplateList
+    method: post
+    params:
+    json:
+      sortBy: name
+      sortType: ${sortType}
+      pageIndex: 1
+      pageSize: '60'
+  getPermissionTemplateDetail:
+    end_point: /getPermissionTemplateDetail
+    method: post
+    params:
+      templateId: ${templateId}
+    json:
+  createPermissionTemplate:
+    end_point: /createPermissionTemplate
+    method: post
+    params:
+    json:
+      name: ${name}
+      permissionValues:
+        p10700002: true
+        '100001': true
+        '100005': true
+        '100004': true
+        '100009': true
+        p10900001: true
+  updatePermissionTemplate:
+    end_point: /updatePermissionTemplate
+    method: post
+    params:
+    json:
+      id: ${id}
+      name: ${name}
+      permissionValues:
+        '700002': true
+        p10900002: true
+        '100005': true
+        '700001': false
+        '100003': false
+        '100004': true
+        '100007': false
+        '100006': true
+        p11100001: false
+        '400001': true
+  deletePermissionTemplate:
+    end_point: /deletePermissionTemplate
+    method: post
+    params:
+    json:
+      templateId: ${templateId}
+Order_History_Services:
+  orderhistory:
+    end_point: /orderhistory
+    method: get
+    params:
+      accountId: '280381'
+      pageSize: '20'
+      pageNo: '1'
+      filter: ''
+      orderBy: ''
+    json:
+  orderdetail:
+    end_point: /orderdetail
+    method: get
+    params:
+      orderId: ${orderId}
+      accountId: ${accountId}
+      accountToken: ${accountToken}
+    json:
+Catalog_Item_Service:
+  typeAhead:
+    end_point: /typeAhead
+    method: get
+    params:
+      accountId: ${accountId}
+      filter: ${filter}
+      maxSearchSuggestions: '15'
+    json:
+  itemlist:
+    end_point: /itemlist
+    method: get
+    params:
+      accountId: ${accountId}
+      pageSize: '60'
+      pageNo: '1'
+      filter: ''
+      cateFilter: ''
+      facetsFilter: ''
+      showSkuList: 'true'
+      enableAutoCorrection: 'true'
+      enableDidYouMean: 'true'
+      showFacets: ''
+      showHoverAttrs: 'true'
+      hoverSearch: 'true'
+    json:
+  itemDetails:
+    end_point: /itemDetails
+    method: get
+    params:
+      productId: ${productId}
+      itemNumber: ${itemNumber}
+      accountId: ${accountId}
+      jobNumber: ''
+      uom:
+      showHoverAttrs: 'true'
+    json:
+  pricing:
+    end_point: /pricing
+    method: get
+    params:
+      skuIds: ${skuIds}
+      accountId: ''
+      jobNumber: ''
+    json:
+  getProductVariation:
+    end_point: /getProductVariation
+    method: get
+    params:
+      productId: ${productId}
+      skuId:
+      vendorColorId:
+    json:
+  getQuoteProductVariation:
+    end_point: /getQuoteProductVariation
+    method: get
+    params:
+      productId: ${productId}
+      skuId: ''
+      vendorColorId:
+      quoteOrderId:
+    json:
+  getFavoriteProducts:
+    end_point: /getFavoriteProducts
+    method: get
+    params:
+      accountId: ${accountId}
+      displaySize: '3'
+      checkImageExist: 'false'
+    json:
+  categories:
+    end_point: /categories
+    method: get
+    params:
+      account: ${account}
+      accountId: ''
+      showSubCategories: ''
+      categoryNameOrId: ''
+      showRecordCount: ''
+    json:
+  getProductBranchOrRegionAvailability:
+    end_point: /getProductBranchOrRegionAvailability
+    method: get
+    params:
+      productIds: ${productIds}
+      branchId: ''
+      regionId: ''
+      marketId: ''
+    json:
+  getSKUBranchOrRegionAvailability:
+    end_point: /getSKUBranchOrRegionAvailability
+    method: get
+    params:
+      skuIds: ${skuIds}
+      branchId: ''
+      regionId: ''
+      marketId: ''
+    json:
+  getATGItemMapping:
+    end_point: /getATGItemMapping
+    method: post
+    params:
+    json:
+      branchId: ''
+      itemNumber: ''
+      becnProductId: ''
+      integrationName: ''
+      conversionFactor: ''
+      becnUOM: ''
+      description: ''
+      incomingUOM: ''
+      materialID: ${materialID}
+      accountId: ''
+      APISiteId: ''
+      MFCode: ${MFCode}
+      MFRName: ''
+Submit_Order_Serivce:
+  submitOrder:
+    end_point: /submitOrder
+    method: post
+    params:
+    json:
+      accountId: '280381'
+      apiSiteId: JN
+      job:
+        jobName: JOS
+        jobNumber: JOB01
+      purchaseOrderNo: Test PO
+      orderStatusCode: I
+      lineItems:
+      - itemNumber: ''
+        quantity: '1'
+        unitOfMeasure: RL
+        description: ''
+        ATGItemMapping:
+          branchId: ''
+          itemNumber: '520785'
+          becnProductId: ''
+          integrationName: ''
+          conversionFactor: ''
+          becnUOM: 1GL
+          description: ''
+          incomingUOM: ''
+          materialID: '326160'
+          accountId: ''
+          APISiteId: ''
+          MFCode: ''
+          MFRName: ''
+      - itemNumber: '251634'
+        quantity: '1'
+        unitOfMeasure: RL
+        description: cavailable
+      - itemNumber: ''
+        quantity: '2'
+        unitOfMeasure: RL
+        description: 123456 unavailable
+      - itemNumber: ''
+        quantity: 3
+        unitOfMeasure: MFG
+        description: ''
+        ATGItemMapping:
+          branchId: ''
+          itemNumber: '46881'
+          becnProductId: ''
+          integrationName: ''
+          conversionFactor: ''
+          becnUOM: ''
+          description: "GAF 60 mil x 10' x 100' EverGuard\xAE TPO Membrane White"
+          incomingUOM: ''
+          materialID: ''
+          accountId: ''
+          APISiteId: ''
+          MFCode: ''
+          MFRName: ''
+      - itemNumber: ''
+        quantity: 4
+        unitOfMeasure: SQ
+        description: start starters test
+        ATGItemMapping:
+          branchId: ''
+          itemNumber: ''
+          becnProductId: ''
+          integrationName: ''
+          conversionFactor: ''
+          becnUOM: ''
+          description: "Firestone Building Products 2\" x 4' x 8' ISO 95+\u2122 GL\
+            \ Grade-II (20 psi) Insulation"
+          incomingUOM: ''
+          materialID: ''
+          accountId: ''
+          APISiteId: ''
+          MFCode: ''
+          MFRName: ''
+      - itemNumber: ''
+        quantity: 5
+        unitOfMeasure: BAG
+        description: ''
+      - itemNumber: ''
+        quantity: 5
+        unitOfMeasure: BAG
+        description: test
+      shipping:
+        shippingMethod: P
+        shippingBranch: '118'
+        address:
+          address1: ''
+          address2: ''
+          city: ''
+          postalCode: ''
+          state: ''
+      sellingBranch: '180'
+      specialInstruction: V2 Product mapping test order please ignore. Missing Order
+      pickupDate: '2018-08-05'
+      pickupTime: Morning
+      onHold: 'false'
+      checkForAvailability: yes
+Checkout:
+  cartItems:
+    end_point: /cartItems
+    method: get
+    params:
+    json:
+  orderSummary:
+    end_point: /orderSummary
+    method: get
+    params:
+    json:
+  clearCart:
+    end_point: /clearCart
+    method: post
+    params:
+    json:
+  removeItemFromCart:
+    end_point: /removeItemFromCart
+    method: post
+    params:
+    json:
+      commerceItemId: ${commerceItemId}
+  updateCart:
+    end_point: /updateCart
+    method: post
+    params:
+    json:
+      items:
+      - skuId: ${skuId}
+        uom: ${uom}
+        commerceItemId: ${commerceItemId}
+        quantity: ${quantity}
+      - skuId: ${skuId}
+        uom: ${uom}
+        commerceItemId: ${commerceItemId}
+        quantity: ${quantity}
+  proceedToCheckout:
+    end_point: /proceedToCheckout
+    method: post
+    params:
+    json:
+  updateCurrentOrderJobNumber:
+    end_point: /updateCurrentOrderJobNumber
+    method: post
+    params:
+    json:
+      jobNumber: ${jobNumber}
+  getOrderShippingInfo:
+    end_point: /getOrderShippingInfo
+    method: get
+    params:
+    json:
+  addOrderShippingInfo:
+    end_point: /addOrderShippingInfo
+    method: post
+    params:
+    json:
+      deliveryOptionValue: ${deliveryOptionValue}
+      deliveryDate: ${deliveryDate}
+      deliveryTime: ${deliveryTime}
+      shippingMethodValue: ${shippingMethodValue}
+      changeShippingAddressLocation: false
+      shippingAddress:
+        branchName: DENVER BRANCH
+        address1: ROOF DEPOT MOUNTAIN
+        address2: 4795 FOREST ST.
+        city: DENVER
+        stateValue: CO
+        postalCode: '80216'
+        phoneNumber: '3033886493'
+      specialInstruction: API submit ord er for test default branhc
+  getCurrentOrderReview:
+    end_point: /getCurrentOrderReview
+    method: get
+    params:
+    json:
+  submitCurrentOrder:
+    end_point: /submitCurrentOrder
+    method: post
+    params:
+    json:
+      poName: ${poName}
+      jobName: ${jobName}
+      jobNumber: ${jobNumber}
+      additionalRecipients:
+      - KYLEYAO@aaxischina.com
+      - shelleyyang@aaxischina.com
+      - beckyhu@aaxischina.com
+  getSubmitOrderResult:
+    end_point: /getSubmitOrderResult
+    method: post
+    params:
+    json:
+      orderId: ${orderId}
+      savedOrderId: ${savedOrderId}
+  validateOrderByLocation:
+    end_point: /validateOrderByLocation
+    method: get
+    params:
+      orderId: ${orderId}
+      branchId: ''
+      address: ''
+      postCode:
+    json:
+Add_Multiple_Items_To_Order:
+  addMultipleItemsToOrder:
+    end_point: /addMultipleItemsToOrder
+    method: post
+    params:
+      ignoreInvalidItems: 'true'
+    json:
+      addItemCount: 149
+      accountId: '280381'
+      apiSiteId: HVR
+      checkProduct: true
+      jobNumber: '01'
+      specialInstructions: This is one V2 API special Instructions.
+      items:
+      - catalogRefId: '413339'
+        productId: C-428596
+        quantity: 1
+        uom: PC
+        productNumber: JMCAB
+      - catalogRefId: '10044'
+        productId: C-010044
+        quantity: 33
+        uom: PC
+        productNumber: JMCAB
+      - catalogRefId: ''
+        productId: C-392800
+        quantity: 2
+        uom: PC
+        productNumber: MNR1RCCL3965CDV
+      - catalogRefId: '445644'
+        productId: C-445644
+        quantity: 3
+        productNumber: ''
+      - catalogRefId: '434168'
+        productId: C-434168
+        quantity: 4
+        productNumber: SGAFTPOLRFOBA5
+      - catalogRefId: '100809'
+        productId: C-010080
+        quantity: 5
+        productNumber: JMCPSF6
+      - catalogRefId: '40783'
+        productId: C-018601
+        quantity: 1
+        uom: TB
+        catalogRefIdChanged: false
+        matchcolor: Alcan White(004)
+        matchMFG: Daymond
+      - catalogRefId: ''
+        productId: C-018601
+        quantity: 5
+        uom: TB
+        catalogRefIdChanged: false
+        matchcolor: Mansard Brown(201)
+        matchMFG: A.B. Seam
+        productNumber: OSIQU201
+      - catalogRefId: ''
+        productId: C-032515
+        quantity: 1
+        uom: TB
+        catalogRefIdChanged: false
+        matchColor: White(1)
+        matchMFG: Climate Solutions Windows & Doors
+        productNumber: GAFZRAR
+      - catalogRefId: '407128'
+        productId: C-032515
+        quantity: 1
+        uom: TB
+        catalogRefIdChanged: false
+        matchColor: 88White(1)
+        matchMFG: Climate Solutions Windows & Doors
+        productNumber: ''
+      - catalogRefId: ''
+        productId: C-018601
+        quantity: 2
+        uom: TB
+        catalogRefIdChanged: false
+        matchColor: White(1)
+        matchMFG: Certainteed ColorMax Fibercement
+        productNumber: OSIQU201
+      - catalogRefId: '22719'
+        productId: C-018601
+        quantity: 2
+        uom: TB
+        catalogRefIdChanged: false
+        matchColor: Mansard Brown(201)
+        matchMFG: A.B. Seam
+        productNumber: ''
+      - catalogRefId: '325667'
+        productId: C-018601
+        quantity: 2
+        uom: TB
+        catalogRefIdChanged: false
+        matchColor: Charcoal(551)
+        matchMFG: Master Steel Roofing
+        productNumber: ''
+      - catalogRefId: '325667'
+        productId: C-018601
+        quantity: 2
+        uom: TB
+        catalogRefIdChanged: false
+        matchColor: Charcoal(551)
+        matchMFG: A.B. Seam
+        productNumber: ''
+      - catalogRefId: '325667'
+        productId: C-018601
+        quantity: 2
+        uom: TB
+        catalogRefIdChanged: false
+        matchColor: Mansard Brown(201)
+        matchMFG: A.B. Seam
+        productNumber: ''
+      - catalogRefId: '325669'
+        productId: C-018601
+        quantity: 2
+        uom: TB
+        catalogRefIdChanged: false
+        matchColor: Mansard Brown(201)
+        matchMFG: A.B. Seam
+        productNumber: ''
+      - catalogRefId: '6018117'
+        productId: C-2221224
+        quantity: 8
+        unitOfMeasure: BDL
+        catalogRefIdChanged: false
+        matchColor: Autumn Red(027)
+        matchMFG: Alside
+      - catalogRefId: '6008010'
+        productId: C-2221250
+        unitOfMeasure: BDL
+        quantity: 8
+        catalogRefIdChanged: false
+        matchColor: White(001)
+        matchMFG: Mastic
+      shipping:
+        shippingMethod: O
+        shippingBranch: '118'
+        address:
+          address1: ''
+          address2: ''
+          city: ''
+          postalCode: ''
+          state: ''
+Template_Service:
+  template:
+    end_point: /template
+    method: get
+    params:
+      account: ${account}
+      accountId: 280381-181
+      showItems: 'true'
+      showItemVariations: 'true'
+      showPricing: 'true'
+      showItemAvailable: 'true'
+      pageSize: '10'
+      pageNo: '1'
+      invokeBy: store
+      filterBy: ''
+      filter: ''
+      orderBy:
+    json:
+  getTemplateDetail:
+    end_point: /getTemplateDetail
+    method: get
+    params:
+      templateId: ${templateId}
+      account: ${account}
+      accountId: 280381-184
+      showItems: 'true'
+      showItemVariations: 'true'
+      showPricing: 'true'
+      showItemAvailable: 'true'
+      invokeBy: store
+      jobNumber: ''
+    json:
+  createTemplate:
+    end_point: /createTemplate
+    method: post
+    params:
+      invokeBy: store
+      ignoreInvalidItems: 'true'
+    json:
+      templateName: ${templateName}
+      accountId: '280381'
+      account: '280381'
+      items:
+      - itemNumber: '262662'
+        unitOfMeasure: BAG
+        quantity: 99
+        vendorColorId: aab000400
+      - templateItemId: ''
+        itemNumber: '6018117'
+        unitOfMeasure: BDL
+        nickName: test for update
+        quantity: 8
+        matchColor: Autumn Red(027)
+        matchMFG: Alside
+      - templateItemId: ''
+        itemNumber: '6008010'
+        unitOfMeasure: BDL
+        quantity: 8
+        nickName: test for update
+        matchColor: White(001)
+        matchMFG: Mastic
+      - templateItemId: ''
+        itemNumber: '9999'
+        unitOfMeasure: BDL
+        quantity: 8
+        nickName: test for update
+        matchColor: White(001)
+        matchMFG: Mastic
+  updateTemplate:
+    end_point: /updateTemplate
+    method: post
+    params:
+      invokeBy: store
+      ignoreInvalidItems: 'true'
+      invokeFrom: templateDetail_suggestiveSelling_createItem
+    json:
+      templateId: gl206498353
+      account: '280381'
+      templateName: kyle 0820 test from account up
+      action: createItem
+      items:
+      - templateItemId: ''
+        itemNumber: '120937'
+        unitOfMeasure: BDL
+        nickName: test for update
+        quantity: 8
+        matchColor: Autumn Red(027)
+        matchMFG: Alside
+      - templateItemId: ''
+        itemNumber: '465767'
+        unitOfMeasure: BDL
+        quantity: 8
+        nickName: test for update
+        matchColor: White(001)
+        matchMFG: Mastic
+      - templateItemId: ''
+        itemNumber: '6008010'
+        unitOfMeasure: BDL
+        quantity: 8
+        nickName: test for update
+        matchColor: White(001)
+        matchMFG: Mastic
+  deleteTemplate:
+    end_point: /deleteTemplate
+    method: post
+    params:
+      templateId: ${templateId}
+      account: ${account}
+      invokeBy:
+      accountId: '280381'
+    json:
+  copyTemplate:
+    end_point: /copyTemplate
+    method: post
+    params:
+      templateId: ${templateId}
+      accountId: 280381-181
+      account: ${account}
+      invokeBy: store
+    json:
+  addPerfectOrderToTemplate:
+    end_point: /addPerfectOrderToTemplate
+    method: post
+    params:
+      templateName: ${templateName}
+      account: ${account}
+      accountId: 280381-181
+      perfectOrderId: ${perfectOrderId}
+      brandName: ${brandName}
+    json:
+  validateTemplateItems:
+    end_point: /validateTemplateItems
+    method: post
+    params:
+    json:
+      templateId: ${templateId}
+      templateItems:
+      - templateItemId: ${templateItemId}
+Perfect_Order_Services:
+  getPerfectOrderDetail:
+    end_point: /getPerfectOrderDetail
+    method: get
+    params:
+      accountId: 280381-184
+      account: ${account}
+      perfectOrderId: ${perfectOrderId}
+      brandName: ${perfectOrderId}
+      jobNumber:
+      showPricing:
+    json:
+  getPerfectStyleGroups:
+    end_point: /getPerfectStyleGroups
+    method: get
+    params:
+      brand: ${brand}
+    json:
+  getPerfectOrderLanding:
+    end_point: /getPerfectOrderLanding
+    method: get
+    params:
+      brandName: ${brandName}
+      pageNo: ${pageNo}
+      pageSize: ${pageSize}
+    json:
+Save_Order_Services:
+  saveOrder:
+    end_point: /saveOrder
+    method: post
+    params:
+    json:
+      savedOrderName: ${savedOrderName}
+      po: test
+      jobName: ''
+      jobNumber: '01'
+      additionalRecipients: []
+  getOrderApprovalList:
+    end_point: /getOrderApprovalList
+    method: post
+    params:
+    json:
+      approverId: ''
+      currentPage: '1'
+      pageSize: '20'
+      searchBy: displayName
+      searchTerm: ''
+      sortBy: creationDate
+      sortType: desc
+      status: READY_FOR_APPROVAL
+  getOrderApprovalDetail:
+    end_point: /getOrderApprovalDetail
+    method: get
+    params:
+      orderId: ${orderId}
+      editable: 'false'
+      validate: ''
+    json:
+  rejectSavedOrder:
+    end_point: /rejectSavedOrder
+    method: post
+    params:
+    json:
+      rejectReason: Test Reject string reject API
+      orders:
+      - id: '117200003'
+  deleteSavedOrder:
+    end_point: /deleteSavedOrder
+    method: post
+    params:
+      id: ${id}
+    json:
+  updateSavedOrderItems:
+    end_point: /updateSavedOrderItems
+    method: post
+    params:
+    json:
+      savedOrderId: '111800008'
+      action: createItem
+      items:
+      - quantity: 1
+        itemNumber: '413334'
+        uom: BDL
+        vendorColorId: ''
+      - quantity: 2
+        itemNumber: '10088'
+        uom: RL
+        vendorColorId: ''
+      - quantity: 2
+        itemNumber: '40783'
+        uom: TB
+        vendorColorId: ''
+        matchMFG: Daymond
+        matchColor: Alcan White(004)
+  getSavedOrderShippingInfo:
+    end_point: /getSavedOrderShippingInfo
+    method: post
+    params:
+    json:
+      orderId: ${orderId}
+  updateSavedOrderShippingInfo:
+    end_point: /updateSavedOrderShippingInfo
+    method: post
+    params:
+    json:
+      orderId: '111300002'
+      deliveryOption: scheduled
+      deliveryDate: 12-09-2020
+      deliveryTime: Anytime
+      shippingMethod: Ship_to
+      shippingAddress:
+        address1: 001 testaddress API udpte
+        address2: ''
+        city: test city
+        state: CA
+        states:
+        postalCode: '12345'
+        country: USA
+      contactInfo:
+        phoneNumber: '1234567990'
+        firstName: ''
+        lastName: testolivia
+        nickName: testolivia
+      instructions: test kyle test
+  getSavedOrderReviewInfo:
+    end_point: /getSavedOrderReviewInfo
+    method: post
+    params:
+    json:
+      orderId: ${orderId}
+  submitSavedOrder:
+    end_point: /submitSavedOrder
+    method: post
+    params:
+    json:
+      orderId: '111300002'
+      approverId: '{{profileId}}'
+      po: Change
+      jobName: '{{jobName}}'
+      jobNumber: '{{jobNumber}}'
+      additionalRecipients:
+      - kyleyaodn@gmail.com
+      - kyleyao@aaxischina.com
+      - kyleyao@aaxischina.com
+  approveSavedOrder:
+    end_point: /approveSavedOrder
+    method: post
+    params:
+    json:
+      orderId: '111800008'
+      po: 118 CHange
+      jobName: '{{jobName}}'
+      jobNumber: '{{jobNumber}}'
+      additionalRecipients:
+      - kyleyao@aaxischina.com
+      - kyleyaodn@gmail.com
+      - kyleyao@aaxischina.com
+  getSavedOrderConfirmationInfo:
+    end_point: /getSavedOrderConfirmationInfo
+    method: post
+    params:
+    json:
+      id: ${id}
+  saveOrderValidate:
+    end_point: /saveOrderValidate
+    method: get
+    params:
+      id: ${id}
+    json:
+  approver:
+    end_point: /approver
+    method: get
+    params:
+      hasPendingOrders:
+    json:
+Delivery_Tracking_Service:
+  getStatusChange:
+    end_point: /getStatusChange
+    method: get
+    params:
+      orderId: ${orderId}
+      orderNumber: ${orderNumber}
+      savedOrderId: ${savedOrderId}
+    json:
+  updateStatusChange:
+    end_point: /updateStatusChange
+    method: post
+    params:
+    json:
+      dtPhoneNumber: '1234567890'
+      dtEmailAddress: kyleyaodn@gmail.com
+      dtStatusChangeNotification:
+        requested: email
+        scheduled: email
+        delivered: email
+      dtAdminStatusChangeNotification:
+        requested: <script>alert('XSS')</script>
+        scheduled: email
+        delivered: email
+  updateOrderAlert:
+    end_point: /updateOrderAlert
+    method: post
+    params:
+    json:
+      orderNumber: ${orderNumber}
+      orderId: ${orderId}
+      savedOrderId: ${savedOrderId}
+      alertType: ${alertType}
+      phoneNumber: ${phoneNumber}
+      emailAddress: ${emailAddress}
+      saveToProfile: false
+Quote:
+  quote:
+    end_point: /quote
+    method: get
+    params:
+      accountId: 280381-194
+      account: ${account}
+      quoteType: ${quoteType}
+      pageSize: '10'
+      pageNo: '1'
+      filterBy: ''
+      filter: ''
+      orderBy: ''
+    json:
+  getMincronQuoteDetail:
+    end_point: /getMincronQuoteDetail
+    method: post
+    params:
+      quoteId: ${quoteId}
+      accountId: ''
+      account: 122193-181
+    json:
+  getQuoteDetail:
+    end_point: /getQuoteDetail
+    method: post
+    params:
+      quoteId: ${quoteId}
+      accountId: ''
+      account: '122193'
+    json:
+  getAtgQuoteDetail:
+    end_point: /getAtgQuoteDetail
+    method: get
+    params:
+      quoteId: ${quoteId}
+      accountId: ''
+      account: 280381-181
+    json:
+  createQuote:
+    end_point: /createQuote
+    method: post
+    params:
+    json:
+      quoteName: 0804  Quote Test 001
+      phoneNumber: 626FF3396261
+      address1: string
+      address2: test
+      city: string
+      state: Florida
+      workType: dfadaf
+      jobName: DS
+      jobNumber: SDfA
+      postalCode: '90230'
+      quoteNotes: string
+      mailingAddress1: mail add 01
+      mailingAddress2: mail add 02
+      mailingAddress3: mail add 03
+      mailingState: Florida
+      mailingCity: mail city
+      mailingZip: '91700'
+      expires: expired
+      validate: false
+      quoteItems:
+      - itemId: '413335'
+        itemType: I
+        quantity: 10
+        uom: BEL
+        displayName: ''
+      - itemId: '25037'
+        itemType: I
+        quantity: 10
+        uom: PL
+        displayName: ''
+      - itemId: '66001'
+        itemType: I
+        quantity: 10
+        uom: TB
+        displayName: ''
+      - itemId: '10044'
+        itemType: E
+        uom: CTN
+        quantity: 22
+        displayName: Verified enhancement tickets on local and UAT BECN-1937(Relevancy
+          Ranking).Verified enhancement tickets on local and UAT BECN-1937(Relevancy
+          Ranking).
+        color: cc
+        dimensions: dimension
+      - itemId: '10044'
+        itemType: E
+        uom: CTN
+        quantity: 22
+        displayName: Verified enhancement tickets on local and UAT BECN-1937(Relevancy
+          Ranking).Verified enhancement tickets on local and UAT BECN-1937(Relevancy
+          Ranking).
+        color: ''
+        dimensions: ''
+      - itemId: '10044'
+        itemType: E
+        uom: ''
+        quantity: 22
+        displayName: Verified enhancement tickets on local and UAT BECN-1937(Relevancy
+          Ranking).Verified enhancement tickets on local and UAT BECN-1937(Relevancy
+          Ranking).
+        color: ''
+        dimensions: ''
+  updateQuote:
+    end_point: /updateQuote
+    method: post
+    params:
+    json:
+      id: '69500009'
+      quoteName: 0518 this is on test quote
+      phoneNumber: '6263396261'
+      address1: new address
+      address2: add 1
+      city: string
+      state: Florida
+      workType: R
+      jobName: '{{jobName}}'
+      jobNumber: '{{jobNumber}}'
+      postalCode: 9022a
+      quoteNotes: This is quote update test for normal info
+      mailingAddress1: update mail add 01
+      mailingAddress2: update mail add 02
+      mailingAddress3: update mail add 03
+      mailingState: Alaska
+      mailingCity: FFFFF
+      mailingZip: aaaaa
+      expires: work
+      action: UPDATE_QUOTE
+  deleteQuote:
+    end_point: /deleteQuote
+    method: post
+    params:
+    json:
+      quoteId: ${quoteId}
+  submitQuote:
+    end_point: /submitQuote
+    method: post
+    params:
+    json:
+      id: ''
+      quoteName: 0804 001 submit Quote Test 0099
+      phoneNumber: 62FF633
+      address1: string
+      address2: string
+      city: string
+      state: Florida
+      workType: R
+      jobName: '{{jobName}}'
+      jobNumber: '{{jobNumber}}'
+      quoteNotes: Test Quote please ignore
+      mailingAddress1: mail add 01
+      mailingAddress2: mail add 02
+      mailingAddress3: mail add 03
+      mailingState: New Hampshire
+      mailingCity: mail city
+      mailingZip: 10230-1111
+      expire: aa
+      validate: ''
+      quoteItems:
+      - itemId: '10075'
+        itemType: I
+        quantity: 1
+        uom: BEL
+        displayName: ''
+      - itemId: '292682'
+        itemType: I
+        quantity: 1
+        uom: BEL
+        displayName: ''
+      - itemId: '10044'
+        itemType: E
+        uom: CTN
+        quantity: 22
+        displayName: 'Verified enhancement tickets on local and UAT BECN-1937(Relevancy
+          Ranking). BECN-1938(Email subject change.) '
+        color: cc
+        dimensions: dimension
+  submitQuoteForm:
+    end_point: /submitQuoteForm
+    method: post
+    params:
+    json:
+  approveQuote:
+    end_point: /approveQuote
+    method: post
+    params:
+    json:
+      quoteId: ${quoteId}
+  reviseQuote:
+    end_point: /reviseQuote
+    method: post
+    params:
+    json:
+      quoteId: ${quoteId}
+      quoteNotes: 'revise quote from '
+  rejectQuote:
+    end_point: /rejectQuote
+    method: post
+    params:
+    json:
+      quoteId: ${quoteId}
+      reason: Pricing is too high
+  downloadQuoteAsPDF:
+    end_point: /downloadQuoteAsPDF
+    method: get
+    params:
+      quoteId: ${quoteId}
+      showPrice: 'true'
+      receivedQuote: 'false'
+    json:
+Quote_To_Order:
+  convertQuoteOrder:
+    end_point: /convertQuoteOrder
+    method: post
+    params:
+    json:
+      quoteId: ${quoteId}
+  getQuoteOrderDetail:
+    end_point: /getQuoteOrderDetail
+    method: get
+    params:
+      orderId: ${orderId}
+    json:
+  updateQuoteOrder:
+    end_point: /updateQuoteOrder
+    method: post
+    params:
+    json:
+      id: qo2100001
+      displayName: ''
+      action: create_item
+      commerceItems:
+      - quantity: 11
+        itemNumber: '6007009'
+        uom: ''
+        matchColor: White(001)
+        matchMFG: Mastic
+      - quantity: 11
+        itemNumber: '366160'
+        uom: ''
+        matchColor: ''
+        matchMFG: ''
+  updateQuoteOrderShippingInfo:
+    end_point: /updateQuoteOrderShippingInfo
+    method: post
+    params:
+    json:
+      id: qo2100001
+      deliveryOption: scheduled
+      deliveryDate: 09-15-2020
+      deliveryTime: Morning
+      shippingMethod: Pick_up
+      shippingAddress:
+        postalCode: '11111'
+        state: CA
+        address1: a
+        address2: b
+        address3: c
+        country: d
+        city: e
+      branchName: f
+      contactInfo:
+        firstName: g
+        lastName: h
+        nickName: i
+        phoneNumber: '1234567890'
+      instructions: quote notes
+  getQuoteOrderPrice:
+    end_point: /getQuoteOrderPrice
+    method: get
+    params:
+      orderId: ${orderId}
+      jobNumber: ''
+    json:
+  placeQuoteOrder:
+    end_point: /placeQuoteOrder
+    method: post
+    params:
+    json:
+      orderId: qo5300001
+      jobNumber: JOB01
+      jobName: JOS
+      poName: po
+      additionalRecipients:
+      - kyleyao@aaxischina.com
+Rebate:
+  rebateLanding:
+    end_point: /rebateLanding
+    method: get
+    params:
+    json:
+  getRebateRedeemedSummaryItems:
+    end_point: /getRebateRedeemedSummaryItems
+    method: get
+    params:
+    json:
+  getRebateRedeemedItemDetail:
+    end_point: /getRebateRedeemedItemDetail
+    method: post
+    params:
+    json:
+      rebateId: '2500001'
+      searchKey: ''
+      searchValue: ''
+      pageNum: '1'
+  getRebateForm:
+    end_point: /getRebateForm
+    method: get
+    params:
+      rebateId: ${rebateId}
+      invokeBy: store
+    json:
+  submitRebate:
+    end_point: /submitRebate
+    method: post
+    params:
+    json:
+      rebateId: rebate1055
+      rebateInfo:
+        companyName: rebate1055 API Company
+        contactName: API test contact Name
+        phoneNumber: '1234567890'
+        email: kyleyao@aaxischina.com
+      rebateAddress:
+        address: 123 dr
+        city: API city
+        state: CA
+        zip: '90230'
+      rebateCustomInfo: {}
+      rebateMailingAddress: {}
+Suggestive_Selling:
+  suggestiveSelling:
+    end_point: /suggestiveSelling
+    method: get
+    params:
+      account: ''
+      accountId: 280381-194
+      brandName: ''
+      templateId: ''
+      itemNumber: ''
+      excludeCategory: ''
+      excludeBrand:
+      jobNumber:
+      pageSize:
+      pageNo:
+    json:
+Hover_Job_Services:
+  getHoverJobList:
+    end_point: /getHoverJobList
+    method: get
+    params:
+      pageSize: '20'
+      pageNo: '1'
+      filter: ${filter}
+      orderBy: updated_at asc
+    json:
+  getHoverJobListImage:
+    end_point: /getHoverJobListImage
+    method: get
+    params:
+      jobId: ${jobId}
+    json:
+  getHoverJobDetail:
+    end_point: /getHoverJobDetail
+    method: get
+    params:
+      jobId: ${jobId}
+    json:
+  getHoverJobDetailImage:
+    end_point: /getHoverJobDetailImage
+    method: get
+    params:
+      imageId: '12744511'
+    json:
+SMS_Services:
+  downloadBeacon3DplusApp:
+    end_point: /downloadBeacon3DplusApp
+    method: get
+    params:
+      phoneNumber: ${phoneNumber}
+    json:
+User_Registration_Services:
+  getUserRegisterToken:
+    end_point: /getUserRegisterToken
+    method: get
+    params:
+    json:
+  validateUserByEmail:
+    end_point: /validateUserByEmail
+    method: post
+    params:
+    json:
+      emailAddress: localQAtest@test.com
+      firstName: BECN-1344
+      lastName: BECN-LAST
+      zipCode: '90230'
+      phoneNumber: '2039066531'
+  validateUserByAccount:
+    end_point: /validateUserByAccount
+    method: post
+    params:
+    json:
+      companyName: KEVIN KIRSCH NEW HOMES INC
+      account: '666667'
+      invoice: o00002
+      invoiceDate: 09-04-2019
+  register:
+    end_point: /register
+    method: post
+    params:
+    json:
+      registerUserEmailType:
+      lastName: cdsaf
+      zipCode: '90230'
+      emailFormInfo:
+      companyName:
+      registerFailReason:
+      fullName:
+      validationErrorTimes:
+      invoiceDate:
+      osrAccounts:
+      - 280381-10-181
+      userRegisterToken: fexy64zq5e6c3u0dtl5gv67myuavzdgsx4gzfj8l8y8ugjlfaee3wcaka4xerrei
+      accountInfos:
+      - accountId: '280381'
+        branchId: '181'
+        companyId: '10'
+        accountName: BECN-1344 ACCOUNT001 BPP
+      token: eyJhbGciOiJIUzUxMiJ9.eyJVc2VyUmVnaXN0ZXJJbmZvIjoiZG9tbmluY190ZXN0QGdtYWlsLmNvbSIsImV4cCI6MTU5NDAyODQyMH0.9jntdZnea34a-l7KPXY9jnU2UQUivlA0QwI0nEpF8dLHXzDzkjVuQyNw8_QFS4J2cflfNU1smzoX6CsQRrZdjA
+      firstName: test
+      emailAddress: domninc_test@gmail.com
+      phoneNumber: '6263396261'
+      internalUser: false
+      accountLegacyId:
+      invoice:
+      account:
+      registerDate:
+Job_Service:
+  getCurrentUserLastSelectedJobInfo:
+    end_point: /getCurrentUserLastSelectedJobInfo
+    method: get
+    params:
+      jobNumber: ''
+    json:
+Edit_Order:
+  convertPlacedOrder:
+    end_point: /convertPlacedOrder
+    method: post
+    params:
+    json:
+      orderId: TD200104
+      accountToken: AK06XaAA-7-KJ6V6oVGyM1spiL6D-fThjsXSp-vIf_k=
+  getPlacedOrderDetail:
+    end_point: /getPlacedOrderDetail
+    method: post
+    params:
+    json:
+      orderId: po1700001
+      validate: false
+  updatePlacedOrder:
+    end_point: /updatePlacedOrder
+    method: post
+    params:
+    json:
+      id: po1700001
+      commerceItems:
+      - itemNumber: '555744'
+        quantity: '1'
+        uom: PR
+        vendorColorId: ''
+      action: CREATE_ITEM
+  updatePlacedOrderShippingInfo:
+    end_point: /updatePlacedOrderShippingInfo
+    method: post
+    params:
+    json:
+      branchName:
+      contactInfo:
+        nickName:
+        firstName:
+        lastName: test123
+        address1: WEST END
+        address2: 4200 I-40 EAST
+        city: AMARILLO
+        state: Texas
+        postalCode: '79103'
+        country:
+        phoneNumber: '1234567890'
+      deliveryDate: 08-24-2020
+      deliveryTime: '1'
+      deliveryOption: scheduled
+      id: po1700001
+      instructions: This is test
+      shippingAddress:
+        nickName:
+        firstName:
+        lastName: test123
+        address1: WEST END
+        address2: 4200 I-40 EAST
+        city: AMARILLO
+        state: Texas
+        postalCode: '79103'
+        country:
+        phoneNumber: '1234567890'
+        address3:
+        states:
+      shippingMethod: Pick_up
+  getPlacedOrderPrice:
+    end_point: /getPlacedOrderPrice
+    method: get
+    params:
+      orderId: ${orderId}
+      jobNumber: ''
+    json:

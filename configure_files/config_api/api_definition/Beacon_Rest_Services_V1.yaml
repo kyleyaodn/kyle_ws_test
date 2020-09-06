@@ -1,0 +1,257 @@
+My_Account_Services:
+  login:
+    end_point: /login
+    method: post
+    params:
+    json:
+      username: ${username}
+      password: ${password}
+      siteId: homeSite
+      persistentLoginType: rememberPassword
+      userAgent: desktop
+  logout:
+    end_point: /logout
+    method: post
+    params:
+    json:
+  getCurrentUserInfo:
+    end_point: /getCurrentUserInfo
+    method: get
+    params:
+    json:
+  getLoginDeclaration:
+    end_point: /getLoginDeclaration
+    method: get
+    params:
+      siteId: ''
+      persistentLoginType: ''
+      userAgent: ''
+    json:
+  accounts:
+    end_point: /accounts
+    method: get
+    params:
+      profileId: ${profileId}
+    json:
+  switchAccount:
+    end_point: /switchAccount
+    method: post
+    params:
+    json:
+      accountId: ${accountId}
+Branch_Services:
+  branchlist:
+    end_point: /branchlist
+    method: get
+    params:
+      zipCode: '80216'
+      city: DENVER
+      pageSize: '2'
+      pageNo: '1'
+    json:
+Job_Service:
+  jobs:
+    end_point: /jobs
+    method: get
+    params:
+      accountId: ${accountId}
+    json:
+Order_History_Services:
+  orderdetail:
+    end_point: /orderdetail
+    method: get
+    params:
+      orderId: ${orderId}
+      accountId: ${accountId}
+      accountToken: ''
+    json:
+  orderhistory:
+    end_point: /orderhistory
+    method: get
+    params:
+      accountId: ${accountId}
+      pageSize: '1000'
+      pageNo: '1'
+      filter: UPPER(PurchaseOrderNumber) like UPPER('%UAT TEST%')
+      orderBy: ''
+    json:
+Catalog_Item_Services:
+  itemlist:
+    end_point: /itemlist
+    method: get
+    params:
+      accountId: ${accountId}
+      pageSize: '21'
+      pageNo: '1'
+      filter: ''
+      cateFilter: ''
+      showHoverAttrs: 'true'
+      hoverSearch: 'true'
+      enableAutoCorrection: 'true'
+      enableDidYouMean: 'true'
+    json:
+  items:
+    end_point: /items
+    method: get
+    params:
+      productId: ${productId}
+      itemNumber: ${itemNumber}
+      accountId: ${accountId}
+      jobNumber: ''
+      uom:
+      showHoverAttrs: 'true'
+    json:
+  getProductInfo:
+    end_point: /getProductInfo
+    method: get
+    params:
+      productId: ${productId}
+      accountInfo: 'true'
+    json:
+  getSkuUom:
+    end_point: /getSkuUom
+    method: get
+    params:
+      skuId: ${skuId}
+      skuIds: ${skuIds}
+    json:
+  pricing:
+    end_point: /pricing
+    method: get
+    params:
+      skuIds: ${skuIds}
+      accountId: ''
+      jobNumber: ''
+    json:
+  cartItems:
+    end_point: /cartItems
+    method: get
+    params:
+    json:
+Submit_Order_Services:
+  submitOrder:
+    end_point: /submitOrder
+    method: post
+    params:
+    json:
+      accountId: '280381'
+      apiSiteId: HVR
+      job:
+        jobName: JOS
+        jobNumber: JOB01
+      purchaseOrderNo: Test PO
+      orderStatusCode: I
+      lineItems:
+      - itemNumber: '251634'
+        quantity: '1'
+        unitOfMeasure: RL
+        description: available
+      - itemNumber: '523049'
+        quantity: '2'
+        unitOfMeasure: RL
+        description: 523049 unavailable
+      - itemNumber: ''
+        quantity: '2'
+        unitOfMeasure: RL
+        description: 123456 unavailable
+      - itemNumber: '654321'
+        quantity: 3
+        unitOfMeasure: MFG
+        description: ''
+      - itemNumber: ''
+        quantity: 4
+        unitOfMeasure: SQ
+        description: start starters test
+      - itemNumber: ''
+        quantity: 5
+        unitOfMeasure: BAG
+        description: ''
+      - itemNumber: ''
+        quantity: 5
+        unitOfMeasure: BAG
+        description: test
+      shipping:
+        shippingMethod: P
+        shippingBranch: '118'
+        address:
+          address1: ''
+          address2: ''
+          city: ''
+          postalCode: ''
+          state: ''
+      sellingBranch: '180'
+      specialInstruction: V1 API test Order please ignore Missiong Order
+      pickupDate: '2018-08-05'
+      pickupTime: Morning
+      onHold: 'false'
+      checkForAvailability: yes
+Add_Multiple_Items_2_Order:
+  addMultipleItemsToOrder:
+    end_point: /addMultipleItemsToOrder
+    method: post
+    params:
+    json:
+      accountId: '280381'
+      specialInstructions: dfafda
+      items:
+      - catalogRefId: '44113'
+        productId: C-044110
+        quantity: 1
+        nickName:
+        uom: EA
+        catalogRefIdChanged: false
+      - catalogRefId: '383895'
+        productId: C-351581
+        quantity: 1
+        nickName: 10498-515 available
+        uom: EA
+        catalogRefIdChanged: false
+      - catalogRefId: '469135'
+        productId: C-469132
+        quantity: 1
+        nickName: 280381-441 available
+        uom: EA
+        catalogRefIdChanged: false
+      - catalogRefId: '385972'
+        productId: C-493182
+        quantity: 1
+        nickName:
+        uom: BC
+        catalogRefIdChanged: false
+      - catalogRefId: '437062'
+        productId: C-296510
+        quantity: 1
+        nickName:
+        uom: RL
+        catalogRefIdChanged: false
+      - catalogRefId: '412524'
+        productId: C-480624
+        quantity: 1
+        nickName:
+        uom: BDL
+        catalogRefIdChanged: false
+      addItemCount: 49
+      shipping:
+        shippingMethod: O
+        shippingBranch: '180'
+        address:
+          address1: ASddf dfl fdslaj dsf dsfafsadfdsafsadfasdfsdafdsafasfdas
+          address2: string
+          city: string
+          postalCode: string
+          state: string
+Template_Services:
+  template:
+    end_point: /template
+    method: get
+    params:
+      account: '280381'
+      accountId: 280381-184
+      showItems: 'true'
+      showItemCurrentVariation: 'true'
+      showItemVariations: 'true'
+      showPricing: 'true'
+      showItemAvailable: 'true'
+      pageSize: '2'
+      pageNo: '1'
+    json:
