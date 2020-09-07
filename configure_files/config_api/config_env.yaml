@@ -1,6 +1,0 @@
-siteURL: https://*****.com/
-siteID: homeSite
-apiPath:
-  v1_path: v1/rest/com/becn
-  v2_path: v2/rest/com/becn
-  v3_path: v3/rest/com/becn
