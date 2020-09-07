@@ -1,7 +1,7 @@
 import yaml
 import requests
 from requests import  Response
-from kyle_ws_test.src.entity.yaml_operation import YamlOperation
+from src.entity.yaml_operation import YamlOperation
 
 class BaseAPI:
     env_path = r'D:\AllWorkSpaces\Python\PycharmProjects\becn_project\kyle_ws_test\configure_files\config_api\config_env.yaml'

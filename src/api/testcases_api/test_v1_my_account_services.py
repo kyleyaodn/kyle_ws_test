@@ -1,6 +1,6 @@
 import pytest
 
-from kyle_ws_test.src.api.v1_apis.v1_my_account_services import MyAccountSercice
+from src.api.v1_apis.v1_my_account_services import MyAccountSercice
 
 
 class Test_MyAccountService:

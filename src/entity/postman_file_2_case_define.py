@@ -1,5 +1,5 @@
-from kyle_ws_test.src.entity.json_operation import JsonOperation
-from kyle_ws_test.src.entity.yaml_operation import YamlOperation
+from src.entity.json_operation import JsonOperation
+from src.entity.yaml_operation import YamlOperation
 
 
 class postman2Case:

@@ -1,4 +1,4 @@
-from kyle_ws_test.src.api.baseApi import BaseAPI
+from src.api.baseApi import BaseAPI
 
 
 class MyAccountSercice(BaseAPI):
