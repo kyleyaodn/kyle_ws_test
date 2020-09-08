@@ -1,15 +1,14 @@
 from src.api.baseApi import BaseAPI
 
-
 class MyAccountSercice(BaseAPI):
-    apiPath = r'D:\AllWorkSpaces\Python\PycharmProjects\becn_project\kyle_ws_test\configure_files\config_api\api_definition\Beacon_Rest_Services_V1.yaml'
+    api_relative_Path = 'src/api/configure_files/config_api/api_definition/Beacon_Rest_Services_V1.yaml'
 
     '''
     This is My Account Services APIs
     '''
 
     def __init__(self):
-        self.data = self.load_api(self.apiPath)
+        self.data = self.load_api(self.api_relative_Path)
         self.api_version = 'v1'
         self.params = {}
 

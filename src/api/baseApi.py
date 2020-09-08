@@ -2,9 +2,10 @@ import yaml
 import requests
 from requests import  Response
 from src.entity.yaml_operation import YamlOperation
+from src.entity.src_data_path import SrcDataPath
 
 class BaseAPI:
-    env_path = r'D:\AllWorkSpaces\Python\PycharmProjects\becn_project\kyle_ws_test\configure_files\config_api\config_env.yaml'
+    env_relative_path = 'src/api/configure_files/config_env.yaml'
     env_data = None
     params = {}
     cookies_param = None
@@ -16,12 +17,13 @@ class BaseAPI:
     this class contains the base method of APIs
     '''
 
-    def load_api(self, filePath) -> dict:
+    def load_api(self, file_relative_Path) -> dict:
         '''
         读取yaml 文件中关于API的定义
         :param filePath: API 定义yaml文件路径
         :return: 读取出来的字典
         '''
+        filePath = SrcDataPath.get_src_data_path(file_relative_Path)
         api_data = self.yamlOpr.load_yaml_file(filePath)
         return api_data
 
@@ -32,7 +34,8 @@ class BaseAPI:
         if self.env_data is None:
             # 如果Env 为空, 则调用env 取得env 数据
             print("Env is not load, loading env data")
-            self.env_data = self.yamlOpr.load_yaml_file(self.env_path)
+            env_path = SrcDataPath.get_src_data_path(self.env_relative_path)
+            self.env_data = self.yamlOpr.load_yaml_file(env_path)
         else:
             print("Already loads env data.")
 
@@ -131,7 +134,7 @@ class BaseAPI:
                 url=api_path,
                 params=req.get('params'),
                 json=req.get('json'),
-                verify=None)
+                verify=False)
         else:
             print('case is run for Oauth')
             resp = requests.request(
@@ -139,5 +142,5 @@ class BaseAPI:
                 url=api_path,
                 params=req.get('params'),
                 json=req.get('json'),
-                verify=None)
+                verify=False)
         return resp
