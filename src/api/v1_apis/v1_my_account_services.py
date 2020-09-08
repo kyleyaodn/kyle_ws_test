@@ -1,5 +1,6 @@
 from src.api.baseApi import BaseAPI
 
+
 class MyAccountSercice(BaseAPI):
     api_relative_Path = 'src/api/configure_files/config_api/api_definition/Beacon_Rest_Services_V1.yaml'
 
@@ -12,7 +13,7 @@ class MyAccountSercice(BaseAPI):
         self.api_version = 'v1'
         self.params = {}
 
-    def login(self,username, password, **kwargs):
+    def login(self, username, password, **kwargs):
         self.params.clear()
         self.params['username'] = username
         self.params['password'] = password
@@ -30,11 +31,11 @@ class MyAccountSercice(BaseAPI):
     def accounts(self, profileId):
         self.params.clear()
         self.params['profileId'] = profileId
-        print(self.params)
+        # print(self.params)
         return self.send_requests(self.data.get("My_Account_Services").get("accounts"))
 
     def switchAccount(self, accountId):
         self.params.clear()
         self.params['accountId'] = accountId
-        print(self.params)
+        # print(self.params)
         return self.send_requests(self.data.get("My_Account_Services").get("switchAccount"))

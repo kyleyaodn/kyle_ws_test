@@ -1,8 +1,9 @@
 import yaml
 import requests
-from requests import  Response
+from requests import Response
 from src.entity.yaml_operation import YamlOperation
 from src.entity.src_data_path import SrcDataPath
+
 
 class BaseAPI:
     env_relative_path = 'src/api/configure_files/config_env.yaml'
@@ -17,14 +18,14 @@ class BaseAPI:
     this class contains the base method of APIs
     '''
 
-    def load_api(self, file_relative_Path) -> dict:
+    def load_api(self, file_relative_path: str) -> dict:
         '''
         读取yaml 文件中关于API的定义
-        :param filePath: API 定义yaml文件路径
+        :param file_path: API 定义yaml文件路径
         :return: 读取出来的字典
         '''
-        filePath = SrcDataPath.get_src_data_path(file_relative_Path)
-        api_data = self.yamlOpr.load_yaml_file(filePath)
+        file_path = SrcDataPath.get_src_data_path(file_relative_path)
+        api_data = self.yamlOpr.load_yaml_file(file_path)
         return api_data
 
     def load_env(self):
@@ -102,7 +103,7 @@ class BaseAPI:
             print('Cookie is not None, no need set.')
         return resp
 
-    def genert_request(self, req: dict):
+    def generate_request(self, req: dict):
         '''
         调用request 发送request
         :param req: 组成一个request的各种元素, endpoint, json, parameters...
@@ -120,7 +121,7 @@ class BaseAPI:
         return req
 
     def send_requests(self, req: dict) -> Response:
-        req = self.genert_request(req)
+        req = self.generate_request(req)
         # 获取env的数据
         self.load_env()
         # 组合获取API的详细路径
@@ -128,7 +129,6 @@ class BaseAPI:
         print(self.case_api_version)
         if self.case_api_version == 'v1':
             print('case is run for cookie')
-
             resp = self.new_session.request(
                 method=req.get('method'),
                 url=api_path,
