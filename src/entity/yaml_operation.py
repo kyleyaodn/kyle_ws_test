@@ -4,7 +4,8 @@ from ruamel import yaml as ruyaml
 
 class YamlOperation:
 
-    def load_yaml_file(self, file_path):
+    @classmethod
+    def load_yaml_file(cls, file_path):
         '''
         读取yaml 文件返回数据
         :param file_path: 文件的路径
