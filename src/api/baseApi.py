@@ -17,6 +17,10 @@ class BaseAPI:
     '''
     this class contains the base method of APIs
     '''
+    @classmethod
+    def formatResponse(cls, r):
+        cls.r = r
+
 
     def load_api(self, file_relative_path: str) -> dict:
         '''

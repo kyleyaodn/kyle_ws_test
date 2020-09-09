@@ -9,7 +9,7 @@ class JsonOperation:
         '''
         从文件读取Json 文件
         :param file_path: json文件路径
-        :return: 返回一个字段
+        :return: 返回json 格式的数据 词典数据
         '''
         try:
             with open(file_path, encoding='utf-8') as f:

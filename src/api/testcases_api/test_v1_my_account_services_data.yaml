@@ -1,3 +1,8 @@
 test_login:
   email: kyleyao@aaxischina.com
   password: 123456aA
+
+test_switchAccount:
+  accountId:
+    - 280381
+    - 280381
