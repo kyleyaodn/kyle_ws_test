@@ -1,5 +1,6 @@
 import yaml
 import requests
+import json
 from requests import Response
 from src.entity.yaml_operation import YamlOperation
 from src.entity.src_data_path import SrcDataPath
@@ -11,16 +12,17 @@ class BaseAPI:
     params = {}
     cookies_param = None
     api_version = None
-    case_api_version = 'v1'
+    case_api_version = None
     new_session = requests.Session()
     yamlOpr = YamlOperation()
     '''
     this class contains the base method of APIs
     '''
-    @classmethod
-    def formatResponse(cls, r):
-        cls.r = r
 
+    @classmethod
+    def format_response(cls, r):
+        cls.r = r
+        print(json.dumps(json.loads(r.text, encoding='utf-8'), ensure_ascii=True))
 
     def load_api(self, file_relative_path: str) -> dict:
         '''
@@ -124,13 +126,15 @@ class BaseAPI:
         req = yaml.safe_load(raw)
         return req
 
-    def send_requests(self, req: dict) -> Response:
+    def send_requests(self, req: dict, **kwargs) -> Response:
         req = self.generate_request(req)
         # 获取env的数据
         self.load_env()
         # 组合获取API的详细路径
         api_path = self.generate_api_path(req)
-        print(self.case_api_version)
+        if 'case_api_version' in kwargs.keys():
+            self.case_api_version = kwargs.get('case_api_version')
+        # print(case_api_version)
         if self.case_api_version == 'v1':
             print('case is run for cookie')
             resp = self.new_session.request(
@@ -147,4 +151,5 @@ class BaseAPI:
                 params=req.get('params'),
                 json=req.get('json'),
                 verify=False)
+        self.format_response(resp)
         return resp

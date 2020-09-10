@@ -17,7 +17,7 @@ class MyAccountSercice(BaseAPI):
         self.params.clear()
         self.params['username'] = username
         self.params['password'] = password
-        return self.send_requests(self.data.get("My_Account_Services").get("login"))
+        return self.send_requests(self.data.get("My_Account_Services").get("login"), **kwargs)
 
     def logout(self):
         return self.send_requests(self.data.get("My_Account_Services").get("logout"))
