@@ -20,9 +20,9 @@ class BaseAPI:
     '''
 
     @classmethod
-    def format_response(cls, r):
-        cls.r = r
-        print(json.dumps(json.loads(r.text, encoding='utf-8'), ensure_ascii=True))
+    def format_response(cls, resp):
+        cls.resp = resp
+        print(json.dumps(json.loads(resp.text, encoding='utf-8'), ensure_ascii=True))
 
     def load_api(self, file_relative_path: str) -> dict:
         '''
@@ -127,11 +127,18 @@ class BaseAPI:
         return req
 
     def send_requests(self, req: dict, **kwargs) -> Response:
+        '''
+        发送request
+        :param req: 传入request 需要的 method, header, request body, parameters 组装好request.
+        :param kwargs: 一些其他的参数, 例如 verifiy, case_api_version
+        :return: response
+        '''
         req = self.generate_request(req)
         # 获取env的数据
         self.load_env()
         # 组合获取API的详细路径
         api_path = self.generate_api_path(req)
+        # 获取case的case api version.
         if 'case_api_version' in kwargs.keys():
             self.case_api_version = kwargs.get('case_api_version')
         # print(case_api_version)
@@ -152,4 +159,11 @@ class BaseAPI:
                 json=req.get('json'),
                 verify=False)
         self.format_response(resp)
+        self.case_api_version = None
         return resp
+
+    def base_assertion(self, resp=None):
+        if (resp is None):
+            resp = self.resp
+        assert resp.status_code == 200
+        pass

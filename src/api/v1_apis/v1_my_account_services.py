@@ -19,23 +19,23 @@ class MyAccountSercice(BaseAPI):
         self.params['password'] = password
         return self.send_requests(self.data.get("My_Account_Services").get("login"), **kwargs)
 
-    def logout(self):
-        return self.send_requests(self.data.get("My_Account_Services").get("logout"))
+    def logout(self, **kwargs):
+        return self.send_requests(self.data.get("My_Account_Services").get("logout"), **kwargs)
 
-    def getLoginDeclaration(self):
-        return self.send_requests(self.data.get("My_Account_Services").get("getLoginDeclaration"))
+    def getLoginDeclaration(self, **kwargs):
+        return self.send_requests(self.data.get("My_Account_Services").get("getLoginDeclaration", **kwargs))
 
-    def getCurrentUserInfo(self):
-        return self.send_requests(self.data.get("My_Account_Services").get("getCurrentUserInfo"))
+    def getCurrentUserInfo(self, **kwargs):
+        return self.send_requests(self.data.get("My_Account_Services").get("getCurrentUserInfo"), **kwargs)
 
-    def accounts(self, profileId):
+    def accounts(self, profileId, **kwargs):
         self.params.clear()
         self.params['profileId'] = profileId
         # print(self.params)
-        return self.send_requests(self.data.get("My_Account_Services").get("accounts"))
+        return self.send_requests(self.data.get("My_Account_Services").get("accounts"), **kwargs)
 
-    def switchAccount(self, accountId):
+    def switchAccount(self, accountId, **kwargs):
         self.params.clear()
         self.params['accountId'] = accountId
         # print(self.params)
-        return self.send_requests(self.data.get("My_Account_Services").get("switchAccount"))
+        return self.send_requests(self.data.get("My_Account_Services").get("switchAccount"), **kwargs)

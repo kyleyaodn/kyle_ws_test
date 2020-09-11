@@ -120,8 +120,10 @@ if __name__ == "__main__":
     # final_data = json_opr.postman_data2_api(postman_comp_file)
     # print(json.dumps(final_data))
     json_data = "{\n    \"username\": \"${username}\",\n    \"password\": \"${password}\",\n    \"siteId\": \"homeSite\",\n    \"persistentLoginType\": \"rememberPassword\",\n    \"userAgent\": \"desktop\"\n}"
+    #dumps -> 内存中数据转换为字符串类型
     print(type(json.dumps(json_data)))
     print(json.dumps(json_data))
     print('------------------------')
+    #loads -> 内存中数据转换为字典类型
     print(type(json.loads(json_data)))
     print(json.loads(json_data))

@@ -18,7 +18,7 @@ class Test_MyAccountService:
     @pytest.mark.parametrize('email, password',
                              [(test_data['test_login'].get('email'), test_data['test_login'].get('password'))])
     def test_login(self, email, password):
-        r = self.myAccount.login(email, password, case_api_version= self.case_api_version)
+        r = self.myAccount.login(email, password, case_api_version=self.case_api_version)
         # r.json()
         print(r)
         print(r.json())
@@ -26,15 +26,15 @@ class Test_MyAccountService:
     @pytest.mark.parametrize('accountId', test_data['test_switchAccount'].get('accountId'))
     def test_switchAccount(self, accountId):
         print(self.test_data['test_switchAccount'].get('accountId'))
-        r = self.myAccount.switchAccount(accountId)
+        r = self.myAccount.switchAccount(accountId, case_api_version=self.case_api_version)
         print(r.json())
 
     def test_accounts(self):
-        r = self.myAccount.accounts('user22340000')
+        r = self.myAccount.accounts('user22340000', case_api_version=self.case_api_version)
         print(r.json())
 
     def test_logout(self):
-        r = self.myAccount.logout()
+        r = self.myAccount.logout(case_api_version=self.case_api_version)
         print(r.json())
 
     # @pytest.mark.scenario
