@@ -9,6 +9,9 @@ My_Account_Services:
       siteId: homeSite
       persistentLoginType: rememberPassword
       userAgent: desktop
+    json_schema:
+      schema_path_success:
+      schemea_path_failed:
   logout:
     end_point: /logout
     method: post

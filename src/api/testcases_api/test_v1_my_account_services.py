@@ -6,7 +6,7 @@ from src.entity.yaml_operation import YamlOperation
 from src.entity.src_data_path import SrcDataPath
 
 
-class Test_MyAccountService:
+class TestMyAccountService:
     data_relative_path = 'src/api/testcases_api/test_v1_my_account_services_data.yaml'
     test_data = YamlOperation.load_yaml_file(SrcDataPath.get_src_data_path(data_relative_path))
     case_api_version = 'v1'

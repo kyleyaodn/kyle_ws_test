@@ -163,7 +163,11 @@ class BaseAPI:
         return resp
 
     def base_assertion(self, resp=None):
-        if (resp is None):
+        '''
+        检查response的status code
+        :param resp:
+        :return:
+        '''
+        if resp is None:
             resp = self.resp
         assert resp.status_code == 200
-        pass
