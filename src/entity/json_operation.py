@@ -51,10 +51,13 @@ class JsonOperation:
                         request_body_json = json.loads(get_json_request_body)
                         # print(request_body_json)
                         api_define_dict['json'] = request_body_json
-                    except Exception as e:
+                    except KeyError as key_error:
                         api_define_dict['json'] = None
+                        print(key_error)
                     # temp_dict[temp_data.get('name')] = api_define_dict
+                    api_define_dict['json_schema'] = {'schema_path_success': '', 'schema_path_failed': ''}
                     if url_path_list[-1] in temp_dict:
+                        # 去除同一个节点下重复的API
                         continue
                     else:
                         temp_dict[url_path_list[-1]] = api_define_dict
@@ -69,9 +72,10 @@ class JsonOperation:
         :return: 如果有值就返回值, 如果没有就返回None
         '''
         try:
-            result_value = src_dict.get(target_key)
-        except Exception as e:
-            # print('----------------No data found for target key: ' + target_key)
+            result_value = src_dict[target_key]
+        except KeyError as e:
+            print('----------------No data found for target key: ' + target_key)
+            print(e)
             result_value = None
         return result_value
 
@@ -120,10 +124,10 @@ if __name__ == "__main__":
     # final_data = json_opr.postman_data2_api(postman_comp_file)
     # print(json.dumps(final_data))
     json_data = "{\n    \"username\": \"${username}\",\n    \"password\": \"${password}\",\n    \"siteId\": \"homeSite\",\n    \"persistentLoginType\": \"rememberPassword\",\n    \"userAgent\": \"desktop\"\n}"
-    #dumps -> 内存中数据转换为字符串类型
+    # dumps -> 内存中数据转换为字符串类型
     print(type(json.dumps(json_data)))
     print(json.dumps(json_data))
     print('------------------------')
-    #loads -> 内存中数据转换为字典类型
+    # loads -> 内存中数据转换为字典类型
     print(type(json.loads(json_data)))
     print(json.loads(json_data))

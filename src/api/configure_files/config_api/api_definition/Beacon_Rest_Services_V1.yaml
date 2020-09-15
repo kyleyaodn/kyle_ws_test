@@ -11,7 +11,7 @@ My_Account_Services:
       userAgent: desktop
     json_schema:
       schema_path_success:
-      schemea_path_failed:
+      scheme_path_failed:
   logout:
     end_point: /logout
     method: post
