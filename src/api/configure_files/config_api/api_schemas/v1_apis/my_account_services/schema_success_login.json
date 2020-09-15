@@ -1,0 +1,378 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "title": "The root schema",
+    "description": "The root schema comprises the entire JSON document.",
+    "default": {},
+    "examples": [
+        
+    ],
+    "required": [
+        "messageInfo"
+    ],
+    "properties": {
+        "messageInfo": {
+            "$id": "#/properties/messageInfo",
+            "type": "object",
+            "title": "The messageInfo schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "examples": [
+                {
+                    "firstName": "API Change",
+                    "lastName": "API test",
+                    "emailAddress": "kyleyao@aaxischina.com",
+                    "cartLineItems": 3,
+                    "internalUser": false,
+                    "lastSelectedAccount": {
+                        "accountName": "KEVIN KIRSCH NEW HOMES INC",
+                        "accountLegacyId": "280381",
+                        "accountViewPrices": true,
+                        "accountEnabled": true
+                    },
+                    "profileId": "user23820022",
+                    "userType": "Customer",
+                    "accountBranch": {
+                        "address": {
+                            "country": null,
+                            "address3": null,
+                            "address2": "4795 FOREST ST.",
+                            "city": "DENVER",
+                            "address1": "ROOF DEPOT MOUNTAIN",
+                            "postalCode": "80216",
+                            "state": "CO"
+                        },
+                        "branchNumber": "180",
+                        "branchPhone": "3033886493",
+                        "branchName": "DENVER BRANCH",
+                        "branchRegionId": "33"
+                    }
+                }
+            ],
+            "required": [
+                "firstName",
+                "lastName",
+                "emailAddress",
+                "cartLineItems",
+                "internalUser",
+                "lastSelectedAccount",
+                "profileId",
+                "userType",
+                "accountBranch"
+            ],
+            "properties": {
+                "firstName": {
+                    "$id": "#/properties/messageInfo/properties/firstName",
+                    "type": "string",
+                    "title": "The firstName schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "API Change"
+                    ]
+                },
+                "lastName": {
+                    "$id": "#/properties/messageInfo/properties/lastName",
+                    "type": "string",
+                    "title": "The lastName schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "API test"
+                    ]
+                },
+                "emailAddress": {
+                    "$id": "#/properties/messageInfo/properties/emailAddress",
+                    "type": "string",
+                    "title": "The emailAddress schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "kyleyao@aaxischina.com"
+                    ]
+                },
+                "cartLineItems": {
+                    "$id": "#/properties/messageInfo/properties/cartLineItems",
+                    "type": "integer",
+                    "title": "The cartLineItems schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": 0,
+                    "examples": [
+                        3
+                    ]
+                },
+                "internalUser": {
+                    "$id": "#/properties/messageInfo/properties/internalUser",
+                    "type": "boolean",
+                    "title": "The internalUser schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": false,
+                    "examples": [
+                        false
+                    ]
+                },
+                "lastSelectedAccount": {
+                    "$id": "#/properties/messageInfo/properties/lastSelectedAccount",
+                    "type": "object",
+                    "title": "The lastSelectedAccount schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": {},
+                    "examples": [
+                        {
+                            "accountName": "KEVIN KIRSCH NEW HOMES INC",
+                            "accountLegacyId": "280381",
+                            "accountViewPrices": true,
+                            "accountEnabled": true
+                        }
+                    ],
+                    "required": [
+                        "accountName",
+                        "accountLegacyId",
+                        "accountViewPrices",
+                        "accountEnabled"
+                    ],
+                    "properties": {
+                        "accountName": {
+                            "$id": "#/properties/messageInfo/properties/lastSelectedAccount/properties/accountName",
+                            "type": "string",
+                            "title": "The accountName schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                                "KEVIN KIRSCH NEW HOMES INC"
+                            ]
+                        },
+                        "accountLegacyId": {
+                            "$id": "#/properties/messageInfo/properties/lastSelectedAccount/properties/accountLegacyId",
+                            "type": "string",
+                            "title": "The accountLegacyId schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                                "280381"
+                            ]
+                        },
+                        "accountViewPrices": {
+                            "$id": "#/properties/messageInfo/properties/lastSelectedAccount/properties/accountViewPrices",
+                            "type": "boolean",
+                            "title": "The accountViewPrices schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": false,
+                            "examples": [
+                                true
+                            ]
+                        },
+                        "accountEnabled": {
+                            "$id": "#/properties/messageInfo/properties/lastSelectedAccount/properties/accountEnabled",
+                            "type": "boolean",
+                            "title": "The accountEnabled schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": false,
+                            "examples": [
+                                true
+                            ]
+                        }
+                    },
+                    "additionalProperties": true
+                },
+                "profileId": {
+                    "$id": "#/properties/messageInfo/properties/profileId",
+                    "type": "string",
+                    "title": "The profileId schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "user23820022"
+                    ]
+                },
+                "userType": {
+                    "$id": "#/properties/messageInfo/properties/userType",
+                    "type": "string",
+                    "title": "The userType schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "Customer"
+                    ]
+                },
+                "accountBranch": {
+                    "$id": "#/properties/messageInfo/properties/accountBranch",
+                    "type": "object",
+                    "title": "The accountBranch schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": {},
+                    "examples": [
+                        {
+                            "address": {
+                                "country": null,
+                                "address3": null,
+                                "address2": "4795 FOREST ST.",
+                                "city": "DENVER",
+                                "address1": "ROOF DEPOT MOUNTAIN",
+                                "postalCode": "80216",
+                                "state": "CO"
+                            },
+                            "branchNumber": "180",
+                            "branchPhone": "3033886493",
+                            "branchName": "DENVER BRANCH",
+                            "branchRegionId": "33"
+                        }
+                    ],
+                    "required": [
+                        "address",
+                        "branchNumber",
+                        "branchPhone",
+                        "branchName",
+                        "branchRegionId"
+                    ],
+                    "properties": {
+                        "address": {
+                            "$id": "#/properties/messageInfo/properties/accountBranch/properties/address",
+                            "type": "object",
+                            "title": "The address schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": {},
+                            "examples": [
+                                {
+                                    "country": null,
+                                    "address3": null,
+                                    "address2": "4795 FOREST ST.",
+                                    "city": "DENVER",
+                                    "address1": "ROOF DEPOT MOUNTAIN",
+                                    "postalCode": "80216",
+                                    "state": "CO"
+                                }
+                            ],
+                            "required": [
+                                "country",
+                                "address3",
+                                "address2",
+                                "city",
+                                "address1",
+                                "postalCode",
+                                "state"
+                            ],
+                            "properties": {
+                                "country": {
+                                    "$id": "#/properties/messageInfo/properties/accountBranch/properties/address/properties/country",
+                                    "type": "null",
+                                    "title": "The country schema",
+                                    "description": "An explanation about the purpose of this instance.",
+                                    "default": null,
+                                    "examples": [
+                                        null
+                                    ]
+                                },
+                                "address3": {
+                                    "$id": "#/properties/messageInfo/properties/accountBranch/properties/address/properties/address3",
+                                    "type": "null",
+                                    "title": "The address3 schema",
+                                    "description": "An explanation about the purpose of this instance.",
+                                    "default": null,
+                                    "examples": [
+                                        null
+                                    ]
+                                },
+                                "address2": {
+                                    "$id": "#/properties/messageInfo/properties/accountBranch/properties/address/properties/address2",
+                                    "type": "string",
+                                    "title": "The address2 schema",
+                                    "description": "An explanation about the purpose of this instance.",
+                                    "default": "",
+                                    "examples": [
+                                        "4795 FOREST ST."
+                                    ]
+                                },
+                                "city": {
+                                    "$id": "#/properties/messageInfo/properties/accountBranch/properties/address/properties/city",
+                                    "type": "string",
+                                    "title": "The city schema",
+                                    "description": "An explanation about the purpose of this instance.",
+                                    "default": "",
+                                    "examples": [
+                                        "DENVER"
+                                    ]
+                                },
+                                "address1": {
+                                    "$id": "#/properties/messageInfo/properties/accountBranch/properties/address/properties/address1",
+                                    "type": "string",
+                                    "title": "The address1 schema",
+                                    "description": "An explanation about the purpose of this instance.",
+                                    "default": "",
+                                    "examples": [
+                                        "ROOF DEPOT MOUNTAIN"
+                                    ]
+                                },
+                                "postalCode": {
+                                    "$id": "#/properties/messageInfo/properties/accountBranch/properties/address/properties/postalCode",
+                                    "type": "string",
+                                    "title": "The postalCode schema",
+                                    "description": "An explanation about the purpose of this instance.",
+                                    "default": "",
+                                    "examples": [
+                                        "80216"
+                                    ]
+                                },
+                                "state": {
+                                    "$id": "#/properties/messageInfo/properties/accountBranch/properties/address/properties/state",
+                                    "type": "string",
+                                    "title": "The state schema",
+                                    "description": "An explanation about the purpose of this instance.",
+                                    "default": "",
+                                    "examples": [
+                                        "CO"
+                                    ]
+                                }
+                            },
+                            "additionalProperties": true
+                        },
+                        "branchNumber": {
+                            "$id": "#/properties/messageInfo/properties/accountBranch/properties/branchNumber",
+                            "type": "string",
+                            "title": "The branchNumber schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                                "180"
+                            ]
+                        },
+                        "branchPhone": {
+                            "$id": "#/properties/messageInfo/properties/accountBranch/properties/branchPhone",
+                            "type": "string",
+                            "title": "The branchPhone schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                                "3033886493"
+                            ]
+                        },
+                        "branchName": {
+                            "$id": "#/properties/messageInfo/properties/accountBranch/properties/branchName",
+                            "type": "string",
+                            "title": "The branchName schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                                "DENVER BRANCH"
+                            ]
+                        },
+                        "branchRegionId": {
+                            "$id": "#/properties/messageInfo/properties/accountBranch/properties/branchRegionId",
+                            "type": "string",
+                            "title": "The branchRegionId schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                                "33"
+                            ]
+                        }
+                    },
+                    "additionalProperties": true
+                }
+            },
+            "additionalProperties": true
+        }
+    },
+    "additionalProperties": true
+}

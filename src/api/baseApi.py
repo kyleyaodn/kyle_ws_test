@@ -4,6 +4,7 @@ import json
 from requests import Response
 from src.entity.yaml_operation import YamlOperation
 from src.entity.src_data_path import SrcDataPath
+from src.entity.json_schema_operation import JsonSchemeOperation
 
 
 class BaseAPI:
@@ -15,6 +16,7 @@ class BaseAPI:
     case_api_version = None
     new_session = requests.Session()
     yamlOpr = YamlOperation()
+    req = None
     '''
     this class contains the base method of APIs
     '''
@@ -133,11 +135,11 @@ class BaseAPI:
         :param kwargs: 一些其他的参数, 例如 verifiy, case_api_version
         :return: response
         '''
-        req = self.generate_request(req)
+        self.req = self.generate_request(req)
         # 获取env的数据
         self.load_env()
         # 组合获取API的详细路径
-        api_path = self.generate_api_path(req)
+        api_path = self.generate_api_path(self.req)
         # 获取case的case api version.
         if 'case_api_version' in kwargs.keys():
             self.case_api_version = kwargs.get('case_api_version')
@@ -145,10 +147,10 @@ class BaseAPI:
         if self.case_api_version == 'v1':
             print('case is run for cookie')
             resp = self.new_session.request(
-                method=req.get('method'),
+                method=self.req.get('method'),
                 url=api_path,
-                params=req.get('params'),
-                json=req.get('json'),
+                params=self.req.get('params'),
+                json=self.req.get('json'),
                 verify=False)
         else:
             print('case is run for Oauth')
@@ -171,3 +173,21 @@ class BaseAPI:
         if resp is None:
             resp = self.resp
         assert resp.status_code == 200
+
+    @classmethod
+    def validate_json_schema(cls, type_4_resp, resp=None):
+        '''
+        校验Response的Json格式正确不, 使用json schema
+        :param type_4_resp: 传入期望的json schema路径, schema_path_success, schemea_path_failed 目前为两种
+        :param resp: 传入response, 如果没有就取类变量
+        :return:
+        '''
+        if resp is None:
+            resp = cls.resp
+        resp_json_data = resp.json()
+        try:
+            schema_file_path = cls.req['json_schema'].get(type_4_resp)
+            print('validate the type for Json Schema: ' + type_4_resp)
+            JsonSchemeOperation.check_json_schema(resp_json_data, schema_file_path)
+        except KeyError as key_error:
+            print(key_error)
