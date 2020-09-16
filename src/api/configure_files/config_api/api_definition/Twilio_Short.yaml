@@ -5,9 +5,13 @@ webhookSMS:
     Body: START
     From: '+11222222222'
     AccountSid: AC7df6e365d93844b9570378a247b1c2f2
-  json:
+  json_schema:
+    schema_path_success: ''
+    schema_path_failed: ''
 sms:
   end_point: /sms
   method: post
   params:
-  json:
+  json_schema:
+    schema_path_success: ''
+    schema_path_failed: ''

@@ -11,11 +11,16 @@ My_Account_Services:
       siteId: homeSite
       persistentLoginType: RememberMe
       userAgent: desktop
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   getCurrentUserInfo:
     end_point: /getCurrentUserInfo
     method: get
     params:
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   saveCurrentUserInfo:
     end_point: /saveCurrentUserInfo
     method: post
@@ -36,11 +41,16 @@ My_Account_Services:
       subscribeOrder: true
       subscribeQuote: true
       subscribeAccount: true
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   getCurrentUserPermission:
     end_point: /getCurrentUserPermission
     method: get
     params:
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   changePassword:
     end_point: /changePassword
     method: post
@@ -49,19 +59,27 @@ My_Account_Services:
       oldPassword: ${oldPassword}
       password: ${password}
       confirmpassword: ${password}
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   forgotPassword:
     end_point: /forgotPassword
     method: post
     params:
     json:
       login: ${login}
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
 My_Account_Address_Book:
   getAddressBook:
     end_point: /getAddressBook
     method: get
     params:
       addressBookIds: ${addressBookIds}
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   createAddressBook:
     end_point: /createAddressBook
     method: post
@@ -77,6 +95,9 @@ My_Account_Address_Book:
       postalCode: 90230
       countryValue: ''
       phoneNumber: '6263396261'
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   updateAddressBook:
     end_point: /updateAddressBook
     method: post
@@ -94,12 +115,18 @@ My_Account_Address_Book:
         postalCode: '90230'
         countryValue: ''
         phoneNumber: '6263396261'
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   deleteAddressBook:
     end_point: /deleteAddressBook
     method: post
     params:
     json:
       addressBookId: ${addressBookId}
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
 User_Management:
   user:
     end_point: /user
@@ -111,12 +138,17 @@ User_Management:
         sortType: desc
         pageIndex: 1
         pageSize: 30
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   getUserDetail:
     end_point: /getUserDetail
     method: get
     params:
       id: ${id}
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   createUser:
     end_point: /createUser
     method: post
@@ -142,6 +174,9 @@ User_Management:
         checked: true
       status: Active
       currentTemplate: Default Role Template
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   updateUser:
     end_point: /updateUser
     method: post
@@ -170,16 +205,23 @@ User_Management:
         checked: true
       status: Active
       currentTemplate: Default Role Template
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   role:
     end_point: /role
     method: get
     params:
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   organization:
     end_point: /organization
     method: get
     params:
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
 Premission_Template:
   permissionTemplateList:
     end_point: /permissionTemplateList
@@ -190,12 +232,17 @@ Premission_Template:
       sortType: ${sortType}
       pageIndex: 1
       pageSize: '60'
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   getPermissionTemplateDetail:
     end_point: /getPermissionTemplateDetail
     method: post
     params:
       templateId: ${templateId}
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   createPermissionTemplate:
     end_point: /createPermissionTemplate
     method: post
@@ -209,6 +256,9 @@ Premission_Template:
         '100004': true
         '100009': true
         p10900001: true
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   updatePermissionTemplate:
     end_point: /updatePermissionTemplate
     method: post
@@ -227,12 +277,18 @@ Premission_Template:
         '100006': true
         p11100001: false
         '400001': true
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   deletePermissionTemplate:
     end_point: /deletePermissionTemplate
     method: post
     params:
     json:
       templateId: ${templateId}
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
 Order_History_Services:
   orderhistory:
     end_point: /orderhistory
@@ -243,7 +299,9 @@ Order_History_Services:
       pageNo: '1'
       filter: ''
       orderBy: ''
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   orderdetail:
     end_point: /orderdetail
     method: get
@@ -251,7 +309,9 @@ Order_History_Services:
       orderId: ${orderId}
       accountId: ${accountId}
       accountToken: ${accountToken}
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
 Catalog_Item_Service:
   typeAhead:
     end_point: /typeAhead
@@ -260,7 +320,9 @@ Catalog_Item_Service:
       accountId: ${accountId}
       filter: ${filter}
       maxSearchSuggestions: '15'
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   itemlist:
     end_point: /itemlist
     method: get
@@ -277,7 +339,9 @@ Catalog_Item_Service:
       showFacets: ''
       showHoverAttrs: 'true'
       hoverSearch: 'true'
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   itemDetails:
     end_point: /itemDetails
     method: get
@@ -288,7 +352,9 @@ Catalog_Item_Service:
       jobNumber: ''
       uom:
       showHoverAttrs: 'true'
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   pricing:
     end_point: /pricing
     method: get
@@ -296,7 +362,9 @@ Catalog_Item_Service:
       skuIds: ${skuIds}
       accountId: ''
       jobNumber: ''
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   getProductVariation:
     end_point: /getProductVariation
     method: get
@@ -304,7 +372,9 @@ Catalog_Item_Service:
       productId: ${productId}
       skuId:
       vendorColorId:
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   getQuoteProductVariation:
     end_point: /getQuoteProductVariation
     method: get
@@ -313,7 +383,9 @@ Catalog_Item_Service:
       skuId: ''
       vendorColorId:
       quoteOrderId:
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   getFavoriteProducts:
     end_point: /getFavoriteProducts
     method: get
@@ -321,7 +393,9 @@ Catalog_Item_Service:
       accountId: ${accountId}
       displaySize: '3'
       checkImageExist: 'false'
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   categories:
     end_point: /categories
     method: get
@@ -331,7 +405,9 @@ Catalog_Item_Service:
       showSubCategories: ''
       categoryNameOrId: ''
       showRecordCount: ''
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   getProductBranchOrRegionAvailability:
     end_point: /getProductBranchOrRegionAvailability
     method: get
@@ -340,7 +416,9 @@ Catalog_Item_Service:
       branchId: ''
       regionId: ''
       marketId: ''
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   getSKUBranchOrRegionAvailability:
     end_point: /getSKUBranchOrRegionAvailability
     method: get
@@ -349,7 +427,9 @@ Catalog_Item_Service:
       branchId: ''
       regionId: ''
       marketId: ''
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   getATGItemMapping:
     end_point: /getATGItemMapping
     method: post
@@ -368,6 +448,9 @@ Catalog_Item_Service:
       APISiteId: ''
       MFCode: ${MFCode}
       MFRName: ''
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
 Submit_Order_Serivce:
   submitOrder:
     end_point: /submitOrder
@@ -468,28 +551,40 @@ Submit_Order_Serivce:
       pickupTime: Morning
       onHold: 'false'
       checkForAvailability: yes
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
 Checkout:
   cartItems:
     end_point: /cartItems
     method: get
     params:
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   orderSummary:
     end_point: /orderSummary
     method: get
     params:
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   clearCart:
     end_point: /clearCart
     method: post
     params:
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   removeItemFromCart:
     end_point: /removeItemFromCart
     method: post
     params:
     json:
       commerceItemId: ${commerceItemId}
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   updateCart:
     end_point: /updateCart
     method: post
@@ -504,22 +599,32 @@ Checkout:
         uom: ${uom}
         commerceItemId: ${commerceItemId}
         quantity: ${quantity}
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   proceedToCheckout:
     end_point: /proceedToCheckout
     method: post
     params:
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   updateCurrentOrderJobNumber:
     end_point: /updateCurrentOrderJobNumber
     method: post
     params:
     json:
       jobNumber: ${jobNumber}
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   getOrderShippingInfo:
     end_point: /getOrderShippingInfo
     method: get
     params:
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   addOrderShippingInfo:
     end_point: /addOrderShippingInfo
     method: post
@@ -539,11 +644,16 @@ Checkout:
         postalCode: '80216'
         phoneNumber: '3033886493'
       specialInstruction: API submit ord er for test default branhc
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   getCurrentOrderReview:
     end_point: /getCurrentOrderReview
     method: get
     params:
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   submitCurrentOrder:
     end_point: /submitCurrentOrder
     method: post
@@ -556,6 +666,9 @@ Checkout:
       - KYLEYAO@aaxischina.com
       - shelleyyang@aaxischina.com
       - beckyhu@aaxischina.com
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   getSubmitOrderResult:
     end_point: /getSubmitOrderResult
     method: post
@@ -563,6 +676,9 @@ Checkout:
     json:
       orderId: ${orderId}
       savedOrderId: ${savedOrderId}
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   validateOrderByLocation:
     end_point: /validateOrderByLocation
     method: get
@@ -571,7 +687,9 @@ Checkout:
       branchId: ''
       address: ''
       postCode:
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
 Add_Multiple_Items_To_Order:
   addMultipleItemsToOrder:
     end_point: /addMultipleItemsToOrder
@@ -715,6 +833,9 @@ Add_Multiple_Items_To_Order:
           city: ''
           postalCode: ''
           state: ''
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
 Template_Service:
   template:
     end_point: /template
@@ -732,7 +853,9 @@ Template_Service:
       filterBy: ''
       filter: ''
       orderBy:
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   getTemplateDetail:
     end_point: /getTemplateDetail
     method: get
@@ -746,7 +869,9 @@ Template_Service:
       showItemAvailable: 'true'
       invokeBy: store
       jobNumber: ''
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   createTemplate:
     end_point: /createTemplate
     method: post
@@ -783,6 +908,9 @@ Template_Service:
         nickName: test for update
         matchColor: White(001)
         matchMFG: Mastic
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   updateTemplate:
     end_point: /updateTemplate
     method: post
@@ -817,6 +945,9 @@ Template_Service:
         nickName: test for update
         matchColor: White(001)
         matchMFG: Mastic
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   deleteTemplate:
     end_point: /deleteTemplate
     method: post
@@ -825,7 +956,9 @@ Template_Service:
       account: ${account}
       invokeBy:
       accountId: '280381'
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   copyTemplate:
     end_point: /copyTemplate
     method: post
@@ -834,7 +967,9 @@ Template_Service:
       accountId: 280381-181
       account: ${account}
       invokeBy: store
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   addPerfectOrderToTemplate:
     end_point: /addPerfectOrderToTemplate
     method: post
@@ -844,7 +979,9 @@ Template_Service:
       accountId: 280381-181
       perfectOrderId: ${perfectOrderId}
       brandName: ${brandName}
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   validateTemplateItems:
     end_point: /validateTemplateItems
     method: post
@@ -853,6 +990,9 @@ Template_Service:
       templateId: ${templateId}
       templateItems:
       - templateItemId: ${templateItemId}
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
 Perfect_Order_Services:
   getPerfectOrderDetail:
     end_point: /getPerfectOrderDetail
@@ -864,13 +1004,17 @@ Perfect_Order_Services:
       brandName: ${perfectOrderId}
       jobNumber:
       showPricing:
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   getPerfectStyleGroups:
     end_point: /getPerfectStyleGroups
     method: get
     params:
       brand: ${brand}
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   getPerfectOrderLanding:
     end_point: /getPerfectOrderLanding
     method: get
@@ -878,7 +1022,9 @@ Perfect_Order_Services:
       brandName: ${brandName}
       pageNo: ${pageNo}
       pageSize: ${pageSize}
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
 Save_Order_Services:
   saveOrder:
     end_point: /saveOrder
@@ -890,6 +1036,9 @@ Save_Order_Services:
       jobName: ''
       jobNumber: '01'
       additionalRecipients: []
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   getOrderApprovalList:
     end_point: /getOrderApprovalList
     method: post
@@ -903,6 +1052,9 @@ Save_Order_Services:
       sortBy: creationDate
       sortType: desc
       status: READY_FOR_APPROVAL
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   getOrderApprovalDetail:
     end_point: /getOrderApprovalDetail
     method: get
@@ -910,7 +1062,9 @@ Save_Order_Services:
       orderId: ${orderId}
       editable: 'false'
       validate: ''
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   rejectSavedOrder:
     end_point: /rejectSavedOrder
     method: post
@@ -919,12 +1073,17 @@ Save_Order_Services:
       rejectReason: Test Reject string reject API
       orders:
       - id: '117200003'
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   deleteSavedOrder:
     end_point: /deleteSavedOrder
     method: post
     params:
       id: ${id}
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   updateSavedOrderItems:
     end_point: /updateSavedOrderItems
     method: post
@@ -947,12 +1106,18 @@ Save_Order_Services:
         vendorColorId: ''
         matchMFG: Daymond
         matchColor: Alcan White(004)
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   getSavedOrderShippingInfo:
     end_point: /getSavedOrderShippingInfo
     method: post
     params:
     json:
       orderId: ${orderId}
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   updateSavedOrderShippingInfo:
     end_point: /updateSavedOrderShippingInfo
     method: post
@@ -977,12 +1142,18 @@ Save_Order_Services:
         lastName: testolivia
         nickName: testolivia
       instructions: test kyle test
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   getSavedOrderReviewInfo:
     end_point: /getSavedOrderReviewInfo
     method: post
     params:
     json:
       orderId: ${orderId}
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   submitSavedOrder:
     end_point: /submitSavedOrder
     method: post
@@ -997,6 +1168,9 @@ Save_Order_Services:
       - kyleyaodn@gmail.com
       - kyleyao@aaxischina.com
       - kyleyao@aaxischina.com
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   approveSavedOrder:
     end_point: /approveSavedOrder
     method: post
@@ -1010,24 +1184,34 @@ Save_Order_Services:
       - kyleyao@aaxischina.com
       - kyleyaodn@gmail.com
       - kyleyao@aaxischina.com
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   getSavedOrderConfirmationInfo:
     end_point: /getSavedOrderConfirmationInfo
     method: post
     params:
     json:
       id: ${id}
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   saveOrderValidate:
     end_point: /saveOrderValidate
     method: get
     params:
       id: ${id}
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   approver:
     end_point: /approver
     method: get
     params:
       hasPendingOrders:
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
 Delivery_Tracking_Service:
   getStatusChange:
     end_point: /getStatusChange
@@ -1036,7 +1220,9 @@ Delivery_Tracking_Service:
       orderId: ${orderId}
       orderNumber: ${orderNumber}
       savedOrderId: ${savedOrderId}
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   updateStatusChange:
     end_point: /updateStatusChange
     method: post
@@ -1052,6 +1238,9 @@ Delivery_Tracking_Service:
         requested: <script>alert('XSS')</script>
         scheduled: email
         delivered: email
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   updateOrderAlert:
     end_point: /updateOrderAlert
     method: post
@@ -1064,6 +1253,9 @@ Delivery_Tracking_Service:
       phoneNumber: ${phoneNumber}
       emailAddress: ${emailAddress}
       saveToProfile: false
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
 Quote:
   quote:
     end_point: /quote
@@ -1077,7 +1269,9 @@ Quote:
       filterBy: ''
       filter: ''
       orderBy: ''
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   getMincronQuoteDetail:
     end_point: /getMincronQuoteDetail
     method: post
@@ -1085,7 +1279,9 @@ Quote:
       quoteId: ${quoteId}
       accountId: ''
       account: 122193-181
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   getQuoteDetail:
     end_point: /getQuoteDetail
     method: post
@@ -1093,7 +1289,9 @@ Quote:
       quoteId: ${quoteId}
       accountId: ''
       account: '122193'
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   getAtgQuoteDetail:
     end_point: /getAtgQuoteDetail
     method: get
@@ -1101,7 +1299,9 @@ Quote:
       quoteId: ${quoteId}
       accountId: ''
       account: 280381-181
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   createQuote:
     end_point: /createQuote
     method: post
@@ -1169,6 +1369,9 @@ Quote:
           Ranking).
         color: ''
         dimensions: ''
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   updateQuote:
     end_point: /updateQuote
     method: post
@@ -1194,12 +1397,18 @@ Quote:
       mailingZip: aaaaa
       expires: work
       action: UPDATE_QUOTE
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   deleteQuote:
     end_point: /deleteQuote
     method: post
     params:
     json:
       quoteId: ${quoteId}
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   submitQuote:
     end_point: /submitQuote
     method: post
@@ -1243,17 +1452,25 @@ Quote:
           Ranking). BECN-1938(Email subject change.) '
         color: cc
         dimensions: dimension
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   submitQuoteForm:
     end_point: /submitQuoteForm
     method: post
     params:
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   approveQuote:
     end_point: /approveQuote
     method: post
     params:
     json:
       quoteId: ${quoteId}
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   reviseQuote:
     end_point: /reviseQuote
     method: post
@@ -1261,6 +1478,9 @@ Quote:
     json:
       quoteId: ${quoteId}
       quoteNotes: 'revise quote from '
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   rejectQuote:
     end_point: /rejectQuote
     method: post
@@ -1268,6 +1488,9 @@ Quote:
     json:
       quoteId: ${quoteId}
       reason: Pricing is too high
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   downloadQuoteAsPDF:
     end_point: /downloadQuoteAsPDF
     method: get
@@ -1275,7 +1498,9 @@ Quote:
       quoteId: ${quoteId}
       showPrice: 'true'
       receivedQuote: 'false'
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
 Quote_To_Order:
   convertQuoteOrder:
     end_point: /convertQuoteOrder
@@ -1283,12 +1508,17 @@ Quote_To_Order:
     params:
     json:
       quoteId: ${quoteId}
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   getQuoteOrderDetail:
     end_point: /getQuoteOrderDetail
     method: get
     params:
       orderId: ${orderId}
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   updateQuoteOrder:
     end_point: /updateQuoteOrder
     method: post
@@ -1308,6 +1538,9 @@ Quote_To_Order:
         uom: ''
         matchColor: ''
         matchMFG: ''
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   updateQuoteOrderShippingInfo:
     end_point: /updateQuoteOrderShippingInfo
     method: post
@@ -1333,13 +1566,18 @@ Quote_To_Order:
         nickName: i
         phoneNumber: '1234567890'
       instructions: quote notes
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   getQuoteOrderPrice:
     end_point: /getQuoteOrderPrice
     method: get
     params:
       orderId: ${orderId}
       jobNumber: ''
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   placeQuoteOrder:
     end_point: /placeQuoteOrder
     method: post
@@ -1351,17 +1589,24 @@ Quote_To_Order:
       poName: po
       additionalRecipients:
       - kyleyao@aaxischina.com
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
 Rebate:
   rebateLanding:
     end_point: /rebateLanding
     method: get
     params:
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   getRebateRedeemedSummaryItems:
     end_point: /getRebateRedeemedSummaryItems
     method: get
     params:
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   getRebateRedeemedItemDetail:
     end_point: /getRebateRedeemedItemDetail
     method: post
@@ -1371,13 +1616,18 @@ Rebate:
       searchKey: ''
       searchValue: ''
       pageNum: '1'
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   getRebateForm:
     end_point: /getRebateForm
     method: get
     params:
       rebateId: ${rebateId}
       invokeBy: store
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   submitRebate:
     end_point: /submitRebate
     method: post
@@ -1396,6 +1646,9 @@ Rebate:
         zip: '90230'
       rebateCustomInfo: {}
       rebateMailingAddress: {}
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
 Suggestive_Selling:
   suggestiveSelling:
     end_point: /suggestiveSelling
@@ -1411,7 +1664,9 @@ Suggestive_Selling:
       jobNumber:
       pageSize:
       pageNo:
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
 Hover_Job_Services:
   getHoverJobList:
     end_point: /getHoverJobList
@@ -1421,38 +1676,50 @@ Hover_Job_Services:
       pageNo: '1'
       filter: ${filter}
       orderBy: updated_at asc
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   getHoverJobListImage:
     end_point: /getHoverJobListImage
     method: get
     params:
       jobId: ${jobId}
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   getHoverJobDetail:
     end_point: /getHoverJobDetail
     method: get
     params:
       jobId: ${jobId}
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   getHoverJobDetailImage:
     end_point: /getHoverJobDetailImage
     method: get
     params:
       imageId: '12744511'
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
 SMS_Services:
   downloadBeacon3DplusApp:
     end_point: /downloadBeacon3DplusApp
     method: get
     params:
       phoneNumber: ${phoneNumber}
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
 User_Registration_Services:
   getUserRegisterToken:
     end_point: /getUserRegisterToken
     method: get
     params:
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   validateUserByEmail:
     end_point: /validateUserByEmail
     method: post
@@ -1463,6 +1730,9 @@ User_Registration_Services:
       lastName: BECN-LAST
       zipCode: '90230'
       phoneNumber: '2039066531'
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   validateUserByAccount:
     end_point: /validateUserByAccount
     method: post
@@ -1472,6 +1742,9 @@ User_Registration_Services:
       account: '666667'
       invoice: o00002
       invoiceDate: 09-04-2019
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   register:
     end_point: /register
     method: post
@@ -1503,13 +1776,18 @@ User_Registration_Services:
       invoice:
       account:
       registerDate:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
 Job_Service:
   getCurrentUserLastSelectedJobInfo:
     end_point: /getCurrentUserLastSelectedJobInfo
     method: get
     params:
       jobNumber: ''
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
 Edit_Order:
   convertPlacedOrder:
     end_point: /convertPlacedOrder
@@ -1518,6 +1796,9 @@ Edit_Order:
     json:
       orderId: TD200104
       accountToken: AK06XaAA-7-KJ6V6oVGyM1spiL6D-fThjsXSp-vIf_k=
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   getPlacedOrderDetail:
     end_point: /getPlacedOrderDetail
     method: post
@@ -1525,6 +1806,9 @@ Edit_Order:
     json:
       orderId: po1700001
       validate: false
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   updatePlacedOrder:
     end_point: /updatePlacedOrder
     method: post
@@ -1537,6 +1821,9 @@ Edit_Order:
         uom: PR
         vendorColorId: ''
       action: CREATE_ITEM
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   updatePlacedOrderShippingInfo:
     end_point: /updatePlacedOrderShippingInfo
     method: post
@@ -1573,10 +1860,15 @@ Edit_Order:
         address3:
         states:
       shippingMethod: Pick_up
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   getPlacedOrderPrice:
     end_point: /getPlacedOrderPrice
     method: get
     params:
       orderId: ${orderId}
       jobNumber: ''
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''

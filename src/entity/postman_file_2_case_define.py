@@ -38,7 +38,7 @@ class postman2Case:
 
 if __name__ == "__main__":
     postmanCase = postman2Case()
-    folder_path = r'D:\AllWorkSpaces\Python\PycharmProjects\becn_project\kyle_ws_test\configure_files\config_api\api_definition'
-    postman_file = r'D:\AllWorkSpaces\Python\PycharmProjects\becn_project\kyle_ws_test\configure_files\config_api\postman_export_files\Beacon-API-All_Reorder_For_APIgenerate.postman_collection.json'
+    folder_path = r'D:\Installation\PycharmProjects\API\test_demo\src\api\configure_files\config_api\api_definition'
+    postman_file = r'D:\Installation\PycharmProjects\API\test_demo\src\api\configure_files\postman_export_files\Beacon-API-All_Reorder_For_APIgenerate.postman_collection.json'
     src_data = postmanCase.postman_data2_api(postman_file)
     postmanCase.write_to_yaml_file(folder_path, src_data)

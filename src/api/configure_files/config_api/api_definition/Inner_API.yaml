@@ -4,4 +4,6 @@ HtmlContent:
     method: get
     params:
       key: userRegistration_BPP_Success
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''

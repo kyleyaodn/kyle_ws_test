@@ -54,7 +54,12 @@ class JsonOperation:
                     except KeyError as key_error:
                         api_define_dict['json'] = None
                         print(key_error)
-                    # temp_dict[temp_data.get('name')] = api_define_dict
+                    except json.decoder.JSONDecodeError as decode_error:
+                        print(decode_error)
+                        result_value = None
+                    except TypeError as type_error:
+                        print(type_error)
+                        result_value = None
                     api_define_dict['json_schema'] = {'schema_path_success': '', 'schema_path_failed': ''}
                     if url_path_list[-1] in temp_dict:
                         # 去除同一个节点下重复的API
@@ -64,7 +69,8 @@ class JsonOperation:
                     # print(temp_dict)
         return temp_dict
 
-    def get_dict_value(self, src_dict: dict, target_key):
+    @staticmethod
+    def get_dict_value(src_dict: dict, target_key):
         '''
         获取字典中key 对应的value
         :param src_dict:  字典
@@ -77,9 +83,16 @@ class JsonOperation:
             print('----------------No data found for target key: ' + target_key)
             print(e)
             result_value = None
+        except json.decoder.JSONDecodeError as decode_error:
+            print(decode_error)
+            result_value = None
+        except TypeError as type_error:
+            print(type_error)
+            result_value = None
         return result_value
 
-    def generate_params_dict(self, param_list: list) -> dict:
+    @staticmethod
+    def generate_params_dict(param_list: list) -> dict:
         '''
         postman json 文件中 param 的存储形式为list [ dictionary,dictionary], dict 存储又为key, value 方式
         将之转换为 dictionary, 例如
@@ -108,10 +121,6 @@ class JsonOperation:
         '''
         data_json = self.load_json_file(file_postman)
         item_data = data_json.get('item')
-        # print(item_data[0]['name'])
-        # print('---------------------item data finished')
-        # temp_dict = item_data[0]
-        # print(temp_dict.get('name'))
         data_finally = self.get_api_form_postman_data(item_data)
         return data_finally
 

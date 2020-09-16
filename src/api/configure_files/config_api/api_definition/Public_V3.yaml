@@ -15,7 +15,9 @@ Catalog_Item_Services:
       enableDidYouMean: 'true'
       showHoverAttrs: 'true'
       hoverSearch: 'false'
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   itemDetails:
     end_point: /itemDetails
     method: get
@@ -26,7 +28,9 @@ Catalog_Item_Services:
       jobNumber:
       uom:
       showHoverAttrs: 'true'
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
 Template_Services:
   template:
     end_point: /template
@@ -40,7 +44,9 @@ Template_Services:
       showItemAvailable: 'true'
       pageSize: '1'
       pageNo: '1'
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   getTemplateDetail:
     end_point: /getTemplateDetail
     method: get
@@ -51,7 +57,9 @@ Template_Services:
       showItemVariations: 'false'
       showPricing: 'true'
       showItemAvailable: 'true'
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   createTemplate:
     end_point: /createTemplate
     method: post
@@ -75,6 +83,9 @@ Template_Services:
         quantity: 99
         color: Briarwood(013)
         MFG: Klauer
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   updateTemplate:
     end_point: /updateTemplate
     method: post
@@ -92,20 +103,27 @@ Template_Services:
         color: ''
         MFG: ''
         nickName: Nick v3 api
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   deleteTemplate:
     end_point: /deleteTemplate
     method: post
     params:
       templateId: gl62900320,gl62900319
       accountId: 280381-181
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   copyTemplate:
     end_point: /copyTemplate
     method: post
     params:
       templateId: gl62900319
       accountId: 280381-181
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
 ItemList_V31:
   itemlist:
     end_point: /itemlist
@@ -123,4 +141,6 @@ ItemList_V31:
       hoverSearch: 'false'
       pageSize: '21'
       pageNo: '1'
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''

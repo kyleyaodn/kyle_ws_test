@@ -10,18 +10,22 @@ My_Account_Services:
       persistentLoginType: rememberPassword
       userAgent: desktop
     json_schema:
-      schema_path_success:
-      scheme_path_failed:
+      schema_path_success: ''
+      schema_path_failed: ''
   logout:
     end_point: /logout
     method: post
     params:
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   getCurrentUserInfo:
     end_point: /getCurrentUserInfo
     method: get
     params:
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   getLoginDeclaration:
     end_point: /getLoginDeclaration
     method: get
@@ -29,19 +33,26 @@ My_Account_Services:
       siteId: ''
       persistentLoginType: ''
       userAgent: ''
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   accounts:
     end_point: /accounts
     method: get
     params:
       profileId: ${profileId}
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   switchAccount:
     end_point: /switchAccount
     method: post
     params:
     json:
       accountId: ${accountId}
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
 Branch_Services:
   branchlist:
     end_point: /branchlist
@@ -51,14 +62,18 @@ Branch_Services:
       city: DENVER
       pageSize: '2'
       pageNo: '1'
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
 Job_Service:
   jobs:
     end_point: /jobs
     method: get
     params:
       accountId: ${accountId}
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
 Order_History_Services:
   orderdetail:
     end_point: /orderdetail
@@ -67,7 +82,9 @@ Order_History_Services:
       orderId: ${orderId}
       accountId: ${accountId}
       accountToken: ''
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   orderhistory:
     end_point: /orderhistory
     method: get
@@ -77,7 +94,9 @@ Order_History_Services:
       pageNo: '1'
       filter: UPPER(PurchaseOrderNumber) like UPPER('%UAT TEST%')
       orderBy: ''
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
 Catalog_Item_Services:
   itemlist:
     end_point: /itemlist
@@ -92,7 +111,9 @@ Catalog_Item_Services:
       hoverSearch: 'true'
       enableAutoCorrection: 'true'
       enableDidYouMean: 'true'
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   items:
     end_point: /items
     method: get
@@ -103,21 +124,27 @@ Catalog_Item_Services:
       jobNumber: ''
       uom:
       showHoverAttrs: 'true'
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   getProductInfo:
     end_point: /getProductInfo
     method: get
     params:
       productId: ${productId}
       accountInfo: 'true'
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   getSkuUom:
     end_point: /getSkuUom
     method: get
     params:
       skuId: ${skuId}
       skuIds: ${skuIds}
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   pricing:
     end_point: /pricing
     method: get
@@ -125,12 +152,16 @@ Catalog_Item_Services:
       skuIds: ${skuIds}
       accountId: ''
       jobNumber: ''
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
   cartItems:
     end_point: /cartItems
     method: get
     params:
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
 Submit_Order_Services:
   submitOrder:
     end_point: /submitOrder
@@ -188,6 +219,9 @@ Submit_Order_Services:
       pickupTime: Morning
       onHold: 'false'
       checkForAvailability: yes
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
 Add_Multiple_Items_2_Order:
   addMultipleItemsToOrder:
     end_point: /addMultipleItemsToOrder
@@ -243,6 +277,9 @@ Add_Multiple_Items_2_Order:
           city: string
           postalCode: string
           state: string
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''
 Template_Services:
   template:
     end_point: /template
@@ -257,4 +294,6 @@ Template_Services:
       showItemAvailable: 'true'
       pageSize: '2'
       pageNo: '1'
-    json:
+    json_schema:
+      schema_path_success: ''
+      schema_path_failed: ''

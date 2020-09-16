@@ -11,3 +11,6 @@ statusChange:
     orderNo: TD36111
     accountNo: 280381-184
     requestTime: '2019-08-25 10:30:00'
+  json_schema:
+    schema_path_success: ''
+    schema_path_failed: ''
