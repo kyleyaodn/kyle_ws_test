@@ -8,6 +8,7 @@ get-time-zone:
     city: Chengdu
     country: CN
     region: ''
+  json:
   json_schema:
     schema_path_success: ''
     schema_path_failed: ''

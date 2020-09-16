@@ -18,6 +18,7 @@ My_Account_Services:
     end_point: /getCurrentUserInfo
     method: get
     params:
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -48,6 +49,7 @@ My_Account_Services:
     end_point: /getCurrentUserPermission
     method: get
     params:
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -77,6 +79,7 @@ My_Account_Address_Book:
     method: get
     params:
       addressBookIds: ${addressBookIds}
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -146,6 +149,7 @@ User_Management:
     method: get
     params:
       id: ${id}
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -212,6 +216,7 @@ User_Management:
     end_point: /role
     method: get
     params:
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -219,6 +224,7 @@ User_Management:
     end_point: /organization
     method: get
     params:
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -240,6 +246,7 @@ Premission_Template:
     method: post
     params:
       templateId: ${templateId}
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -299,6 +306,7 @@ Order_History_Services:
       pageNo: '1'
       filter: ''
       orderBy: ''
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -309,6 +317,7 @@ Order_History_Services:
       orderId: ${orderId}
       accountId: ${accountId}
       accountToken: ${accountToken}
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -320,6 +329,7 @@ Catalog_Item_Service:
       accountId: ${accountId}
       filter: ${filter}
       maxSearchSuggestions: '15'
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -339,6 +349,7 @@ Catalog_Item_Service:
       showFacets: ''
       showHoverAttrs: 'true'
       hoverSearch: 'true'
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -352,6 +363,7 @@ Catalog_Item_Service:
       jobNumber: ''
       uom:
       showHoverAttrs: 'true'
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -362,6 +374,7 @@ Catalog_Item_Service:
       skuIds: ${skuIds}
       accountId: ''
       jobNumber: ''
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -372,6 +385,7 @@ Catalog_Item_Service:
       productId: ${productId}
       skuId:
       vendorColorId:
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -383,6 +397,7 @@ Catalog_Item_Service:
       skuId: ''
       vendorColorId:
       quoteOrderId:
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -393,6 +408,7 @@ Catalog_Item_Service:
       accountId: ${accountId}
       displaySize: '3'
       checkImageExist: 'false'
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -405,6 +421,7 @@ Catalog_Item_Service:
       showSubCategories: ''
       categoryNameOrId: ''
       showRecordCount: ''
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -416,6 +433,7 @@ Catalog_Item_Service:
       branchId: ''
       regionId: ''
       marketId: ''
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -427,6 +445,7 @@ Catalog_Item_Service:
       branchId: ''
       regionId: ''
       marketId: ''
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -559,6 +578,7 @@ Checkout:
     end_point: /cartItems
     method: get
     params:
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -566,6 +586,7 @@ Checkout:
     end_point: /orderSummary
     method: get
     params:
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -573,6 +594,7 @@ Checkout:
     end_point: /clearCart
     method: post
     params:
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -606,6 +628,7 @@ Checkout:
     end_point: /proceedToCheckout
     method: post
     params:
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -622,6 +645,7 @@ Checkout:
     end_point: /getOrderShippingInfo
     method: get
     params:
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -651,6 +675,7 @@ Checkout:
     end_point: /getCurrentOrderReview
     method: get
     params:
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -687,6 +712,7 @@ Checkout:
       branchId: ''
       address: ''
       postCode:
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -853,6 +879,7 @@ Template_Service:
       filterBy: ''
       filter: ''
       orderBy:
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -869,6 +896,7 @@ Template_Service:
       showItemAvailable: 'true'
       invokeBy: store
       jobNumber: ''
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -956,6 +984,7 @@ Template_Service:
       account: ${account}
       invokeBy:
       accountId: '280381'
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -967,6 +996,7 @@ Template_Service:
       accountId: 280381-181
       account: ${account}
       invokeBy: store
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -979,6 +1009,7 @@ Template_Service:
       accountId: 280381-181
       perfectOrderId: ${perfectOrderId}
       brandName: ${brandName}
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -1004,6 +1035,7 @@ Perfect_Order_Services:
       brandName: ${perfectOrderId}
       jobNumber:
       showPricing:
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -1012,6 +1044,7 @@ Perfect_Order_Services:
     method: get
     params:
       brand: ${brand}
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -1022,6 +1055,7 @@ Perfect_Order_Services:
       brandName: ${brandName}
       pageNo: ${pageNo}
       pageSize: ${pageSize}
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -1062,6 +1096,7 @@ Save_Order_Services:
       orderId: ${orderId}
       editable: 'false'
       validate: ''
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -1081,6 +1116,7 @@ Save_Order_Services:
     method: post
     params:
       id: ${id}
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -1201,6 +1237,7 @@ Save_Order_Services:
     method: get
     params:
       id: ${id}
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -1209,6 +1246,7 @@ Save_Order_Services:
     method: get
     params:
       hasPendingOrders:
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -1220,6 +1258,7 @@ Delivery_Tracking_Service:
       orderId: ${orderId}
       orderNumber: ${orderNumber}
       savedOrderId: ${savedOrderId}
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -1269,6 +1308,7 @@ Quote:
       filterBy: ''
       filter: ''
       orderBy: ''
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -1279,6 +1319,7 @@ Quote:
       quoteId: ${quoteId}
       accountId: ''
       account: 122193-181
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -1289,6 +1330,7 @@ Quote:
       quoteId: ${quoteId}
       accountId: ''
       account: '122193'
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -1299,6 +1341,7 @@ Quote:
       quoteId: ${quoteId}
       accountId: ''
       account: 280381-181
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -1459,6 +1502,7 @@ Quote:
     end_point: /submitQuoteForm
     method: post
     params:
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -1498,6 +1542,7 @@ Quote:
       quoteId: ${quoteId}
       showPrice: 'true'
       receivedQuote: 'false'
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -1516,6 +1561,7 @@ Quote_To_Order:
     method: get
     params:
       orderId: ${orderId}
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -1575,6 +1621,7 @@ Quote_To_Order:
     params:
       orderId: ${orderId}
       jobNumber: ''
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -1597,6 +1644,7 @@ Rebate:
     end_point: /rebateLanding
     method: get
     params:
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -1604,6 +1652,7 @@ Rebate:
     end_point: /getRebateRedeemedSummaryItems
     method: get
     params:
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -1625,6 +1674,7 @@ Rebate:
     params:
       rebateId: ${rebateId}
       invokeBy: store
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -1664,6 +1714,7 @@ Suggestive_Selling:
       jobNumber:
       pageSize:
       pageNo:
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -1676,6 +1727,7 @@ Hover_Job_Services:
       pageNo: '1'
       filter: ${filter}
       orderBy: updated_at asc
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -1684,6 +1736,7 @@ Hover_Job_Services:
     method: get
     params:
       jobId: ${jobId}
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -1692,6 +1745,7 @@ Hover_Job_Services:
     method: get
     params:
       jobId: ${jobId}
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -1700,6 +1754,7 @@ Hover_Job_Services:
     method: get
     params:
       imageId: '12744511'
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -1709,6 +1764,7 @@ SMS_Services:
     method: get
     params:
       phoneNumber: ${phoneNumber}
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -1717,6 +1773,7 @@ User_Registration_Services:
     end_point: /getUserRegisterToken
     method: get
     params:
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -1785,6 +1842,7 @@ Job_Service:
     method: get
     params:
       jobNumber: ''
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -1869,6 +1927,7 @@ Edit_Order:
     params:
       orderId: ${orderId}
       jobNumber: ''
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''

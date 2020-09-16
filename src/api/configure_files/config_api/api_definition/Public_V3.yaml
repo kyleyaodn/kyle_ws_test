@@ -15,6 +15,7 @@ Catalog_Item_Services:
       enableDidYouMean: 'true'
       showHoverAttrs: 'true'
       hoverSearch: 'false'
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -28,6 +29,7 @@ Catalog_Item_Services:
       jobNumber:
       uom:
       showHoverAttrs: 'true'
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -44,6 +46,7 @@ Template_Services:
       showItemAvailable: 'true'
       pageSize: '1'
       pageNo: '1'
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -57,6 +60,7 @@ Template_Services:
       showItemVariations: 'false'
       showPricing: 'true'
       showItemAvailable: 'true'
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -112,6 +116,7 @@ Template_Services:
     params:
       templateId: gl62900320,gl62900319
       accountId: 280381-181
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -121,6 +126,7 @@ Template_Services:
     params:
       templateId: gl62900319
       accountId: 280381-181
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -141,6 +147,7 @@ ItemList_V31:
       hoverSearch: 'false'
       pageSize: '21'
       pageNo: '1'
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''

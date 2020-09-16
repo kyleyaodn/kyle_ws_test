@@ -16,6 +16,7 @@ My_Account_Services:
     end_point: /logout
     method: post
     params:
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -23,6 +24,7 @@ My_Account_Services:
     end_point: /getCurrentUserInfo
     method: get
     params:
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -33,6 +35,7 @@ My_Account_Services:
       siteId: ''
       persistentLoginType: ''
       userAgent: ''
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -41,6 +44,7 @@ My_Account_Services:
     method: get
     params:
       profileId: ${profileId}
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -62,6 +66,7 @@ Branch_Services:
       city: DENVER
       pageSize: '2'
       pageNo: '1'
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -71,6 +76,7 @@ Job_Service:
     method: get
     params:
       accountId: ${accountId}
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -82,6 +88,7 @@ Order_History_Services:
       orderId: ${orderId}
       accountId: ${accountId}
       accountToken: ''
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -94,6 +101,7 @@ Order_History_Services:
       pageNo: '1'
       filter: UPPER(PurchaseOrderNumber) like UPPER('%UAT TEST%')
       orderBy: ''
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -111,6 +119,7 @@ Catalog_Item_Services:
       hoverSearch: 'true'
       enableAutoCorrection: 'true'
       enableDidYouMean: 'true'
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -124,6 +133,7 @@ Catalog_Item_Services:
       jobNumber: ''
       uom:
       showHoverAttrs: 'true'
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -133,6 +143,7 @@ Catalog_Item_Services:
     params:
       productId: ${productId}
       accountInfo: 'true'
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -142,6 +153,7 @@ Catalog_Item_Services:
     params:
       skuId: ${skuId}
       skuIds: ${skuIds}
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -152,6 +164,7 @@ Catalog_Item_Services:
       skuIds: ${skuIds}
       accountId: ''
       jobNumber: ''
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -159,6 +172,7 @@ Catalog_Item_Services:
     end_point: /cartItems
     method: get
     params:
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''
@@ -294,6 +308,7 @@ Template_Services:
       showItemAvailable: 'true'
       pageSize: '2'
       pageNo: '1'
+    json:
     json_schema:
       schema_path_success: ''
       schema_path_failed: ''

@@ -53,13 +53,14 @@ class JsonOperation:
                         api_define_dict['json'] = request_body_json
                     except KeyError as key_error:
                         api_define_dict['json'] = None
+                        print('Key error')
                         print(key_error)
                     except json.decoder.JSONDecodeError as decode_error:
                         print(decode_error)
-                        result_value = None
+                        api_define_dict['json'] = None
                     except TypeError as type_error:
                         print(type_error)
-                        result_value = None
+                        api_define_dict['json'] = None
                     api_define_dict['json_schema'] = {'schema_path_success': '', 'schema_path_failed': ''}
                     if url_path_list[-1] in temp_dict:
                         # 去除同一个节点下重复的API
@@ -73,20 +74,26 @@ class JsonOperation:
     def get_dict_value(src_dict: dict, target_key):
         '''
         获取字典中key 对应的value
+        "body": {
+			"mode": "raw",
+			"raw": ""
+		}
         :param src_dict:  字典
         :param target_key: key值
         :return: 如果有值就返回值, 如果没有就返回None
         '''
         try:
             result_value = src_dict[target_key]
-        except KeyError as e:
+        except KeyError as key_error:
             print('----------------No data found for target key: ' + target_key)
-            print(e)
+            print(key_error)
             result_value = None
         except json.decoder.JSONDecodeError as decode_error:
+            print('decode error')
             print(decode_error)
             result_value = None
         except TypeError as type_error:
+            print('type error')
             print(type_error)
             result_value = None
         return result_value
