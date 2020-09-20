@@ -17,14 +17,19 @@ class BaseAPI:
     new_session = requests.Session()
     yamlOpr = YamlOperation()
     req = None
+    resp = None
     '''
     this class contains the base method of APIs
     '''
 
     @classmethod
     def format_response(cls, resp):
+        print('before resp')
+        print(resp)
+        print('cls resp')
         cls.resp = resp
-        print(json.dumps(json.loads(resp.text, encoding='utf-8'), ensure_ascii=True))
+        print(cls.resp)
+        print(json.dumps(json.loads(cls.resp.text, encoding='utf-8'), ensure_ascii=True))
 
     def load_api(self, file_relative_path: str) -> dict:
         '''
@@ -135,6 +140,12 @@ class BaseAPI:
         :param kwargs: 一些其他的参数, 例如 verifiy, case_api_version
         :return: response
         '''
+        if 'data_params' in kwargs.keys():
+            #使用测试数据中的param
+            req['params'] = kwargs.get('data_params')
+        if 'data_json' in kwargs.keys():
+            #使用测试数据中的json
+            req['json'] = json.loads(kwargs.get('data_json'))
         self.req = self.generate_request(req)
         # 获取env的数据
         self.load_env()
@@ -161,6 +172,8 @@ class BaseAPI:
                 json=req.get('json'),
                 verify=False)
         self.format_response(resp)
+        print('send requests')
+        print(self.resp)
         self.case_api_version = None
         return resp
 
@@ -171,7 +184,10 @@ class BaseAPI:
         :return:
         '''
         if resp is None:
+            # print(self.resp)
             resp = self.resp
+            # print(resp)
+        # print(resp)
         assert resp.status_code == 200
 
     @classmethod

@@ -6,3 +6,7 @@ test_switchAccount:
   accountId:
     - 280381
     - 280381
+
+test_login_logout:
+  login_api:
+    data_json: '{"username":"kyleyao@aaxischina.com","password":"123456aA","siteId":"homeSite","persistentLoginType":"rememberpassword","userAgent":"desktop"}'

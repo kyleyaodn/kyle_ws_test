@@ -1,6 +1,7 @@
 import pytest
 
 from src.api.baseApi import BaseAPI
+from src.api.v1_apis.my_account_services_v1 import MyAccountService
 from src.api.v1_apis.v1_my_account_services import MyAccountSercice
 from src.entity.yaml_operation import YamlOperation
 from src.entity.src_data_path import SrcDataPath
@@ -14,6 +15,8 @@ class TestMyAccountService:
     @classmethod
     def setup_class(cls):
         cls.myAccount = MyAccountSercice()
+        cls.new_myAccount = MyAccountService()
+        cls.baseAPI = BaseAPI()
 
     @pytest.mark.parametrize('email, password',
                              [(test_data['test_login'].get('email'), test_data['test_login'].get('password'))])
@@ -42,3 +45,11 @@ class TestMyAccountService:
     #                          [(test_data['test_login'].get('email'), test_data['test_login'].get('password'))])
     # def test_login_logout(self,email, password):
     #     r = self.myAccount.login(email, password)
+
+    def test_login_logout(self):
+        print(self.test_data['test_login_logout']['login_api']['data_json'])
+        r = self.new_myAccount.login(data_json=self.test_data['test_login_logout']['login_api']['data_json'],
+                                     case_api_version=self.case_api_version)
+        self.baseAPI.base_assertion(r)
+        r = self.new_myAccount.logout(case_api_version=self.case_api_version)
+        self.baseAPI.base_assertion(r)
