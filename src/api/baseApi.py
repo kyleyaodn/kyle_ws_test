@@ -142,10 +142,10 @@ class BaseAPI:
         '''
         if 'data_params' in kwargs.keys():
             #使用测试数据中的param
-            req['params'] = kwargs.get('data_params')
+            req['params'] = self.str_to_dict(kwargs.get('data_params'))
         if 'data_json' in kwargs.keys():
             #使用测试数据中的json
-            req['json'] = json.loads(kwargs.get('data_json'))
+            req['json'] = self.str_to_dict(kwargs.get('data_json'))
         self.req = self.generate_request(req)
         # 获取env的数据
         self.load_env()
@@ -207,3 +207,24 @@ class BaseAPI:
             JsonSchemeOperation.check_json_schema(resp_json_data, schema_file_path)
         except KeyError as key_error:
             print(key_error)
+
+    @staticmethod
+    def str_to_dict(target_data)-> dict:
+        '''
+        字符串里面存储的是Json 格式的数据, 将字符串读取为字典
+        :param target_data:
+        :return:
+        '''
+        if isinstance(target_data, str):
+            try:
+                out_data = json.loads(target_data)
+            except json.decoder.JSONDecodeError as decode_error:
+                print(decode_error)
+                out_data = None
+        elif isinstance(target_data, dict):
+            out_data = target_data
+        else:
+            print('the data type is incorrect should be str or dict')
+            print(type(target_data))
+            out_data = None
+        return out_data
