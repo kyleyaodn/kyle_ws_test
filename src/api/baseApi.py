@@ -24,11 +24,7 @@ class BaseAPI:
 
     @classmethod
     def format_response(cls, resp):
-        print('before resp')
-        print(resp)
-        print('cls resp')
         cls.resp = resp
-        print(cls.resp)
         print(json.dumps(json.loads(cls.resp.text, encoding='utf-8'), ensure_ascii=True))
 
     def load_api(self, file_relative_path: str) -> dict:
@@ -141,10 +137,10 @@ class BaseAPI:
         :return: response
         '''
         if 'data_params' in kwargs.keys():
-            #使用测试数据中的param
+            # 使用测试数据中的param
             req['params'] = self.str_to_dict(kwargs.get('data_params'))
         if 'data_json' in kwargs.keys():
-            #使用测试数据中的json
+            # 使用测试数据中的json
             req['json'] = self.str_to_dict(kwargs.get('data_json'))
         self.req = self.generate_request(req)
         # 获取env的数据
@@ -172,8 +168,6 @@ class BaseAPI:
                 json=req.get('json'),
                 verify=False)
         self.format_response(resp)
-        print('send requests')
-        print(self.resp)
         self.case_api_version = None
         return resp
 
@@ -183,33 +177,27 @@ class BaseAPI:
         :param resp:
         :return:
         '''
-        if resp is None:
-            # print(self.resp)
-            resp = self.resp
-            # print(resp)
-        # print(resp)
         assert resp.status_code == 200
 
     @classmethod
-    def validate_json_schema(cls, type_4_resp, resp=None):
+    def validate_json_schema(cls, type_4_resp, api_define, resp):
         '''
         校验Response的Json格式正确不, 使用json schema
         :param type_4_resp: 传入期望的json schema路径, schema_path_success, schemea_path_failed 目前为两种
+        :param api_define: api 的定义
         :param resp: 传入response, 如果没有就取类变量
         :return:
         '''
-        if resp is None:
-            resp = cls.resp
         resp_json_data = resp.json()
         try:
-            schema_file_path = cls.req['json_schema'].get(type_4_resp)
+            schema_file_path = api_define['json_schema'].get(type_4_resp)
             print('validate the type for Json Schema: ' + type_4_resp)
             JsonSchemeOperation.check_json_schema(resp_json_data, schema_file_path)
         except KeyError as key_error:
             print(key_error)
 
     @staticmethod
-    def str_to_dict(target_data)-> dict:
+    def str_to_dict(target_data) -> dict:
         '''
         字符串里面存储的是Json 格式的数据, 将字符串读取为字典
         :param target_data:

@@ -50,6 +50,7 @@ class TestMyAccountService:
         print(self.test_data['test_login_logout']['login_api']['data_json'])
         r = self.new_myAccount.login(data_json=self.test_data['test_login_logout']['login_api']['data_json'],
                                      case_api_version=self.case_api_version)
-        self.baseAPI.base_assertion(r)
+        self.new_myAccount.base_assertion(r)
+        self.new_myAccount.validate_json_schema('schema_path_success',self.new_myAccount.api_define, r)
         r = self.new_myAccount.logout(case_api_version=self.case_api_version)
-        self.baseAPI.base_assertion(r)
+        self.new_myAccount.base_assertion(r)

@@ -10,7 +10,7 @@ My_Account_Services:
       persistentLoginType: rememberPassword
       userAgent: desktop
     json_schema:
-      schema_path_success: ''
+      schema_path_success: 'src/api/configure_files/config_api/api_schemas/v1_apis/my_account_services/schema_success_login.json'
       schema_path_failed: ''
   logout:
     end_point: /logout

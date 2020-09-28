@@ -12,12 +12,14 @@ class MyAccountService(BaseAPI):
         self.data = self.load_api(self.api_relative_Path)
         self.api_version = 'v1'
         self.params = {}
+        self.api_define = None
 
     def login(self, **kwargs):
         self.params.clear()
         # self.params['username'] = username
         # self.params['password'] = password
-        return self.send_requests(self.data.get("My_Account_Services").get("login"), **kwargs)
+        self.api_define = self.data.get("My_Account_Services").get("login")
+        return self.send_requests(self.api_define, **kwargs)
 
     def logout(self, **kwargs):
         return self.send_requests(self.data.get("My_Account_Services").get("logout"), **kwargs)
