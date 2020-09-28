@@ -18,9 +18,9 @@ class BaseAPI:
     yamlOpr = YamlOperation()
     req = None
     resp = None
-    '''
+    """
     this class contains the base method of APIs
-    '''
+    """
 
     @classmethod
     def format_response(cls, resp):
@@ -28,11 +28,11 @@ class BaseAPI:
         print(json.dumps(json.loads(cls.resp.text, encoding='utf-8'), ensure_ascii=True))
 
     def load_api(self, file_relative_path: str) -> dict:
-        '''
+        """
         读取yaml 文件中关于API的定义
         :param file_path: API 定义yaml文件路径
         :return: 读取出来的字典
-        '''
+        """
         file_path = SrcDataPath.get_src_data_path(file_relative_path)
         api_data = self.yamlOpr.load_yaml_file(file_path)
         return api_data
@@ -113,11 +113,11 @@ class BaseAPI:
         return resp
 
     def generate_request(self, req: dict):
-        '''
+        """
         调用request 发送request
         :param req: 组成一个request的各种元素, endpoint, json, parameters...
         :return: 返回一个response
-        '''
+        """
         # 将yaml格式数据转换成string
         raw = yaml.dump(req)
         for key, value in self.params.items():
@@ -130,12 +130,12 @@ class BaseAPI:
         return req
 
     def send_requests(self, req: dict, **kwargs) -> Response:
-        '''
+        """
         发送request
         :param req: 传入request 需要的 method, header, request body, parameters 组装好request.
         :param kwargs: 一些其他的参数, 例如 verifiy, case_api_version
         :return: response
-        '''
+        """
         if 'data_params' in kwargs.keys():
             # 使用测试数据中的param
             req['params'] = self.str_to_dict(kwargs.get('data_params'))
@@ -171,23 +171,23 @@ class BaseAPI:
         self.case_api_version = None
         return resp
 
-    def base_assertion(self, resp=None):
-        '''
+    def base_assertion(self, resp):
+        """
         检查response的status code
         :param resp:
         :return:
-        '''
+        """
         assert resp.status_code == 200
 
     @classmethod
     def validate_json_schema(cls, type_4_resp, api_define, resp):
-        '''
+        """
         校验Response的Json格式正确不, 使用json schema
         :param type_4_resp: 传入期望的json schema路径, schema_path_success, schemea_path_failed 目前为两种
         :param api_define: api 的定义
         :param resp: 传入response, 如果没有就取类变量
         :return:
-        '''
+        """
         resp_json_data = resp.json()
         try:
             schema_file_path = api_define['json_schema'].get(type_4_resp)
@@ -196,13 +196,22 @@ class BaseAPI:
         except KeyError as key_error:
             print(key_error)
 
+    def validate_json_path(self, path, value):
+        """
+
+        :param path:
+        :param value:
+        :return:
+        """
+        pass
+
     @staticmethod
     def str_to_dict(target_data) -> dict:
-        '''
+        """
         字符串里面存储的是Json 格式的数据, 将字符串读取为字典
         :param target_data:
         :return:
-        '''
+        """
         if isinstance(target_data, str):
             try:
                 out_data = json.loads(target_data)
