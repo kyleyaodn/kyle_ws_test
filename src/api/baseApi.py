@@ -16,6 +16,7 @@ class BaseAPI:
     case_api_version = None
     new_session = requests.Session()
     yamlOpr = YamlOperation()
+    api_define = None
     req = None
     resp = None
     """
@@ -26,6 +27,10 @@ class BaseAPI:
     def format_response(cls, resp):
         cls.resp = resp
         print(json.dumps(json.loads(cls.resp.text, encoding='utf-8'), ensure_ascii=True))
+
+    @classmethod
+    def format_api_define(cls,api_define):
+        cls.api_define = api_define
 
     def load_api(self, file_relative_path: str) -> dict:
         """
@@ -147,6 +152,7 @@ class BaseAPI:
         self.load_env()
         # 组合获取API的详细路径
         api_path = self.generate_api_path(self.req)
+        self.format_api_define(req)
         # 获取case的case api version.
         if 'case_api_version' in kwargs.keys():
             self.case_api_version = kwargs.get('case_api_version')
@@ -158,7 +164,7 @@ class BaseAPI:
                 url=api_path,
                 params=self.req.get('params'),
                 json=self.req.get('json'),
-                verify=False)
+                verify=self.env_data.get('ssl_check'))
         else:
             print('case is run for Oauth')
             resp = requests.request(
@@ -166,21 +172,23 @@ class BaseAPI:
                 url=api_path,
                 params=req.get('params'),
                 json=req.get('json'),
-                verify=False)
+                verify=self.env_data.get('ssl_check'))
         self.format_response(resp)
         self.case_api_version = None
         return resp
 
-    def base_assertion(self, resp):
+    def base_assertion(self, resp=None):
         """
         检查response的status code
         :param resp:
         :return:
         """
+        if resp is None:
+            resp = self.resp
         assert resp.status_code == 200
 
     @classmethod
-    def validate_json_schema(cls, type_4_resp, api_define, resp):
+    def validate_json_schema(cls, type_4_resp, api_define=None, resp=None):
         """
         校验Response的Json格式正确不, 使用json schema
         :param type_4_resp: 传入期望的json schema路径, schema_path_success, schemea_path_failed 目前为两种
@@ -188,6 +196,11 @@ class BaseAPI:
         :param resp: 传入response, 如果没有就取类变量
         :return:
         """
+        if api_define is None:
+            print(cls.api_define)
+            api_define = cls.api_define
+        if resp is None:
+            resp = cls.resp
         resp_json_data = resp.json()
         try:
             schema_file_path = api_define['json_schema'].get(type_4_resp)
@@ -196,11 +209,12 @@ class BaseAPI:
         except KeyError as key_error:
             print(key_error)
 
-    def validate_json_path(self, path, value):
+    def validate_json_path(self, path, value, resp):
         """
 
         :param path:
         :param value:
+        :param resp
         :return:
         """
         pass
