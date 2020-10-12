@@ -29,13 +29,13 @@ class BaseAPI:
         print(json.dumps(json.loads(cls.resp.text, encoding='utf-8'), ensure_ascii=True))
 
     @classmethod
-    def format_api_define(cls,api_define):
+    def format_api_define(cls, api_define):
         cls.api_define = api_define
 
     def load_api(self, file_relative_path: str) -> dict:
         """
         读取yaml 文件中关于API的定义
-        :param file_path: API 定义yaml文件路径
+        :param file_relative_path: API 定义yaml文件路径
         :return: 读取出来的字典
         """
         file_path = SrcDataPath.get_src_data_path(file_relative_path)
@@ -152,7 +152,7 @@ class BaseAPI:
         self.load_env()
         # 组合获取API的详细路径
         api_path = self.generate_api_path(self.req)
-        self.format_api_define(req)
+        self.format_api_define(self.req)
         # 获取case的case api version.
         if 'case_api_version' in kwargs.keys():
             self.case_api_version = kwargs.get('case_api_version')
@@ -168,10 +168,10 @@ class BaseAPI:
         else:
             print('case is run for Oauth')
             resp = requests.request(
-                method=req.get('method'),
+                method=self.req.get('method'),
                 url=api_path,
-                params=req.get('params'),
-                json=req.get('json'),
+                params=self.req.get('params'),
+                json=self.req.get('json'),
                 verify=self.env_data.get('ssl_check'))
         self.format_response(resp)
         self.case_api_version = None
