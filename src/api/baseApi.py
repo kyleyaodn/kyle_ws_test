@@ -205,7 +205,7 @@ class BaseAPI:
         try:
             schema_file_path = api_define['json_schema'].get(type_4_resp)
             print('validate the type for Json Schema: ' + type_4_resp)
-            JsonSchemeOperation.check_json_schema(resp_json_data, schema_file_path)
+            assert JsonSchemeOperation.check_json_schema(resp_json_data, schema_file_path)
         except KeyError as key_error:
             print(key_error)
 

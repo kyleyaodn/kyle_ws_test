@@ -8,33 +8,35 @@ import json
 class JsonSchemeOperation:
 
     @classmethod
-    def check_json_schema(cls, src_json, schema_path):
+    def check_json_schema(cls, src_json, schema_path) -> bool:
         '''
         校验Response的Json 的JsonSchema
         校验的两个值必须为字典类型的.
         :param src_json: 被校验的response的Json
         :param schema_path: Json Schema文件路径
-        :return:
+        :return: schema_result True, False
         '''
         obs_path = SrcDataPath.get_src_data_path(schema_path)
         json_schema_data = ReadFile.read_file(obs_path)
-        schema_result = True
+        schema_result = False
         try:
-            validate(json.dumps(src_json), json.dumps(json_schema_data))
+            # 这里validate里面的数据需要是字典类型的.
+            if isinstance(src_json, str):
+                src_json = json.loads(src_json) #将传入的response json转换为字典类型.
+            validate(src_json, json.loads(json_schema_data))
+            schema_result = True
         except TypeError as type_error:
             print(type_error)
-            schema_result = False
         except exceptions.ValidationError as validate_error:
             # 校验json的格式, 输出错误内容, 这个错误好像一次只能输出一处错误地方.
             print(validate_error.message)
             print(validate_error.absolute_schema_path)
-            schema_result = False
         finally:
             return schema_result
 
 if __name__ == "__main__":
     relative_path = 'src/api/configure_files/config_api/api_schemas/v1_apis/my_account_services/schema_success_login.json'
-    resp_json = '{"messageInfo":{"firstName": "API Change","lastName":"API test","emailAddress":3,"cartLineItems":3,"internalUser":false,"lastSelectedAccount":{"accountName":"KEVIN KIRSCH NEW HOMES INC","accountLegacyId":"280381","accountViewPrices":true,"accountEnabled":true},"profileId":"user23820022","userType":"Customer","accountBranch":{"address":{"country":null,"address3":null,"address2":"4795 FOREST ST.","city":"DENVER","address1":"ROOF DEPOT MOUNTAIN","postalCode":"80216","state":"CO"},"branchNumber":"180","branchPhone":"3033886493","branchName":"DENVER BRANCH","branchRegionId":"33"}}}'
+    resp_json = '{"messageInfo":{"firstName": "API Change","lastName":"API test","emailAddress":"kyleyao@aaxischina.com","cartLineItems":3,"internalUser":false,"lastSelectedAccount":{"accountName":"KEVIN KIRSCH NEW HOMES INC","accountLegacyId":"280381","accountViewPrices":true,"accountEnabled":true},"profileId":"user23820022","userType":"Customer","accountBranch":{"address":{"country":null,"address3":null,"address2":"4795 FOREST ST.","city":"DENVER","address1":"ROOF DEPOT MOUNTAIN","postalCode":"80216","state":"CO"},"branchNumber":"180","branchPhone":"3033886493","branchName":"DENVER BRANCH","branchRegionId":"33"}}}'
     new_resp_json = json.loads(resp_json)
     # JsonSchemeOperation.check_json_schema(resp_json, relative_path)
     (JsonSchemeOperation.check_json_schema(resp_json, relative_path))
