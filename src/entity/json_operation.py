@@ -6,11 +6,11 @@ class JsonOperation:
 
     @classmethod
     def load_json_file(cls, file_path) -> dict:
-        '''
+        """
         从文件读取Json 文件
         :param file_path: json文件路径
         :return: 返回json 格式的数据 词典数据
-        '''
+        """
         try:
             with open(file_path, encoding='utf-8') as f:
                 data = json.load(f)
@@ -21,11 +21,11 @@ class JsonOperation:
         return data
 
     def get_api_form_postman_data(self, postman_data: list) -> dict:
-        '''
+        """
         将postman 文件中读取来的list 转换为一个个的API定义字典.
         :param: postman_data
         :return:
-        '''
+        """
         temp_dict = {}
         for index in range(len(postman_data)):
             temp_data = postman_data[index]
@@ -72,7 +72,7 @@ class JsonOperation:
 
     @staticmethod
     def get_dict_value(src_dict: dict, target_key):
-        '''
+        """
         获取字典中key 对应的value
         "body": {
 			"mode": "raw",
@@ -81,7 +81,7 @@ class JsonOperation:
         :param src_dict:  字典
         :param target_key: key值
         :return: 如果有值就返回值, 如果没有就返回None
-        '''
+        """
         try:
             result_value = src_dict[target_key]
         except KeyError as key_error:
@@ -100,7 +100,7 @@ class JsonOperation:
 
     @staticmethod
     def generate_params_dict(param_list: list) -> dict:
-        '''
+        """
         postman json 文件中 param 的存储形式为list [ dictionary,dictionary], dict 存储又为key, value 方式
         将之转换为 dictionary, 例如
         {
@@ -110,7 +110,7 @@ class JsonOperation:
 		转换为 persistentLoginType : rememberme
         :param param_list:
         :return:
-        '''
+        """
         param_dict = {}
         if param_list is None:
             param_dict = None
@@ -121,22 +121,26 @@ class JsonOperation:
         return param_dict
 
     def postman_data2_api(self, file_postman):
-        '''
+        """
         暂时没用这个
         :param file_postman:
         :return:
-        '''
+        """
         data_json = self.load_json_file(file_postman)
         item_data = data_json.get('item')
         data_finally = self.get_api_form_postman_data(item_data)
         return data_finally
 
+    @classmethod
+    def json_path_data(cls, src_json: dict, path):
+        result = jsonpath.jsonpath(src_json, path)
+        return result
 
 if __name__ == "__main__":
     # postman_comp_file = r'D:\Installation\PycharmProjects\becn_project\configure_files\config_api\postman_export_files\Beacon-API-All_Reorder_For_APIgenerate.postman_collection.json'
     # postman_file = r'D:\AllWorkSpaces\Python\PycharmProjects\becn_project\configure_files\config_api\postman_export_files\Beacon-API-All_Reorder_For_APIgenerate.postman_collection.json'
     # print('this is test for check')
-    # json_opr = JsonOperation()
+    json_opr = JsonOperation()
     # final_data = json_opr.postman_data2_api(postman_comp_file)
     # print(json.dumps(final_data))
     json_data = "{\n    \"username\": \"${username}\",\n    \"password\": \"${password}\",\n    \"siteId\": \"homeSite\",\n    \"persistentLoginType\": \"rememberPassword\",\n    \"userAgent\": \"desktop\"\n}"
@@ -147,3 +151,5 @@ if __name__ == "__main__":
     # loads -> 内存中数据转换为字典类型
     print(type(json.loads(json_data)))
     print(json.loads(json_data))
+    jsonPath_data = json_opr.json_path_data(json.loads(json_data), '$.username')
+    print(jsonPath_data)
