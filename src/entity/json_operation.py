@@ -47,20 +47,18 @@ class JsonOperation:
                     api_define_dict['params'] = self.generate_params_dict(self.get_dict_value(url_dict, 'query'))
                     body_dict = self.get_dict_value(request_data, 'body')
                     get_json_request_body = self.get_dict_value(body_dict, 'raw')
+                    api_define_dict['json'] = None
                     try:
                         request_body_json = json.loads(get_json_request_body)
                         # print(request_body_json)
                         api_define_dict['json'] = request_body_json
                     except KeyError as key_error:
-                        api_define_dict['json'] = None
                         print('Key error')
                         print(key_error)
                     except json.decoder.JSONDecodeError as decode_error:
                         print(decode_error)
-                        api_define_dict['json'] = None
                     except TypeError as type_error:
                         print(type_error)
-                        api_define_dict['json'] = None
                     api_define_dict['json_schema'] = {'schema_path_success': '', 'schema_path_failed': ''}
                     if url_path_list[-1] in temp_dict:
                         # 去除同一个节点下重复的API
@@ -82,20 +80,18 @@ class JsonOperation:
         :param target_key: key值
         :return: 如果有值就返回值, 如果没有就返回None
         """
+        result_value = None
         try:
             result_value = src_dict[target_key]
         except KeyError as key_error:
             print('----------------No data found for target key: ' + target_key)
             print(key_error)
-            result_value = None
         except json.decoder.JSONDecodeError as decode_error:
             print('decode error')
             print(decode_error)
-            result_value = None
         except TypeError as type_error:
             print('type error')
             print(type_error)
-            result_value = None
         return result_value
 
     @staticmethod

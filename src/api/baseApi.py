@@ -229,16 +229,15 @@ class BaseAPI:
         :param target_data:
         :return:
         """
+        out_data = None
         if isinstance(target_data, str):
             try:
                 out_data = json.loads(target_data)
             except json.decoder.JSONDecodeError as decode_error:
                 print(decode_error)
-                out_data = None
         elif isinstance(target_data, dict):
             out_data = target_data
         else:
             print('the data type is incorrect should be str or dict')
             print(type(target_data))
-            out_data = None
         return out_data
