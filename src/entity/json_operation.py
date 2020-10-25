@@ -72,10 +72,7 @@ class JsonOperation:
     def get_dict_value(src_dict: dict, target_key):
         """
         获取字典中key 对应的value
-        "body": {
-			"mode": "raw",
-			"raw": ""
-		}
+        "body": {"mode": "raw",	"raw": ""}
         :param src_dict:  字典
         :param target_key: key值
         :return: 如果有值就返回值, 如果没有就返回None
@@ -98,12 +95,9 @@ class JsonOperation:
     def generate_params_dict(param_list: list) -> dict:
         """
         postman json 文件中 param 的存储形式为list [ dictionary,dictionary], dict 存储又为key, value 方式
-        将之转换为 dictionary, 例如
-        {
-			"key": "persistentLoginType",
-			"value": "rememberme"
-		}
-		转换为 persistentLoginType : rememberme
+        将之转换为 dictionary, 例如:
+        {"key": "persistentLoginType","value": "rememberme"}
+        转换为 persistentLoginType : rememberme
         :param param_list:
         :return:
         """

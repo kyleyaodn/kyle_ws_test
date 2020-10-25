@@ -7,6 +7,53 @@ test_switchAccount:
     - 280381
     - 280381
 
+example:
+  - method: login
+    request_param: ""
+    request_body: '{"username":"kyleyao@aaxischina.com","password":"123456aA","siteId":"homeSite","persistentLoginType":"rememberpassword","userAgent":"desktop"}'
+    check_point:
+      - path: "$.messageInfo.emailAddress"
+        condition: "equals"
+        except_value: "KyleYaO@AaxIsChiNa.com"
+      - path: "$.messageInfo.firstName"
+        condition: "equals"
+        except_value: "Store Change 0916"
+      - path: "$.messageInfo.lastName"
+        condition: "equals"
+        except_value: "API test"
+      - path: "$.messageInfo.profileId"
+        condition: "equals"
+        except_value: "user22340000"
+    extract:
+      - path: ddd
+        variable_name: variable
+
 test_login_logout:
   login_api:
     data_json: '{"username":"kyleyao@aaxischina.com","password":"123456aA","siteId":"homeSite","persistentLoginType":"rememberpassword","userAgent":"desktop"}'
+    check_point:
+      - path:
+        except_value:
+      - path:
+
+new_way_login_logout:
+  - method: login
+    request_param: ""
+    request_body: '{"username":"kyleyao@aaxischina.com","password":"123456aA","siteId":"homeSite","persistentLoginType":"rememberpassword","userAgent":"desktop"}'
+    check_point:
+      - path: "$.messageInfo.emailAddress"
+        condition: "value_equals"
+        except_value: "KyleYaO@AaxIsChiNa.com"
+      - path: "$.messageInfo.firstName"
+        condition: "value_equals"
+        except_value: "Store Change 0916"
+      - path: "$.messageInfo.lastName"
+        condition: "value_equals"
+        except_value: "API test"
+      - path: "$.messageInfo.profileId"
+        condition: "value_equals"
+        except_value: "user22340000"
+    extract:
+      - path: ddd
+        variable_name: variable
+  - method: logout

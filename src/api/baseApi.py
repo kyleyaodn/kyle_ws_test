@@ -5,6 +5,7 @@ from requests import Response
 from src.entity.yaml_operation import YamlOperation
 from src.entity.src_data_path import SrcDataPath
 from src.entity.json_schema_operation import JsonSchemeOperation
+from src.entity.json_operation import JsonOperation
 
 
 class BaseAPI:
@@ -16,6 +17,7 @@ class BaseAPI:
     case_api_version = None
     new_session = requests.Session()
     yamlOpr = YamlOperation()
+    jsonOpr = JsonOperation()
     req = None
     resp = None
     """
@@ -210,17 +212,37 @@ class BaseAPI:
             print(key_error)
 
     @classmethod
-    def validate_json_path(cls, path, value, resp=None)-> bool:
+    def validate_json_path(cls, json_path, compare_condition, except_value, resp=None) -> bool:
         """
-
-        :param path:
-        :param value:
-        :param resp
-        :return:
+        根据提供的json_path 获取response 中的数据, 和except_value 对比
+        :param json_path: 已知想要查找数据的json_path
+        :param compare_condition: 对比条件
+        :param except_value: 预期结果.
+        :param resp 接口的返回response
+        :return: compare_result 符合预期返回 true, 不符合返回 false
         """
+        compare_result = False
         if resp in None:
             resp = cls.resp
-        pass
+        result_list = cls.jsonOpr.json_path_data(resp, json_path)
+        if compare_condition == "value_equals":
+            for index in range(len(result_list)):
+                if result_list[index] == except_value:
+                    compare_result = True
+                else:
+                    compare_result = False
+                    break
+        elif compare_condition == 'length_large':
+            if len(result_list) > int(except_value):
+                compare_result = True
+        elif compare_condition == 'value_contains':
+            for index in range(len(result_list)):
+                if except_value in result_list[index]:
+                    compare_result = True
+                else:
+                    compare_result = False
+                    break
+        return compare_result
 
     @staticmethod
     def str_to_dict(target_data) -> dict:
@@ -241,3 +263,9 @@ class BaseAPI:
             print('the data type is incorrect should be str or dict')
             print(type(target_data))
         return out_data
+
+    def run_steps(self, case_steps):
+        if isinstance(case_steps, list):
+            for index in range(len(case_steps)):
+                step = case_steps[index]
+                self.send_requests()

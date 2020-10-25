@@ -54,3 +54,7 @@ class TestMyAccountService:
         self.new_myAccount.validate_json_schema('schema_path_success')
         self.new_myAccount.logout(case_api_version=self.case_api_version)
         self.new_myAccount.base_assertion()
+
+    @pytest.mark.parametrize('test_data',[test_data['new_way_login_logout']])
+    def test_new_way(self, test_data):
+        print(test_data)
