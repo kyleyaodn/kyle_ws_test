@@ -18,7 +18,7 @@ class BaseAPI:
     new_session = requests.Session()
     yamlOpr = YamlOperation()
     jsonOpr = JsonOperation()
-    req = None
+    req = {}
     resp = None
     """
     this class contains the base method of APIs
@@ -27,7 +27,8 @@ class BaseAPI:
     @classmethod
     def format_response(cls, resp):
         cls.resp = resp
-        print(json.dumps(json.loads(cls.resp.text, encoding='utf-8'), ensure_ascii=True))
+        # print(json.dumps(json.loads(cls.resp.text, encoding='utf-8'), ensure_ascii=True))
+        print(resp.json())
 
     @classmethod
     def set_req(cls, req):
@@ -264,8 +265,24 @@ class BaseAPI:
             print(type(target_data))
         return out_data
 
-    def run_steps(self, case_steps):
+    def run_steps(self, case_steps:list):
+        print(case_steps)
         if isinstance(case_steps, list):
             for index in range(len(case_steps)):
                 step = case_steps[index]
-                self.send_requests()
+                if isinstance(step, dict):
+                    if 'request_param' in step.keys():
+                        if step.get('request_param') is not None or step.get('request_param') is not "":
+                            print('set request param from test data: \n' + step.get('request_param') )
+                            self.req.setdefault('params', step.get('request_param'))
+                    if 'request_body' in step.keys():
+                        if step.get('request_body') is not None:
+                            print('set request body from test data: \n' + step.get('request_body'))
+                            self.req.setdefault('json',step.get('request_body'))
+                    if 'method' in step.keys():
+                        method = step['method'].split('.')[-1]
+                        print('******************************')
+                        print(method)
+                        getattr(self,method)()
+                else:
+                    print('the step definition is incorrect, should be dict')

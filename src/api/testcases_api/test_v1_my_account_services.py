@@ -58,3 +58,4 @@ class TestMyAccountService:
     @pytest.mark.parametrize('test_data',[test_data['new_way_login_logout']])
     def test_new_way(self, test_data):
         print(test_data)
+        self.new_myAccount.run_steps(test_data)

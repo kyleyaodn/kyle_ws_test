@@ -37,7 +37,7 @@ test_login_logout:
       - path:
 
 new_way_login_logout:
-  - method: login
+  - method: MyAccountService.login
     request_param: ""
     request_body: '{"username":"kyleyao@aaxischina.com","password":"123456aA","siteId":"homeSite","persistentLoginType":"rememberpassword","userAgent":"desktop"}'
     check_point:
@@ -56,4 +56,4 @@ new_way_login_logout:
     extract:
       - path: ddd
         variable_name: variable
-  - method: logout
+  - method: MyAccountService.logout
