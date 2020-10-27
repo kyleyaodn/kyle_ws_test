@@ -32,7 +32,12 @@ class BaseAPI:
 
     @classmethod
     def set_req(cls, req):
-        cls.req = req
+        for key in req:
+            if key in cls.req:
+                print("The following key is already in req, do not set value again: " + key)
+            else:
+                cls.req[key] = req[key]
+        # cls.req = req
 
     def load_api(self, file_relative_path: str) -> dict:
         """
@@ -57,8 +62,6 @@ class BaseAPI:
             print("Already loads env data.")
 
     def generate_api_path(self, req) -> str:
-        api_path = ""
-        path = ""
         if self.api_version == 'v1':
             path = self.env_data.get('apiPath').get("v1_path")
             print("-----------Set V1 path for api")
@@ -72,6 +75,7 @@ class BaseAPI:
             path = ""
             print("-----------Empty ")
         api_path = self.env_data.get('siteURL') + path + req.get("end_point")
+        print('set request url as: \n' + api_path)
         return api_path
 
     def send_request(self, req: dict) -> Response:
@@ -143,22 +147,23 @@ class BaseAPI:
         :param kwargs: 一些其他的参数, 例如 verifiy, case_api_version
         :return: response
         """
+        self.set_req(req)
         if 'data_params' in kwargs.keys():
             # 使用测试数据中的param
-            req['params'] = self.str_to_dict(kwargs.get('data_params'))
+            self.req['params'] = self.str_to_dict(kwargs.get('data_params'))
         if 'data_json' in kwargs.keys():
             # 使用测试数据中的json
-            req['json'] = self.str_to_dict(kwargs.get('data_json'))
-        self.req = self.generate_request(req)
+            self.req['json'] = self.str_to_dict(kwargs.get('data_json'))
+        self.req = self.generate_request(self.req)
         # 获取env的数据
         self.load_env()
         # 组合获取API的详细路径
         api_path = self.generate_api_path(self.req)
-        self.set_req(self.req)
         # 获取case的case api version.
         if 'case_api_version' in kwargs.keys():
             self.case_api_version = kwargs.get('case_api_version')
-        # print(case_api_version)
+        print('-------------------------------')
+        print(self.req)
         if self.case_api_version == 'v1':
             print('case is run for cookie')
             resp = self.new_session.request(
@@ -175,6 +180,7 @@ class BaseAPI:
                 params=self.req.get('params'),
                 json=self.req.get('json'),
                 verify=self.env_data.get('ssl_check'))
+        print(resp.status_code)
         self.format_response(resp)
         self.case_api_version = None
         return resp
@@ -265,24 +271,25 @@ class BaseAPI:
             print(type(target_data))
         return out_data
 
-    def run_steps(self, case_steps:list):
+    def run_steps(self, case_steps: list, **kwargs):
         print(case_steps)
+        self.req.clear()
         if isinstance(case_steps, list):
             for index in range(len(case_steps)):
                 step = case_steps[index]
                 if isinstance(step, dict):
                     if 'request_param' in step.keys():
                         if step.get('request_param') is not None or step.get('request_param') is not "":
-                            print('set request param from test data: \n' + step.get('request_param') )
+                            print('set request param from test data: \n' + step.get('request_param'))
                             self.req.setdefault('params', step.get('request_param'))
                     if 'request_body' in step.keys():
                         if step.get('request_body') is not None:
                             print('set request body from test data: \n' + step.get('request_body'))
-                            self.req.setdefault('json',step.get('request_body'))
+                            self.req.setdefault('json', step.get('request_body'))
                     if 'method' in step.keys():
                         method = step['method'].split('.')[-1]
                         print('******************************')
                         print(method)
-                        getattr(self,method)()
+                        getattr(self, method)(**kwargs)
                 else:
                     print('the step definition is incorrect, should be dict')
