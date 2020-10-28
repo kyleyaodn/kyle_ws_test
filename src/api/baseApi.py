@@ -30,14 +30,17 @@ class BaseAPI:
         # print(json.dumps(json.loads(cls.resp.text, encoding='utf-8'), ensure_ascii=True))
         print(resp.json())
 
-    @classmethod
-    def set_req(cls, req):
+    def set_req(self, req):
+        print('******************************before set value')
+        print(req)
+        print(self.req)
         for key in req:
-            if key in cls.req:
+            if key in self.req:
                 print("The following key is already in req, do not set value again: " + key)
             else:
-                cls.req[key] = req[key]
-        # cls.req = req
+                self.req[key] = req[key]
+        print('set request as following: ')
+        print(self.req)
 
     def load_api(self, file_relative_path: str) -> dict:
         """
@@ -172,6 +175,7 @@ class BaseAPI:
                 params=self.req.get('params'),
                 json=self.req.get('json'),
                 verify=self.env_data.get('ssl_check'))
+            print(self.req.get('json'))
         else:
             print('case is run for Oauth')
             resp = requests.request(
@@ -273,19 +277,21 @@ class BaseAPI:
 
     def run_steps(self, case_steps: list, **kwargs):
         print(case_steps)
-        self.req.clear()
         if isinstance(case_steps, list):
             for index in range(len(case_steps)):
                 step = case_steps[index]
+                print('run case with step: ')
+                print(step)
+                self.req.clear() #清空req的数据, 为下一次request 数据做准备
                 if isinstance(step, dict):
                     if 'request_param' in step.keys():
-                        if step.get('request_param') is not None or step.get('request_param') is not "":
+                        if step.get('request_param') is not None or step.get('request_param') != "":
                             print('set request param from test data: \n' + step.get('request_param'))
-                            self.req.setdefault('params', step.get('request_param'))
+                            self.req.setdefault('params', self.str_to_dict(step.get('request_param')))
                     if 'request_body' in step.keys():
                         if step.get('request_body') is not None:
                             print('set request body from test data: \n' + step.get('request_body'))
-                            self.req.setdefault('json', step.get('request_body'))
+                            self.req.setdefault('json', self.str_to_dict(step.get('request_body')))
                     if 'method' in step.keys():
                         method = step['method'].split('.')[-1]
                         print('******************************')
