@@ -31,16 +31,11 @@ class BaseAPI:
         print(resp.json())
 
     def set_req(self, req):
-        print('******************************before set value')
-        print(req)
-        print(self.req)
         for key in req:
             if key in self.req:
                 print("The following key is already in req, do not set value again: " + key)
             else:
                 self.req[key] = req[key]
-        print('set request as following: ')
-        print(self.req)
 
     def load_api(self, file_relative_path: str) -> dict:
         """
@@ -150,6 +145,7 @@ class BaseAPI:
         :param kwargs: 一些其他的参数, 例如 verifiy, case_api_version
         :return: response
         """
+        # 初始化类变量: request
         self.set_req(req)
         if 'data_params' in kwargs.keys():
             # 使用测试数据中的param
@@ -165,8 +161,6 @@ class BaseAPI:
         # 获取case的case api version.
         if 'case_api_version' in kwargs.keys():
             self.case_api_version = kwargs.get('case_api_version')
-        print('-------------------------------')
-        print(self.req)
         if self.case_api_version == 'v1':
             print('case is run for cookie')
             resp = self.new_session.request(
@@ -175,7 +169,6 @@ class BaseAPI:
                 params=self.req.get('params'),
                 json=self.req.get('json'),
                 verify=self.env_data.get('ssl_check'))
-            print(self.req.get('json'))
         else:
             print('case is run for Oauth')
             resp = requests.request(
@@ -184,7 +177,6 @@ class BaseAPI:
                 params=self.req.get('params'),
                 json=self.req.get('json'),
                 verify=self.env_data.get('ssl_check'))
-        print(resp.status_code)
         self.format_response(resp)
         self.case_api_version = None
         return resp
@@ -282,10 +274,10 @@ class BaseAPI:
                 step = case_steps[index]
                 print('run case with step: ')
                 print(step)
-                self.req.clear() #清空req的数据, 为下一次request 数据做准备
+                self.req.clear()  # 清空req的数据, 为下一次request 数据做准备
                 if isinstance(step, dict):
                     if 'request_param' in step.keys():
-                        if step.get('request_param') is not None or step.get('request_param') != "":
+                        if step.get('request_param') is not None:
                             print('set request param from test data: \n' + step.get('request_param'))
                             self.req.setdefault('params', self.str_to_dict(step.get('request_param')))
                     if 'request_body' in step.keys():
@@ -294,8 +286,6 @@ class BaseAPI:
                             self.req.setdefault('json', self.str_to_dict(step.get('request_body')))
                     if 'method' in step.keys():
                         method = step['method'].split('.')[-1]
-                        print('******************************')
-                        print(method)
                         getattr(self, method)(**kwargs)
                 else:
                     print('the step definition is incorrect, should be dict')
