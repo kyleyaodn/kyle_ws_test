@@ -38,7 +38,7 @@ test_login_logout:
 
 new_way_login_logout:
   - method: MyAccountService.login
-    request_param: ""
+    request_param:
     request_body: '{"username":"kyleyao@aaxischina.com","password":"123456aA","siteId":"homeSite","persistentLoginType":"rememberpassword","userAgent":"desktop"}'
     check_point:
       - path: "$.messageInfo.emailAddress"
