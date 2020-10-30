@@ -31,9 +31,6 @@ class BaseAPI:
         print(resp.json())
 
     def set_req(self, req):
-        print('******************************before set value')
-        print(req)
-        print(self.req)
         for key in req:
             if key in self.req:
                 print("The following key is already in req, do not set value again: " + key)
@@ -222,6 +219,34 @@ class BaseAPI:
         except KeyError as key_error:
             print(key_error)
 
+    def response_json_schema_check(self, api_define=None, resp=None):
+        """
+
+        :param api_define:
+        :param resp:
+        :return:
+        """
+        if api_define is None:
+            api_define = self.req
+        if resp is None:
+            resp = self.resp
+        resp_json = resp.json()
+        schema_file = api_define['json_schema']
+        result = False
+        if isinstance(schema_file, dict):
+            for key in schema_file.keys():
+                file_path = schema_file.get(key)
+                if file_path is "":
+                    print('No schema defined for: ' + key)
+                    result = True
+                else:
+                    print('validate the type for Json Schema: ' + key)
+                    print(file_path)
+                    result = JsonSchemeOperation.check_json_schema(resp_json, file_path)
+                    if result is True:
+                        break
+        assert result
+
     @classmethod
     def validate_json_path(cls, json_path, compare_condition, except_value, resp=None) -> bool:
         """
@@ -282,7 +307,7 @@ class BaseAPI:
                 step = case_steps[index]
                 print('run case with step: ')
                 print(step)
-                self.req.clear() #清空req的数据, 为下一次request 数据做准备
+                self.req.clear()  # 清空req的数据, 为下一次request 数据做准备
                 if isinstance(step, dict):
                     if 'request_param' in step.keys():
                         if step.get('request_param') is not None or step.get('request_param') != "":
@@ -297,5 +322,7 @@ class BaseAPI:
                         print('******************************')
                         print(method)
                         getattr(self, method)(**kwargs)
+                        self.base_assertion()
+                        self.response_json_schema_check()
                 else:
                     print('the step definition is incorrect, should be dict')
