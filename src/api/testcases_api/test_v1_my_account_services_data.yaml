@@ -46,7 +46,7 @@ new_way_login_logout:
         except_value: "KyleYaO@AaxIsChiNa.com"
       - path: "$.messageInfo.firstName"
         condition: "value_equals"
-        except_value: "Store Change 0916"
+        except_value: "Store Change 0916 1102"
       - path: "$.messageInfo.lastName"
         condition: "value_equals"
         except_value: "API test"
