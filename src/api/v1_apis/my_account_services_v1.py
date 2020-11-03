@@ -35,11 +35,11 @@ class MyAccountService(BaseAPI):
         self.api_define = self.data.get("My_Account_Services").get("getCurrentUserInfo")
         return self.send_requests(self.api_define, **kwargs)
 
-    def accounts(self, profileId, **kwargs):
+    def accounts(self, **kwargs):
         # self.params.clear()
         # self.params['profileId'] = profileId
         # print(self.params)
-        self.api_define =self.data.get("My_Account_Services").get("accounts")
+        self.api_define = self.data.get("My_Account_Services").get("accounts")
         return self.send_requests(self.api_define, **kwargs)
 
     def switchAccount(self, accountId, **kwargs):

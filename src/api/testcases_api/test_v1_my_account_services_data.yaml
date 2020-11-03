@@ -54,6 +54,9 @@ new_way_login_logout:
         condition: "value_equals"
         except_value: "user22340000"
     extract:
-      - path: ddd
-        variable_name: variable
+      - path: "$.messageInfo.profileId"
+        variable_name: profileId
+  - method: MyAccountService.accounts
+    request_param:
+      profileId: ${profileId}
   - method: MyAccountService.logout

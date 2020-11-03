@@ -158,6 +158,8 @@ class BaseAPI:
         self.load_env()
         # 组合获取API的详细路径
         api_path = self.generate_api_path(self.req)
+        print('[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[')
+        print(self.req)
         # 获取case的case api version.
         if 'case_api_version' in kwargs.keys():
             self.case_api_version = kwargs.get('case_api_version')
@@ -297,6 +299,7 @@ class BaseAPI:
 
     def run_steps(self, case_steps: list, **kwargs):
         print(case_steps)
+
         if isinstance(case_steps, list):
             for index in range(len(case_steps)):
                 step = case_steps[index]
@@ -306,7 +309,8 @@ class BaseAPI:
                 if isinstance(step, dict):
                     if 'request_param' in step.keys():
                         if step.get('request_param') is not None:
-                            print('set request param from test data: \n' + step.get('request_param'))
+                            print('set request param from test data:')
+                            print(step.get('request_param'))
                             self.req.setdefault('params', self.str_to_dict(step.get('request_param')))
                     if 'request_body' in step.keys():
                         if step.get('request_body') is not None:
@@ -319,6 +323,10 @@ class BaseAPI:
                         self.response_json_schema_check()
                     if 'check_point' in step.keys():
                         self.exec_checkpoints(step.get('check_point'))
+                    if 'extract' in step.keys():
+                        extract_data  = step.get('extract')
+                        self.set_extract_data(extract_data)
+
                 else:
                     print('the step definition is incorrect, should be dict')
 
@@ -343,3 +351,18 @@ class BaseAPI:
                     print(checker_dict.get('except_value'))
                     break
         assert result
+
+    def set_extract_data(self, extract_list, resp= None):
+        if resp is None:
+            resp = self.resp
+        if isinstance(extract_list,list):
+            if len(extract_list) > 0:
+                for index in range(len(extract_list)):
+                    extract = extract_list[index]
+                    param_value = self.jsonOpr.json_path_data(resp.json(), extract.get('path'))
+                    param_key = extract.get('variable_name')
+                    print('set the out put value for key is: \n' + "key is: ")
+                    print(param_key)
+                    print('value is: ')
+                    print(param_value)
+                    self.params.setdefault(param_key, param_value[0])
