@@ -338,17 +338,14 @@ class BaseAPI:
         if isinstance(checkpoint, list):
             for index in range(len(checkpoint)):
                 checker_dict = checkpoint[index]
-                print('start check data with: path, condition, except value is:')
+                print('start checking data with: path, condition, except value is:')
                 print(checker_dict.get('path'))
                 print(checker_dict.get('condition'))
                 print(checker_dict.get('except_value'))
                 result = self.validate_json_path(checker_dict.get('path'), checker_dict.get('condition'),
                                                  checker_dict.get('except_value'))
                 if result is False:
-                    print('check failed with: path, condition, except value is:')
-                    print(checker_dict.get('path'))
-                    print(checker_dict.get('condition'))
-                    print(checker_dict.get('except_value'))
+                    print('Failed validate value for path: ' + checker_dict.get('path'))
                     break
         assert result
 
