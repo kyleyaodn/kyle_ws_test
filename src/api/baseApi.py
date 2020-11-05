@@ -158,7 +158,7 @@ class BaseAPI:
         self.load_env()
         # 组合获取API的详细路径
         api_path = self.generate_api_path(self.req)
-        print('[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[')
+        print('will send request as following: ')
         print(self.req)
         # 获取case的case api version.
         if 'case_api_version' in kwargs.keys():
@@ -260,7 +260,8 @@ class BaseAPI:
         print(result_list)
         if compare_condition == "value_equals":
             for index in range(len(result_list)):
-                if result_list[index] == except_value:
+
+                if result_list[index].lower() == except_value.lower():
                     compare_result = True
                 else:
                     compare_result = False
@@ -270,7 +271,7 @@ class BaseAPI:
                 compare_result = True
         elif compare_condition == 'value_contains':
             for index in range(len(result_list)):
-                if except_value in result_list[index]:
+                if except_value.lower() in result_list[index].lower():
                     compare_result = True
                 else:
                     compare_result = False
@@ -346,6 +347,7 @@ class BaseAPI:
                                                  checker_dict.get('except_value'))
                 if result is False:
                     print('Failed validate value for path: ' + checker_dict.get('path'))
+                    print('Except value is: ' + checker_dict.get('except_value'))
                     break
         assert result
 
