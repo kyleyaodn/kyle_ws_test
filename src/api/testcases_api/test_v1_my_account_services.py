@@ -8,7 +8,7 @@ from src.entity.src_data_path import SrcDataPath
 
 
 class TestMyAccountService:
-    data_relative_path = 'src/api/testcases_api/test_v1_my_account_services_data.yaml'
+    data_relative_path = 'src/api/test_data/case_running/v1_apis/test_v1_my_account_services_data.yaml'
     test_data = YamlOperation.load_yaml_file(SrcDataPath.get_src_data_path(data_relative_path))
     case_api_version = 'v1'
 
@@ -55,7 +55,7 @@ class TestMyAccountService:
         self.new_myAccount.logout(case_api_version=self.case_api_version)
         self.new_myAccount.base_assertion()
 
-    @pytest.mark.parametrize('test_data',[test_data['new_way_login_logout']])
+    @pytest.mark.parametrize('test_data', [test_data['new_way_login_logout']])
     def test_new_way(self, test_data):
         print(test_data)
         self.new_myAccount.run_steps(test_data, case_api_version=self.case_api_version)
