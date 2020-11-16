@@ -1,0 +1,46 @@
+login_logout_data:
+  - method: MyAccountService.login
+    request_param:
+    request_body: '{"username":"kyleyao@aaxischina.com","password":"123456aA","siteId":"homeSite","persistentLoginType":"rememberpassword","userAgent":"desktop"}'
+    check_point:
+      - path: "$.messageInfo.emailAddress"
+        condition: "value_equals"
+        except_value: "KyleYaO@AaxIsChiNa.com"
+      - path: "$.messageInfo.firstName"
+        condition: "value_equals"
+        except_value: "UAT api"
+      - path: "$.messageInfo.lastName"
+        condition: "value_equals"
+        except_value: "API test"
+      - path: "$.messageInfo.profileId"
+        condition: "value_equals"
+        except_value: "user23820022"
+    extract:
+      - path: "$.messageInfo.profileId"
+        variable_name: profileId
+  - method: MyAccountService.logout
+
+account_service:
+  - method: MyAccountService.login
+    request_param:
+    request_body: '{"username":"kyleyao@aaxischina.com","password":"123456aA","siteId":"homeSite","persistentLoginType":"rememberpassword","userAgent":"desktop"}'
+    check_point:
+      - path: "$.messageInfo.emailAddress"
+        condition: "value_equals"
+        except_value: "KyleYaO@AaxIsChiNa.com"
+      - path: "$.messageInfo.firstName"
+        condition: "value_equals"
+        except_value: "UAT api"
+      - path: "$.messageInfo.lastName"
+        condition: "value_equals"
+        except_value: "API test"
+      - path: "$.messageInfo.profileId"
+        condition: "value_equals"
+        except_value: "user23820022"
+    extract:
+      - path: "$.messageInfo.profileId"
+        variable_name: profileId
+  - method: MyAccountService.accounts
+    request_param:
+      profileId: ${profileId}
+  - method: MyAccountService.logout
