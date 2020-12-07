@@ -183,14 +183,15 @@ class BaseAPI:
         self.case_api_version = None
         return resp
 
-    def base_assertion(self, resp=None):
+    @classmethod
+    def base_assertion(cls, resp=None):
         """
         检查response的status code
         :param resp:
         :return:
         """
         if resp is None:
-            resp = self.resp
+            resp = cls.resp
         assert resp.status_code == 200
 
     @classmethod
@@ -216,7 +217,8 @@ class BaseAPI:
         except KeyError as key_error:
             print(key_error)
 
-    def response_json_schema_check(self, api_define=None, resp=None):
+    @classmethod
+    def response_json_schema_check(cls, api_define=None, resp=None):
         """
         为response 做json schema 的校验.
         :param api_define: api 定义字典, 从中取得json schema 文件的位置.
@@ -224,9 +226,9 @@ class BaseAPI:
         :return: 无返回, 直接断言校验结果是否为True.
         """
         if api_define is None:
-            api_define = self.req
+            api_define = cls.req
         if resp is None:
-            resp = self.resp
+            resp = cls.resp
         resp_json = resp.json()
         schema_file = api_define['json_schema']
         result = False
@@ -244,7 +246,8 @@ class BaseAPI:
                         break
         assert result
 
-    def validate_json_path(self, json_path, compare_condition, except_value, resp=None) -> bool:
+    @classmethod
+    def validate_json_path(cls, json_path, compare_condition, except_value, resp=None) -> bool:
         """
         根据提供的json_path 获取response 中的数据, 和except_value 对比
         :param json_path: 已知想要查找数据的json_path
@@ -255,8 +258,9 @@ class BaseAPI:
         """
         compare_result = False
         if resp is None:
-            resp = self.resp
-        result_list = self.jsonOpr.json_path_data(resp.json(), json_path)
+            resp = cls.resp
+        result_list = cls.jsonOpr.json_path_data(resp.json(), json_path)
+        print('**********************************result list?')
         print(result_list)
         if compare_condition == "value_equals":
             for index in range(len(result_list)):

@@ -8,10 +8,10 @@ base_login:
         except_value: "KyleYaO@AaxIsChiNa.com"
       - path: "$.messageInfo.firstName"
         condition: "value_equals"
-        except_value: "UAT api"
+        except_value: "API Teset"
       - path: "$.messageInfo.lastName"
         condition: "value_equals"
-        except_value: "API test"
+        except_value: "Create"
       - path: "$.messageInfo.profileId"
         condition: "value_equals"
         except_value: "user23820022"
@@ -65,3 +65,16 @@ account_service:
     request_param:
       profileId: ${profileId}
   - method: MyAccountService.logout
+
+getCurrentUserInfo_service:
+    - method: MyAccountService.getCurrentUserInfo
+      check_point:
+      - path: "$.firstName"
+        condition: "value_equals"
+        except_value: "API Teset"
+      - path: "$.lastName"
+        condition: "value_equals"
+        except_value: "Create"
+      - path: "$.profileId"
+        condition: "value_equals"
+        except_value: "user23820022"

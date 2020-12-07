@@ -69,15 +69,12 @@ account_service:
 getCurrentUserInfo_service:
     - method: MyAccountService.getCurrentUserInfo
       check_point:
-      - path: "$.messageInfo.emailAddress"
-        condition: "value_equals"
-        except_value: "KyleYaO@AaxIsChiNa.com"
-      - path: "$.messageInfo.firstName"
+      - path: "$.firstName"
         condition: "value_equals"
         except_value: "Store Change 0916 1102"
-      - path: "$.messageInfo.lastName"
+      - path: "$.lastName"
         condition: "value_equals"
         except_value: "API test"
-      - path: "$.messageInfo.profileId"
+      - path: "$.profileId"
         condition: "value_equals"
         except_value: "user22340000"

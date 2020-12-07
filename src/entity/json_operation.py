@@ -123,6 +123,8 @@ class JsonOperation:
 
     @classmethod
     def json_path_data(cls, src_json: dict, path):
+        # print('********************src_json is')
+        # print(src_json)
         result = jsonpath.jsonpath(src_json, path)
         return result
 
