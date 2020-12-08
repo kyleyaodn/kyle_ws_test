@@ -18,6 +18,10 @@ base_login:
 
 base_logout:
   - method: MyAccountService.logout
+    check_point:
+     - path: "$.messageInfo"
+       condition: "value_equals"
+       except_value: "Logout successful"
 
 login_logout_data:
   - method: MyAccountService.login

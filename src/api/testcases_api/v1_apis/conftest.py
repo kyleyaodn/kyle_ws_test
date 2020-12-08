@@ -15,8 +15,8 @@ data_file_path = SrcDataPath.get_src_data_path(CommonTools.replace_value(data_re
 test_data = YamlOperation.load_yaml_file(data_file_path)
 my_account = MyAccountService()
 
-@pytest.fixture(scope="session", autouse="true")
-def login():
+@pytest.fixture(scope="session", autouse="false")
+def login_logout():
     print('***********************************************fixture setup')
     my_account.run_steps(test_data['base_login'], case_api_version=case_api_version)
 
