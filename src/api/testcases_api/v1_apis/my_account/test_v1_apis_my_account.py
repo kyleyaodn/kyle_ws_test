@@ -30,11 +30,15 @@ class TestMyAccountServices:
     #     print('***********************************************method teardown')
     #     self.my_account.run_steps(self.test_data['base_logout'], case_api_version=self.case_api_version)
 
-    @pytest.mark.parametrize('login_logout_data', [test_data['login_logout_data']])
-    def test_login_logout(self, login_logout_data):
-        self.my_account.run_steps(login_logout_data, case_api_version=self.case_api_version)
+    # @pytest.mark.parametrize('login_logout_data', [test_data['login_logout_data']])
+    # def test_login_logout(self, login_logout_data):
+    #     self.my_account.run_steps(login_logout_data, case_api_version=self.case_api_version)
 
 
     @pytest.mark.parametrize('get_current_user_info', [test_data['getCurrentUserInfo_service']])
     def test_get_current_user_info(self, get_current_user_info):
         self.my_account.run_steps(get_current_user_info, case_api_version=self.case_api_version)
+
+    @pytest.mark.parametrize('get_login_declaration', [test_data['getLoginDeclaration_service']])
+    def test_get_login_declaration(self, get_login_declaration):
+        self.my_account.run_steps(get_login_declaration, case_api_version=self.case_api_version)
