@@ -260,8 +260,8 @@ class BaseAPI:
         if resp is None:
             resp = cls.resp
         result_list = cls.jsonOpr.json_path_data(resp.json(), json_path)
-        print('**********************************result list?')
-        print(result_list)
+        # print('**********************************result list?')
+        # print(result_list)
         if compare_condition == "value_equals":
             for index in range(len(result_list)):
 
