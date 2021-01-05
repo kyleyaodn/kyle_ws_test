@@ -329,7 +329,7 @@ class BaseAPI:
                     if 'check_point' in step.keys():
                         self.exec_checkpoints(step.get('check_point'))
                     if 'extract' in step.keys():
-                        extract_data  = step.get('extract')
+                        extract_data = step.get('extract')
                         self.set_extract_data(extract_data)
 
                 else:
@@ -352,13 +352,15 @@ class BaseAPI:
                 if result is False:
                     print('Failed validate value for path: ' + checker_dict.get('path'))
                     print('Except value is: ' + checker_dict.get('except_value'))
+                    print('Actually result is: ')
+                    print(self.resp)
                     break
         assert result
 
-    def set_extract_data(self, extract_list, resp= None):
+    def set_extract_data(self, extract_list, resp=None):
         if resp is None:
             resp = self.resp
-        if isinstance(extract_list,list):
+        if isinstance(extract_list, list):
             if len(extract_list) > 0:
                 for index in range(len(extract_list)):
                     extract = extract_list[index]
