@@ -36,7 +36,7 @@ class TestMyAccountServices:
 
     @pytest.mark.parametrize('get_current_user_info', [test_data['getCurrentUserInfo_service']])
     def test_get_current_user_info(self, get_current_user_info):
-        self.my_account.run_steps(get_current_user_info, case_api_version=self.case_api_version)
+        self.my_account.run_steps(get_current_user_info)
 
     @pytest.mark.parametrize('get_login_declaration', [test_data['getLoginDeclaration_service']])
     def test_get_login_declaration(self, get_login_declaration):

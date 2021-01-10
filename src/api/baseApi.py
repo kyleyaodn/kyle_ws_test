@@ -161,9 +161,9 @@ class BaseAPI:
         print('will send request as following: ')
         print(self.req)
         # 获取case的case api version.
-        if 'case_api_version' in kwargs.keys():
-            self.case_api_version = kwargs.get('case_api_version')
-        if self.case_api_version == 'v1':
+        # if 'case_api_version' in kwargs.keys():
+        #     self.case_api_version = kwargs.get('case_api_version')
+        if self.case_api_version == 'V1':
             print('case is run for cookie')
             resp = self.new_session.request(
                 method=self.req.get('method'),
@@ -302,7 +302,9 @@ class BaseAPI:
             print(type(target_data))
         return out_data
 
-    def run_steps(self, case_steps: list, **kwargs):
+    def run_steps(self, test_cases, **kwargs):
+        self.case_api_version = test_cases.get('run_type')
+        case_steps = test_cases.get('test_steps')
         print(case_steps)
 
         if isinstance(case_steps, list):
