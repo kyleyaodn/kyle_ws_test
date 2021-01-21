@@ -27,6 +27,7 @@ class BaseAPI:
     @classmethod
     def format_response(cls, resp):
         cls.resp = resp
+        print('response data is as following:')
         print(json.dumps(json.loads(cls.resp.text, encoding='utf-8'), ensure_ascii=True))
         # print(resp.json())
 
@@ -247,12 +248,12 @@ class BaseAPI:
         assert result
 
     @classmethod
-    def validate_json_path(cls, json_path, compare_condition, except_value, resp=None) -> bool:
+    def validate_json_path(cls, json_path, compare_condition, expect_value, resp=None) -> bool:
         """
-        根据提供的json_path 获取response 中的数据, 和except_value 对比
+        根据提供的json_path 获取response 中的数据, expect_value 对比
         :param json_path: 已知想要查找数据的json_path
         :param compare_condition: 对比条件
-        :param except_value: 预期结果.
+        :param expect_value: 预期结果.
         :param resp 接口的返回response
         :return: compare_result 符合预期返回 true, 不符合返回 false
         """
@@ -265,17 +266,17 @@ class BaseAPI:
         if compare_condition == "value_equals":
             for index in range(len(result_list)):
 
-                if result_list[index].lower() == except_value.lower():
+                if result_list[index].lower() == expect_value.lower():
                     compare_result = True
                 else:
                     compare_result = False
                     break
         elif compare_condition == 'length_large':
-            if len(result_list) > int(except_value):
+            if len(result_list) > int(expect_value):
                 compare_result = True
         elif compare_condition == 'value_contains':
             for index in range(len(result_list)):
-                if except_value.lower() in result_list[index].lower():
+                if expect_value.lower() in result_list[index].lower():
                     compare_result = True
                 else:
                     compare_result = False
@@ -337,25 +338,25 @@ class BaseAPI:
                 else:
                     print('the step definition is incorrect, should be dict')
 
-    def exec_checkpoints(self, checkpoint, resp=None):
-
+    @classmethod
+    def exec_checkpoints(cls, checkpoint, resp=None):
         result = True
         if resp is None:
-            resp = self.resp
+            resp = cls.resp
         if isinstance(checkpoint, list):
             for index in range(len(checkpoint)):
                 checker_dict = checkpoint[index]
-                print('start checking data with: path, condition, except value is:')
+                print('start checking data with: path, condition, expect value is:')
                 print(checker_dict.get('path'))
                 print(checker_dict.get('condition'))
-                print(checker_dict.get('except_value'))
-                result = self.validate_json_path(checker_dict.get('path'), checker_dict.get('condition'),
-                                                 checker_dict.get('except_value'))
+                print(checker_dict.get('expect_value'))
+                result = cls.validate_json_path(checker_dict.get('path'), checker_dict.get('condition'),
+                                                 checker_dict.get('expect_value'))
                 if result is False:
                     print('Failed validate value for path: ' + checker_dict.get('path'))
-                    print('Except value is: ' + checker_dict.get('except_value'))
+                    print('Expect value is: ' + checker_dict.get('expect_value'))
                     print('Actually result is: ')
-                    print(self.resp)
+                    print(cls.resp.json())
                     break
         assert result
 

@@ -40,4 +40,4 @@ class TestMyAccountServices:
 
     @pytest.mark.parametrize('get_login_declaration', [test_data['getLoginDeclaration_service']])
     def test_get_login_declaration(self, get_login_declaration):
-        self.my_account.run_steps(get_login_declaration, case_api_version=self.case_api_version)
+        self.my_account.run_steps(get_login_declaration)

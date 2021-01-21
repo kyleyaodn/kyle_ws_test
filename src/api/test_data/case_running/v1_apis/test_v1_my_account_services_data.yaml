@@ -14,16 +14,16 @@ example:
     check_point:
       - path: "$.messageInfo.emailAddress"
         condition: "equals"
-        except_value: "KyleYaO@AaxIsChiNa.com"
+        expect_value: "KyleYaO@AaxIsChiNa.com"
       - path: "$.messageInfo.firstName"
         condition: "equals"
-        except_value: "Store Change 0916"
+        expect_value: "Store Change 0916"
       - path: "$.messageInfo.lastName"
         condition: "equals"
-        except_value: "API test"
+        expect_value: "API test"
       - path: "$.messageInfo.profileId"
         condition: "equals"
-        except_value: "user22340000"
+        expect_value: "user22340000"
     extract:
       - path: ddd
         variable_name: variable
@@ -33,7 +33,7 @@ test_login_logout:
     data_json: '{"username":"kyleyao@aaxischina.com","password":"123456aA","siteId":"homeSite","persistentLoginType":"rememberpassword","userAgent":"desktop"}'
     check_point:
       - path:
-        except_value:
+        expect_value:
       - path:
 
 new_way_login_logout:
@@ -43,16 +43,16 @@ new_way_login_logout:
     check_point:
       - path: "$.messageInfo.emailAddress"
         condition: "value_equals"
-        except_value: "KyleYaO@AaxIsChiNa.com"
+        expect_value: "KyleYaO@AaxIsChiNa.com"
       - path: "$.messageInfo.firstName"
         condition: "value_equals"
-        except_value: "Store Change 0916 1102"
+        expect_value: "Store Change 0916 1102"
       - path: "$.messageInfo.lastName"
         condition: "value_equals"
-        except_value: "API test"
+        expect_value: "API test"
       - path: "$.messageInfo.profileId"
         condition: "value_equals"
-        except_value: "user22340000"
+        expect_value: "user22340000"
     extract:
       - path: "$.messageInfo.profileId"
         variable_name: profileId
