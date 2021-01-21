@@ -13,7 +13,6 @@ class MyAccountService(BaseAPI):
         self.api_version = 'v1'
         self.params = {}
         self.api_define = None
-        self.resp = None
 
     def login(self, **kwargs):
         self.params.clear()

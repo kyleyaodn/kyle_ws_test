@@ -184,19 +184,17 @@ class BaseAPI:
         self.case_api_version = None
         return resp
 
-    @classmethod
-    def base_assertion(cls, resp=None):
+    def base_assertion(self, resp=None):
         """
         检查response的status code
         :param resp:
         :return:
         """
         if resp is None:
-            resp = cls.resp
+            resp = self.resp
         assert resp.status_code == 200
 
-    @classmethod
-    def validate_json_schema(cls, type_4_resp, api_define=None, resp=None):
+    def validate_json_schema(self, type_4_resp, api_define=None, resp=None):
         """
         校验Response的Json格式正确不, 使用json schema
         :param type_4_resp: 传入期望的json schema路径, schema_path_success, schemea_path_failed 目前为两种
@@ -206,9 +204,9 @@ class BaseAPI:
         """
         if api_define is None:
             print('no api define so use the value from request')
-            api_define = cls.req
+            api_define = self.req
         if resp is None:
-            resp = cls.resp
+            resp = self.resp
         resp_json_data = resp.json()
         try:
             schema_file_path = api_define['json_schema'].get(type_4_resp)
@@ -218,8 +216,7 @@ class BaseAPI:
         except KeyError as key_error:
             print(key_error)
 
-    @classmethod
-    def response_json_schema_check(cls, api_define=None, resp=None):
+    def response_json_schema_check(self, api_define=None, resp=None):
         """
         为response 做json schema 的校验.
         :param api_define: api 定义字典, 从中取得json schema 文件的位置.
@@ -227,9 +224,9 @@ class BaseAPI:
         :return: 无返回, 直接断言校验结果是否为True.
         """
         if api_define is None:
-            api_define = cls.req
+            api_define = self.req
         if resp is None:
-            resp = cls.resp
+            resp = self.resp
         resp_json = resp.json()
         schema_file = api_define['json_schema']
         result = False
@@ -247,8 +244,7 @@ class BaseAPI:
                         break
         assert result
 
-    @classmethod
-    def validate_json_path(cls, json_path, compare_condition, expect_value, resp=None) -> bool:
+    def validate_json_path(self, json_path, compare_condition, expect_value, resp=None) -> bool:
         """
         根据提供的json_path 获取response 中的数据, expect_value 对比
         :param json_path: 已知想要查找数据的json_path
@@ -259,13 +255,13 @@ class BaseAPI:
         """
         compare_result = False
         if resp is None:
-            resp = cls.resp
-        result_list = cls.jsonOpr.json_path_data(resp.json(), json_path)
-        # print('**********************************result list?')
-        # print(result_list)
+            resp = self.resp
+            print(resp.json())
+        result_list = self.jsonOpr.json_path_data(resp.json(), json_path)
+        print('**********************************result list?')
+        print(result_list)
         if compare_condition == "value_equals":
             for index in range(len(result_list)):
-
                 if result_list[index].lower() == expect_value.lower():
                     compare_result = True
                 else:
@@ -283,8 +279,7 @@ class BaseAPI:
                     break
         return compare_result
 
-    @staticmethod
-    def str_to_dict(target_data) -> dict:
+    def str_to_dict(self, target_data) -> dict:
         """
         字符串里面存储的是Json 格式的数据, 将字符串读取为字典
         :param target_data:
@@ -338,20 +333,21 @@ class BaseAPI:
                 else:
                     print('the step definition is incorrect, should be dict')
 
-    @classmethod
-    def exec_checkpoints(cls, checkpoint, resp=None):
+    def exec_checkpoints(self, checkpoint, resp=None):
         result = True
         if resp is None:
-            resp = cls.resp
+            resp = self.resp
+            print('***************exec_checkpoints')
+            print(resp.json())
         if isinstance(checkpoint, list):
             for index in range(len(checkpoint)):
                 checker_dict = checkpoint[index]
                 print('start checking data with: path, condition, expect value is:')
                 print(checker_dict.get('path'))
                 print(checker_dict.get('condition'))
-                print(checker_dict.get('expect_value'))
-                result = cls.validate_json_path(checker_dict.get('path'), checker_dict.get('condition'),
-                                                checker_dict.get('expect_value'))
+                # print(checker_dict.get('expect_value'))
+                result = self.validate_json_path(checker_dict.get('path'), checker_dict.get('condition'),
+                                                 checker_dict.get('expect_value'))
                 if result is False:
                     print('Failed validate value for path: ' + checker_dict.get('path'))
                     print('Expect value is: ' + checker_dict.get('expect_value'))
