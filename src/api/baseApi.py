@@ -351,12 +351,12 @@ class BaseAPI:
                 print(checker_dict.get('condition'))
                 print(checker_dict.get('expect_value'))
                 result = cls.validate_json_path(checker_dict.get('path'), checker_dict.get('condition'),
-                                                 checker_dict.get('expect_value'))
+                                                checker_dict.get('expect_value'))
                 if result is False:
                     print('Failed validate value for path: ' + checker_dict.get('path'))
                     print('Expect value is: ' + checker_dict.get('expect_value'))
                     print('Actually result is: ')
-                    print(cls.resp.json())
+                    print(resp.json())
                     break
         assert result
 
