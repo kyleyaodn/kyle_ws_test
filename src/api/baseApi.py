@@ -6,6 +6,7 @@ from src.entity.yaml_operation import YamlOperation
 from src.entity.src_data_path import SrcDataPath
 from src.entity.json_schema_operation import JsonSchemeOperation
 from src.entity.json_operation import JsonOperation
+from src.entity.commen_tools import CommonTools
 
 
 class BaseAPI:
@@ -18,6 +19,7 @@ class BaseAPI:
     new_session = requests.Session()
     yamlOpr = YamlOperation()
     jsonOpr = JsonOperation()
+    common_tools = CommonTools()
     req = {}
     resp = None
     """
@@ -30,6 +32,11 @@ class BaseAPI:
         print('response data is as following:')
         print(json.dumps(json.loads(cls.resp.text, encoding='utf-8'), ensure_ascii=True))
         # print(resp.json())
+
+    @classmethod
+    def format_parameter(cls, params):
+        cls.params = params
+        print(cls.params)
 
     def set_req(self, req):
         for key in req:
@@ -274,9 +281,9 @@ class BaseAPI:
             for index in range(len(result_list)):
                 if expect_value.lower() in result_list[index].lower():
                     compare_result = True
+                    break
                 else:
                     compare_result = False
-                    break
         return compare_result
 
     def str_to_dict(self, target_data) -> dict:
@@ -314,7 +321,9 @@ class BaseAPI:
                         if step.get('request_param') is not None:
                             print('set request param from test data:')
                             print(step.get('request_param'))
-                            self.req.setdefault('params', self.str_to_dict(step.get('request_param')))
+                            data_req_param = step.get('request_param')
+                            data_param_after_replace = self.common_tools.replace_value(data_req_param, self.params)
+                            self.req.setdefault('params', self.str_to_dict(data_param_after_replace))
                     if 'request_body' in step.keys():
                         if step.get('request_body') is not None:
                             print('set request body from test data: \n' + step.get('request_body'))
@@ -370,3 +379,4 @@ class BaseAPI:
                     print('value is: ')
                     print(param_value)
                     self.params.setdefault(param_key, param_value[0])
+                    self.format_parameter(self.params)

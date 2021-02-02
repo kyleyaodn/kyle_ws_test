@@ -11,11 +11,11 @@ class MyAccountService(BaseAPI):
     def __init__(self):
         self.data = self.load_api(self.api_relative_Path)
         self.api_version = 'v1'
-        self.params = {}
+        # self.params = {}
         self.api_define = None
 
     def login(self, **kwargs):
-        self.params.clear()
+        # self.params.clear()
         # self.params['username'] = username
         # self.params['password'] = password
         self.api_define = self.data.get("My_Account_Services").get("login")

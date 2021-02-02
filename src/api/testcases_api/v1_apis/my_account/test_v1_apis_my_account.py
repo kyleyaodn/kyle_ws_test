@@ -41,3 +41,7 @@ class TestMyAccountServices:
     @pytest.mark.parametrize('get_login_declaration', [test_data['getLoginDeclaration_service']])
     def test_get_login_declaration(self, get_login_declaration):
         self.my_account.run_steps(get_login_declaration)
+
+    @pytest.mark.parametrize('accounts_service', [test_data['accounts_service']])
+    def test_get_accounts(self, accounts_service):
+        self.my_account.run_steps(accounts_service)
